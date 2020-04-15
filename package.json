@@ -1,0 +1,32 @@
+{
+  "name": "ll-ui-test-automation",
+  "version": "1.0.0",
+  "description": "ui test automation",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/wdio wdio.conf.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "@babel/node": "^7.8.7",
+    "@babel/preset-env": "^7.9.5",
+    "@wdio/cli": "^6.0.15",
+    "@wdio/cucumber-framework": "^6.0.13",
+    "@wdio/local-runner": "^6.0.13",
+    "@wdio/mocha-framework": "^6.0.13",
+    "@wdio/spec-reporter": "^6.0.12",
+    "@wdio/sync": "^6.0.12",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "chromedriver": "^80.0.2",
+    "node-fetch": "^2.6.0",
+    "wdio-chromedriver-service": "^6.0.1",
+    "webdriverio": "^6.0.13"
+  },
+  "dependencies": {
+    "git": "^0.1.5"
+  }
+}
