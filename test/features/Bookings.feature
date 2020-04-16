@@ -26,6 +26,6 @@ Feature:
 
    Examples:
    | username           | password | dropdownfilter | campus pin | Requester Name | language   | assignment type   | date   | time  | duration | email        |
-   | LLAdmin@looped.in  | Uranus@6 | Management     |  33124     |  CBO3 Testing  |  AFRIKAANS | Interview-Halfday | future | 11:30 | 4 hours  | hh@bb.com.au |
+   | LLAdmin@looped.in  | Uranus@6 | Management     |  33124     |  CBO3 Testing  |  AFRIKAANS | Interview-Halfday | future | 09:30 | 4 hours  | hh@bb.com.au |
   
 

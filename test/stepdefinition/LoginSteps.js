@@ -1,5 +1,6 @@
 var Login = require( '../pages/Login')
 const { Given, When, Then, AfterAll } = require('cucumber');
+var action=require('../utils/actions')
 
 
 Given(/^the looped in login page is opened$/,  async function(){
@@ -16,7 +17,7 @@ Given(/^the looped in login page is opened$/,  async function(){
  })
 
  When(/^I login with "(.*)" and "(.*)"$/,   function(username,password){
-    Login.usernameInput.setValue(username)
-    Login.passwordInput.setValue(password)
-    Login.loginButton.click()     
+    action.enterValue(Login.usernameInput,username)
+    action.enterValue(Login.passwordInput,password)
+    action.clickElement(Login.loginButton)     
 })

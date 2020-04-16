@@ -8,9 +8,10 @@ module.exports =
 function gettags()
 {
     var temp_tags=process.argv.slice();
-
     if(temp_tags.length>2)
     {
+        console.log("PARAMS:::::"+temp_tags[3].split("=")[1])
+
         return temp_tags[3].split("=")[1]
     }
     

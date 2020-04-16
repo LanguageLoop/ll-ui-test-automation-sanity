@@ -1,7 +1,7 @@
 
 
 var parameters =require('./params.js')
-
+console.log("VERON::::"+parameters.tags)
 exports.config = {
    
     //

@@ -52,7 +52,7 @@ module.exports={
         return $('//input[@value="Next"]')
     },
 
-    get successMessage() {
+    get successMessage() { 
         return $('//*[@class="Feedback_Message_Success"]')
     },
 
