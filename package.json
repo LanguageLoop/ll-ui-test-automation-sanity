@@ -9,12 +9,11 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@babel/cli": "^7.8.4",
-    "@babel/core": "^7.9.0",
-    "@babel/node": "^7.8.7",
-    "@babel/preset-env": "^7.9.5",
+    "@rpii/wdio-html-reporter": "^6.0.1",
+    "@wdio/allure-reporter": "^5.22.4",
     "@wdio/cli": "^6.0.15",
     "@wdio/cucumber-framework": "^6.0.13",
+    "@wdio/junit-reporter": "^6.0.14",
     "@wdio/local-runner": "^6.0.13",
     "@wdio/mocha-framework": "^6.0.13",
     "@wdio/spec-reporter": "^6.0.12",
@@ -22,11 +21,16 @@
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
     "chromedriver": "^80.0.2",
+    "cucumber-html-reporter": "^5.2.0",
     "node-fetch": "^2.6.0",
+    "pngjs": "^5.0.0",
     "wdio-chromedriver-service": "^6.0.1",
+    "wdio-html-format-reporter": "^0.4.0",
+    "wdio-multiple-cucumber-html-reporter": "^1.1.1",
     "webdriverio": "^6.0.13"
   },
   "dependencies": {
-    "git": "^0.1.5"
+    "log4js": "^6.2.0",
+    "source-map-support": "^0.5.16"
   }
 }

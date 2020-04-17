@@ -1,7 +1,8 @@
 
 
-var parameters =require('./params.js')
-
+const parameters =require('./params.js')
+var HtmlReporter= require('@rpii/wdio-html-reporter').HtmlReporter
+var reportAggregator =require('@rpii/wdio-html-reporter').ReportAggregator
 exports.config = {
    
     //
@@ -11,6 +12,36 @@ exports.config = {
     //
     // WebdriverIO allows it to run your tests in arbitrary locations (e.g. locally or
     // on a remote machine).
+    reporters: ['spec',
+    [HtmlReporter, {
+        debug: false,
+        outputDir: './reports/html-reports/',
+        filename: 'report.html',
+        reportTitle: 'Test Execution',
+        
+        //to show the report in a browser when done
+        showInBrowser: false,
+
+        //to turn on screenshots after every test
+        useOnAfterCommandForScreenshot: true,
+
+        // to use the template override option, can point to your own file in the test project:
+        // templateFilename: path.resolve(__dirname, '../template/wdio-html-reporter-alt-template.hbs'),
+        
+        // to add custom template functions for your custom template:
+        // templateFuncs: {
+        //     addOne: (v) => {
+        //         return v+1;
+        //     },
+        // },
+
+        //to initialize the logger
+    }
+    ]
+],
+    // ...    
+  
+    
     runner: 'local',
     //
     // ==================
@@ -129,7 +160,7 @@ exports.config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter.html
-    reporters: ['spec'],
+   
  //
     // If you are using Cucumber you need to specify the location of your step definitions.
     cucumberOpts: {
@@ -162,8 +193,19 @@ exports.config = {
      * @param {Object} config wdio configuration object
      * @param {Array.<Object>} capabilities list of capabilities details
      */
-    // onPrepare: function (config, capabilities) {
-    // },
+     onPrepare: function (config, capabilities) {
+        let reportAggregator1 = new ReportAggregator({
+            outputDir: './reports/html-reports/',
+            filename: 'master-report.html',
+            reportTitle: 'Master Report',
+            browserName : browser.capabilities.browserName,
+            // to use the template override option, can point to your own file in the test project:
+            // templateFilename: path.resolve(__dirname, '../template/wdio-html-reporter-alt-template.hbs')
+        });
+        reportAggregator.clean() ;
+
+        reportAggregator = reportAggregator1;
+     },
     /**
      * Gets executed before a worker process is spawned and can be used to initialise specific service
      * for that worker as well as modify runtime environments in an async fashion.
@@ -222,8 +264,21 @@ exports.config = {
     /**
      * Runs after a Cucumber scenario
      */
-    // afterScenario: function (uri, feature, scenario, result, sourceLocation) {
-    // },
+    afterScenario: function (uri, feature, scenario, result, sourceLocation) {
+        const path = require('path');
+        const moment = require('moment');
+
+        // if test passed, ignore, else take and save screenshot.
+      //  if (scenario.passed) {
+      //      return;
+      //  }
+        const timestamp = moment().format('YYYYMMDD-HHmmss.SSS');
+        const filepath = path.join('reports/html-reports/screenshots/', timestamp + '.png');
+        console.log("FILENAME:::::::::::::::::::::"+filepath)
+
+        browser.saveScreenshot(filepath);
+       process.emit('test:screenshot', filepath);
+     },
     /**
      * Runs after a Cucumber feature
      */
@@ -264,8 +319,14 @@ exports.config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {<Object>} results object containing test results
      */
-    // onComplete: function(exitCode, config, capabilities, results) {
-    // },
+     onComplete: async function(exitCode, config, capabilities, results) {
+        await reportAggregator.createReport( {
+                config: config,
+                capabilities: capabilities,
+                results : results
+            });
+        
+     },
     /**
     * Gets executed when a refresh happens.
     * @param {String} oldSessionId session ID of the old session

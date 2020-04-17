@@ -1,29 +1,18 @@
 const { Given, When, Then, AfterAll } = require('cucumber');
 var jobRequestPage=require('../pages/JobRequestPage')
 var chai= require('chai')
+var action=require('../utils/actions')
 
 When(/^I select "(.*)" from the requester name dropdown$/,   function(listitem){
- // jobRequestPage.requesterNameDropdown.waitForClickable({timeout:3000})
-  jobRequestPage.requesterNameDropdown.click() 
-  browser.keys(listitem)
-  browser.keys('Enter')
-  browser.pause(5000) 
- 
+ action.enterValueAndPressReturn(jobRequestPage.requesterNameDropdown,listitem)
 })
 
 When(/^I select language "(.*)"$/,   function(listitem){
-  jobRequestPage.languageDropdown.click()
-  browser.keys(listitem)
-  browser.keys('Enter')
-  browser.pause(5000)
+  action.enterValueAndPressReturn(jobRequestPage.languageDropdown,listitem)
 })
 
 When(/^I enter campus pin "(.*)"$/,function(campuspin){
-  jobRequestPage.campusPinInput.waitForClickable({timeout:3000})
-  jobRequestPage.campusPinInput.setValue(campuspin)
-  browser.keys('Enter')
-  browser.pause(5000) 
-
+  action.enterValueAndPressReturn(jobRequestPage.campusPinInput,campuspin)
 })
 
 When(/^I enter "(.*)" date$/,function(date){
@@ -31,50 +20,38 @@ When(/^I enter "(.*)" date$/,function(date){
   switch(date)
   {
     case "future":
-      temp_date.setDate(temp_date.getDate()+1)
+      temp_date.setDate(temp_date.getDate()+5)
       temp_date=temp_date.getDate()+"-"+(temp_date.getMonth()+1)+"-"+temp_date.getFullYear()
   }
 
-  jobRequestPage.dateInput.setValue(temp_date)
-
-  browser.keys('Enter')
-  browser.pause(1000)
-  
+  action.enterValueAndPressReturn(jobRequestPage.dateInput,temp_date)  
 })
 
 When(/^I enter "(.*)" time$/, function(time){
-  jobRequestPage.timeInput.waitForClickable({timeout: 3000})
-  jobRequestPage.timeInput.click()
-  jobRequestPage.timeInput.setValue(time)
+  action.enterValue(jobRequestPage.timeInput,time)
 })
 
 When(/^I select assignment type "(.*)"$/, function(assignmenttype){
-  jobRequestPage.assignmentTypeDropdown.click()
-  browser.keys(assignmenttype)
-  browser.keys('Enter')
+  action.enterValueAndPressReturn(jobRequestPage.assignmentTypeDropdown,assignmenttype)
 })
 
 When(/^I enter "(.*)" email address$/,function(email){
-  jobRequestPage.confirmEmailInput.click()
-  jobRequestPage.confirmEmailInput.setValue(email)
+  action.enterValue(jobRequestPage.confirmEmailInput,email)
 })
 
 When(/^I click save and proceed to summary button$/,function(){
-  jobRequestPage.saveAndProceedToSummaryButton.click()
-  browser.pause(5000)
+  action.clickElement(jobRequestPage.saveAndProceedToSummaryButton)
 })
 
 When(/^I click submit button$/,function(){
-  jobRequestPage.submitButton.click()
-  browser.pause(5000)
+  action.clickElement(jobRequestPage.submitButton)
 })
 When(/^I click next button$/,function(){
-  jobRequestPage.nextButton.click()
-  browser.pause(5000)
+  action.clickElement(jobRequestPage.nextButton)
 })
 
 Then(/^the job created success message should appear$/, function(){
-  chai.expect(jobRequestPage.successMessage.isExisting()).to.be.true
+  chai.expect(jobRequestPage.successMessage().isExisting({timeout:10000})).to.be.true
 })
 
 
