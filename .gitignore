@@ -1,5 +1,5 @@
 .babelrc
-/report
+/reports
 /node_modules
 *.jpg
 *.png
