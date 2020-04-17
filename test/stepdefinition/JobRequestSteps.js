@@ -20,7 +20,7 @@ When(/^I enter "(.*)" date$/,function(date){
   switch(date)
   {
     case "future":
-      temp_date.setDate(temp_date.getDate()+1)
+      temp_date.setDate(temp_date.getDate()+5)
       temp_date=temp_date.getDate()+"-"+(temp_date.getMonth()+1)+"-"+temp_date.getFullYear()
   }
 
@@ -51,7 +51,7 @@ When(/^I click next button$/,function(){
 })
 
 Then(/^the job created success message should appear$/, function(){
-  chai.expect(jobRequestPage.successMessage.waitForExist({timeout:10000})).to.be.true
+  chai.expect(jobRequestPage.successMessage().isExisting({timeout:10000})).to.be.true
 })
 
 

@@ -3,7 +3,7 @@ const { Given, When, Then, AfterAll } = require('cucumber');
 var action=require('../utils/actions')
 
 
-Given(/^the looped in login page is opened$/,  async function(){
+Given(/^the looped in login page is opened$/,  function(){
 
    browser.url("https://li-test.languageloop.com.au/LoopedIn_th/Login.aspx")
    browser.maximizeWindow()

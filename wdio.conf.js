@@ -1,7 +1,6 @@
 
 
-var parameters =require('./params.js')
-console.log("VERON::::"+parameters.tags)
+const parameters =require('./params.js')
 exports.config = {
    
     //
@@ -11,6 +10,12 @@ exports.config = {
     //
     // WebdriverIO allows it to run your tests in arbitrary locations (e.g. locally or
     // on a remote machine).
+    reporters: [['allure', {
+        outputDir: './reports',
+        disableWebdriverStepsReporting: true,
+        disableWebdriverScreenshotsReporting: true,
+    }]],
+    
     runner: 'local',
     //
     // ==================
@@ -223,7 +228,10 @@ exports.config = {
      * Runs after a Cucumber scenario
      */
     // afterScenario: function (uri, feature, scenario, result, sourceLocation) {
-    // },
+       // if (scenario.error !== undefined) {
+         //   browser.takeScreenshot();
+          //}
+     //},
     /**
      * Runs after a Cucumber feature
      */
