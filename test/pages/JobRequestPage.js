@@ -52,8 +52,8 @@ module.exports={
         return $('//input[@value="Next"]')
     },
 
-     successMessage() { 
-        return browser.findElement("xpath",'//*[@class="Feedback_Message_Success"]')
+    get successMessage() { 
+        return $('//*[@class="Feedback_Message_Success"]')
     },
 
     get requesterNameSearchInput(){

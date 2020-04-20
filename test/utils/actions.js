@@ -4,9 +4,9 @@ module.exports={
     enterValue(elt, value)
     {
 
-        elt.waitForExist({timeout:5000})
-        elt.waitForEnabled({timeout:3000})
-        elt.waitForClickable({timeout:3000})
+        elt.waitForExist()
+        elt.waitForEnabled()
+        elt.waitForClickable()
         elt.click()
         elt.setValue(value)
         browser.pause(1000)
@@ -14,9 +14,9 @@ module.exports={
 
     enterValueAndPressReturn(elt, value)
     {
-        elt.waitForExist({timeout:3000})
-        elt.waitForEnabled({timeout:3000})
-        elt.waitForClickable({timeout:3000})
+        elt.waitForExist()
+        elt.waitForEnabled()
+        elt.waitForClickable()
         elt.click()
         browser.keys(value)
         browser.keys('Enter')
@@ -25,17 +25,24 @@ module.exports={
 
     clickElement(elt)
     {
-        elt.waitForExist({timeout:3000})
-        elt.waitForClickable({timeout:3000})
+        elt.waitForExist()
+        elt.waitForClickable()
         elt.click() 
     },
 
     selectTextFromDropdown(elt,text)
     {
-        elt.waitForExist({timeout:3000})
-        elt.waitForEnabled({timeout:3000})
-        elt.waitForClickable({timeout:3000})
+        elt.waitForExist()
+        elt.waitForEnabled()
+        elt.waitForClickable()
         elt.selectByVisibleText(text) 
+    },
+
+    elementExists(elt)
+    {
+       return elt.waitForExist()
     }
+
+
 }
 

@@ -4,9 +4,8 @@ var action=require('../utils/actions')
 
 
 Given(/^the looped in login page is opened$/,  function(){
-   browser.maximizeWindow()
+browser.reloadSession()
    browser.url("https://li-test.languageloop.com.au/LoopedIn_th/Login.aspx")
-   
 })
 
 

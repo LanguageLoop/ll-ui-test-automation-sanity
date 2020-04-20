@@ -15,20 +15,44 @@ When(/^I enter campus pin "(.*)"$/,function(campuspin){
   action.enterValueAndPressReturn(jobRequestPage.campusPinInput,campuspin)
 })
 
-When(/^I enter "(.*)" date$/,function(date){
+When(/^I enter schedule "(.*)" and "(.*)"$/,function(dateStr,timeStr){
   var temp_date= new Date()
-  switch(date)
+  var temp_time=timeStr
+  switch(dateStr)
   {
-    case "future":
+    case "long notice":
+      console.log("RAHANE :Long")
       temp_date.setDate(temp_date.getDate()+5)
-      temp_date=temp_date.getDate()+"-"+(temp_date.getMonth()+1)+"-"+temp_date.getFullYear()
+      break
+    case "short notice":
+      console.log("RAHANE :Short")
+      temp_date.setHours(temp_date.getHours() + 23)
+      temp_time=temp_date.getHours()+":"+temp_date.getMinutes()
+      break
   }
 
+  temp_date=temp_date.getDate()+"-"+(temp_date.getMonth()+1)+"-"+temp_date.getFullYear()
   action.enterValueAndPressReturn(jobRequestPage.dateInput,temp_date)  
+  browser.pause(1000)
+  action.enterValue(jobRequestPage.timeInput,temp_time)
 })
 
-When(/^I enter "(.*)" time$/, function(time){
-  action.enterValue(jobRequestPage.timeInput,time)
+When(/^I enter "(.*)" time$/, function(timeStr){
+  var temp_date= new Date()
+  switch(timeStr)
+  {
+    case "short notice":
+      console.log("RAHANE :Short time")
+      temp_date.setHours(temp_date.getHours() + 23)
+      break
+
+    default:
+      console.log("RAHANE :detault time")
+      temp_date=timeStr  
+  }
+
+  action.enterValue(jobRequestPage.timeInput,temp_date)
+  browser.pause(1000)
 })
 
 When(/^I select assignment type "(.*)"$/, function(assignmenttype){
@@ -51,7 +75,7 @@ When(/^I click next button$/,function(){
 })
 
 Then(/^the job created success message should appear$/, function(){
-  chai.expect(jobRequestPage.successMessage().isExisting({timeout:10000})).to.be.true
+  chai.expect(action.elementExists(jobRequestPage.successMessage)).to.be.true
 })
 
 
