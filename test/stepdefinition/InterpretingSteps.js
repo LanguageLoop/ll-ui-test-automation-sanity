@@ -10,3 +10,13 @@ When(/^I click on new job request button$/,function(){
   action.clickElement(interpretingPage.newJobRequestButton)
 })
 
+When(/^I select "(.*)" job status$/,function(jobstatus){
+  action.selectTextFromDropdown(interpretingPage.jobStatusDropdown,jobstatus)
+})
+
+When(/^I click on job id from interpreting job search results$/, function(){
+  action.clickElement(interpretingPage.jobIdColumnFromSearchResult)
+  browser.pause(2000)
+  browser.switchWindow('Job Allocation *')
+})
+

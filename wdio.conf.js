@@ -172,6 +172,7 @@ exports.config = {
         tagExpression:parameters.tags ,  // <string> (expression) only execute the features or scenarios with tags matching the expression
         timeout: 60000,     // <number> timeout for step definitions
         ignoreUndefinedDefinitions: false, // <boolean> Enable this config to treat undefined definitions as warnings.
+        retry: 1
     },
     
     //

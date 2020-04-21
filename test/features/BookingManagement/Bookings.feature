@@ -1,3 +1,4 @@
+@Booking
 Feature: Create new booking for Interpreters
 
    Background: Background name
@@ -5,7 +6,7 @@ Feature: Create new booking for Interpreters
   
 
    @CreateJobRequest
-   Scenario Outline: Create Booking with minimal required field values (long notice)
+   Scenario Outline: Create Booking with minimal required field values
    When I login with "<username>" and "<password>"
    And I click Interpreting header link
    And I select "<dropdownfilter>" from the filter dropdown
@@ -31,4 +32,136 @@ Feature: Create new booking for Interpreters
    | username           | password | dropdownfilter | campus pin | Requester Name      | language   | assignment type   | date         | time  | duration | email        |
    | LLAdmin@looped.in  | Uranus@6 | Management     |  33124     |  Automation Tester  |  AFRIKAANS | Interview-Halfday | long notice  | 09:30 | 4 hours  | hh@bb.com.au |
   
+  
+   @CreateJobRequest @ManualReason
+   Scenario Outline: Create Booking with manual allocation reason
+   When I login with "<username>" and "<password>"
+   And I click Interpreting header link
+   And I select "<dropdownfilter>" from the filter dropdown
+   And I click on new job request button
+   And I enter campus pin "<campus pin>"
+   And I select "<Requester Name>" from the requester name dropdown
+   And I click next button
+   And I select language "<language>"
+   And I select assignment type "<assignment type>"
+   And I enter schedule "<date>" and "<time>"
+   And I click on manual reason checkbox
+   And I enter manual reason "<manual reason>"
+   And I enter "<email>" email address
+   And I click save and proceed to summary button
+   And I click submit button
+   Then the job created success message should appear
+
+   Examples:
+   | username           | password | dropdownfilter | campus pin | Requester Name      | language   | assignment type   | date         | time  | duration | email        | manual reason      |
+   | LLAdmin@looped.in  | Uranus@6 | Management     |  33124     |  Automation Tester  |  AFRIKAANS | Interview-Halfday | short notice | 09:30 | 4 hours  | hh@bb.com.au | manual reason text |
+  
+   @CreateJobRequest @GenderPreference @GenderMust
+   Scenario Outline: Create Booking with gender preference
+   When I login with "<username>" and "<password>"
+   And I click Interpreting header link
+   And I select "<dropdownfilter>" from the filter dropdown
+   And I click on new job request button
+   And I enter campus pin "<campus pin>"
+   And I select "<Requester Name>" from the requester name dropdown
+   And I click next button
+   And I select language "<language>"
+   And I select assignment type "<assignment type>"
+   And I enter schedule "<date>" and "<time>"
+   And I click gender preference must checkbox
+   And I select gender "<gender preference>"
+   And I enter "<email>" email address
+   And I click save and proceed to summary button
+   And I click submit button
+   Then the job created success message should appear
+
+   Examples:
+   | username           | password | dropdownfilter | campus pin | Requester Name      | language   | assignment type   | date         | time  | duration | email        | gender preference  |
+   | LLAdmin@looped.in  | Uranus@6 | Management     |  33124     |  Automation Tester  |  AFRIKAANS | Interview-Halfday | short notice | 09:30 | 4 hours  | hh@bb.com.au | Female             |
+  
+   @CreateJobRequest @PreferredInterpreters @InterpreterMust
+   Scenario Outline: Create Booking with preferred interpreters
+   When I login with "<username>" and "<password>"
+   And I click Interpreting header link
+   And I select "<dropdownfilter>" from the filter dropdown
+   And I click on new job request button
+   And I enter campus pin "<campus pin>"
+   And I select "<Requester Name>" from the requester name dropdown
+   And I click next button
+   And I select language "<language>"
+   And I select assignment type "<assignment type>"
+   And I enter schedule "<date>" and "<time>"
+   And I click add preferred interpreter button
+   And I select "<interpreter count>" interpreters from the list
+   And I click add interpreters button
+   And I enter "<email>" email address
+   And I click save and proceed to summary button
+   And I click submit button
+   Then the job created success message should appear
+
+   Examples:
+   | username           | password | dropdownfilter | campus pin | Requester Name      | language   | assignment type   | date         | time  | duration | email        | interpreter count  |
+   | LLAdmin@looped.in  | Uranus@6 | Management     |  33124     |  Automation Tester  |  ARABIC    | Interview-Halfday | short notice | 09:30 | 4 hours  | hh@bb.com.au | 3                  |
+  
+  @CreateJobRequest @AncestryPreference @AncestryMust
+   Scenario Outline: Create Booking with ancestry preference must
+   When I login with "<username>" and "<password>"
+   And I click Interpreting header link
+   And I select "<dropdownfilter>" from the filter dropdown
+   And I click on new job request button
+   And I enter campus pin "<campus pin>"
+   And I select "<Requester Name>" from the requester name dropdown
+   And I click next button
+   And I select language "<language>"
+   And I select assignment type "<assignment type>"
+   And I enter schedule "<date>" and "<time>"
+   And I click ancestry preference must checkbox
+   And I select ancestry "<ancestry preference>"
+   And I enter "<email>" email address
+   And I click save and proceed to summary button
+   And I click submit button
+   Then the job created success message should appear
+
+   Examples:
+   | username           | password | dropdownfilter | campus pin | Requester Name      | language   | assignment type   | date         | time  | duration | email        | ancestry preference  |
+   | LLAdmin@looped.in  | Uranus@6 | Management     |  33124     |  Automation Tester  |  AFRIKAANS | Interview-Halfday | short notice | 09:30 | 4 hours  | hh@bb.com.au | Austrian             |
+  
+  @CreateJobRequest @ReligionPreference @ReligionMust
+   Scenario Outline: Create Booking with religion must preference
+   When I login with "<username>" and "<password>"
+   And I click Interpreting header link
+   And I select "<dropdownfilter>" from the filter dropdown
+   And I click on new job request button
+   And I enter campus pin "<campus pin>"
+   And I select "<Requester Name>" from the requester name dropdown
+   And I click next button
+   And I select language "<language>"
+   And I select assignment type "<assignment type>"
+   And I enter schedule "<date>" and "<time>"
+   And I click religion preference must checkbox
+   And I select religion "<religion preference>"
+   And I enter "<email>" email address
+   And I click save and proceed to summary button
+   And I click submit button
+   Then the job created success message should appear
+
+   Examples:
+   | username           | password | dropdownfilter | campus pin | Requester Name      | language   | assignment type   | date         | time  | duration | email        | religion preference  |
+   | LLAdmin@looped.in  | Uranus@6 | Management     |  33124     |  Automation Tester  |  AFRIKAANS | Interview-Halfday | short notice | 09:30 | 4 hours  | hh@bb.com.au | Christian            |
+  
+  @CreateJobRequest @DuplicateJob
+  Scenario Outline: Create a job request as a duplicate of another job
+   When I login with "<username>" and "<password>"
+   And I click Interpreting header link
+   And I select "<job status>" job status
+   And I click on job id from interpreting job search results
+   And I click on Duplicate button
+   And I enter schedule "<date>" and "<time>"
+   And I click save and proceed to summary button
+   And I click submit button
+   Then the job created success message should appear
+
+   Examples:
+   | username           | password | dropdownfilter | campus pin | Requester Name      | language   | assignment type   | date         | time  | duration | email        | job status  |
+   | LLAdmin@looped.in  | Uranus@6 | Management     |  33124     |  Automation Tester  |  AFRIKAANS | Interview-Halfday | short notice | 09:30 | 4 hours  | hh@bb.com.au | Unallocated |
   

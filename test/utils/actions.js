@@ -19,8 +19,9 @@ module.exports={
         elt.waitForClickable()
         elt.click()
         browser.keys(value)
+        browser.pause(1000)
         browser.keys('Enter')
-        browser.pause(1000) 
+        browser.pause(1000)
     },
 
     clickElement(elt)

@@ -21,11 +21,9 @@ When(/^I enter schedule "(.*)" and "(.*)"$/,function(dateStr,timeStr){
   switch(dateStr)
   {
     case "long notice":
-      console.log("RAHANE :Long")
       temp_date.setDate(temp_date.getDate()+5)
       break
     case "short notice":
-      console.log("RAHANE :Short")
       temp_date.setHours(temp_date.getHours() + 23)
       temp_time=temp_date.getHours()+":"+temp_date.getMinutes()
       break
@@ -42,12 +40,10 @@ When(/^I enter "(.*)" time$/, function(timeStr){
   switch(timeStr)
   {
     case "short notice":
-      console.log("RAHANE :Short time")
       temp_date.setHours(temp_date.getHours() + 23)
       break
 
     default:
-      console.log("RAHANE :detault time")
       temp_date=timeStr  
   }
 
@@ -68,10 +64,69 @@ When(/^I click save and proceed to summary button$/,function(){
 })
 
 When(/^I click submit button$/,function(){
+  browser.pause(2000)
   action.clickElement(jobRequestPage.submitButton)
 })
 When(/^I click next button$/,function(){
   action.clickElement(jobRequestPage.nextButton)
+})
+
+When(/^I click on manual reason checkbox$/,function(){
+  action.clickElement(jobRequestPage.manualAllocationCheckBox)
+})
+
+When(/^I enter manual reason "(.*)"$/,function(manualreason){
+  action.enterValue(jobRequestPage.manualAllocationReasonInput,manualreason)
+})
+
+When(/^I click gender preference must checkbox$/,function(){
+  action.clickElement(jobRequestPage.genderPreferenceCheckBox)
+})
+
+When(/^I select gender "(.*)"$/,function(gender){
+  action.selectTextFromDropdown(jobRequestPage.genderDropdown,gender)
+})
+
+When(/^I click ancestry preference must checkbox$/,function(){
+  action.clickElement(jobRequestPage.ancestryPreferenceCheckBox)
+})
+
+When(/^I select ancestry "(.*)"$/,function(ancestry){
+  browser.pause(1000)
+  action.enterValueAndPressReturn(jobRequestPage.ancestryDropdown,ancestry)
+  browser.pause(1000)
+})
+
+When(/^I click religion preference must checkbox$/,function(){
+  action.clickElement(jobRequestPage.religionPreferenceCheckBox)
+})
+
+When(/^I select religion "(.*)"$/,function(religion){
+  browser.pause(1000)
+  action.enterValueAndPressReturn(jobRequestPage.religionDropdown,religion)
+  browser.pause(1000)
+})
+
+When(/^I click preferred interpreter must checkbox$/,function(){
+  action.clickElement(jobRequestPage.preferredInterpreterMustCheckBox)
+})
+
+When(/^I click add preferred interpreter button$/,function(){
+  action.clickElement(jobRequestPage.addInterpreterLink)
+  browser.pause(5000)
+})
+
+When(/^I select "(.*)" interpreters from the list$/,function(count){
+  var check_boxes=jobRequestPage.interpreterSearchResultsCheckBoxes
+  console.log("RAHANE :"+check_boxes.length)
+  for(i=0;i<count;i++)
+  {
+    action.clickElement(check_boxes[i])
+  }
+})
+
+When(/^I click add interpreters button$/,function(){
+  action.clickElement(jobRequestPage.addInterpretersButton)
 })
 
 Then(/^the job created success message should appear$/, function(){
