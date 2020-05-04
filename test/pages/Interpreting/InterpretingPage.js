@@ -13,7 +13,7 @@ module.exports={
 
     get searchJobInput()
     {
-        return $('//input[@placeholder="Search by Job Id, campus name, and job address"]')
+        return $('//input[contains(@placeholder,"Search by Job Id")]')
     },
 
     get jobStatusDropdown()
@@ -30,6 +30,11 @@ module.exports={
     {
         return $$('//a[@data-loopedin-columnname="JobId"]')
 
+    },
+
+    get bulkUploadButton()
+    {
+        return $('//input[@value="Bulk Upload"]')
     }
 
 }

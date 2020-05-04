@@ -1,7 +1,4 @@
-const { Given, When, Then, AfterAll } = require('cucumber');
-var jobRequestPage=require('../pages/JobRequestPage')
-var chai= require('chai')
-var action=require('../utils/actions')
+
 
 When(/^I select "(.*)" from the requester name dropdown$/,   function(listitem){
  action.enterValueAndPressReturn(jobRequestPage.requesterNameDropdown,listitem)
@@ -21,34 +18,23 @@ When(/^I enter schedule "(.*)" and "(.*)"$/,function(dateStr,timeStr){
   switch(dateStr)
   {
     case "long notice":
-      temp_date.setDate(temp_date.getDate()+5)
+      temp_date=datetime.getLongNoticeDate().toString()
       break
     case "short notice":
-      temp_date.setHours(temp_date.getHours() + 23)
+      temp_date=datetime.getShortNoticeDate().toString()
       temp_time=temp_date.getHours()+":"+temp_date.getMinutes()
       break
+    case "fortnight after":
+      temp_date=datetime.getFortnightDate().toString()
+      break
   }
-
-  temp_date=temp_date.getDate()+"-"+(temp_date.getMonth()+1)+"-"+temp_date.getFullYear()
-  action.enterValueAndPressReturn(jobRequestPage.dateInput,temp_date)  
-  browser.pause(1000)
-  action.enterValue(jobRequestPage.timeInput,temp_time)
+  action.enterDateAndTime(jobRequestPage.dateInput,jobRequestPage.timeInput,temp_date,temp_time)
 })
 
-When(/^I enter "(.*)" time$/, function(timeStr){
-  var temp_date= new Date()
-  switch(timeStr)
-  {
-    case "short notice":
-      temp_date.setHours(temp_date.getHours() + 23)
-      break
-
-    default:
-      temp_date=timeStr  
-  }
-
-  action.enterValue(jobRequestPage.timeInput,temp_date)
-  browser.pause(1000)
+When(/^I enter confirmation date and time$/, function(){
+  var temp_date=datetime.getConfirmationDate().toString()
+  var temp_time="9:30"
+  action.enterDateAndTime(jobRequestPage.confirmationDate,jobRequestPage.confirmationTime,temp_date,temp_time)
 })
 
 When(/^I select assignment type "(.*)"$/, function(assignmenttype){
@@ -127,6 +113,21 @@ When(/^I select "(.*)" interpreters from the list$/,function(count){
 
 When(/^I click add interpreters button$/,function(){
   action.clickElement(jobRequestPage.addInterpretersButton)
+})
+
+When(/^I handle duplicate job warning window$/,function(){
+  
+  try{
+    jobRequestPage.continueButton.waitForExist({timeout:3000})
+    action.clickElement(jobRequestPage.continueButton)
+  }
+  catch(Err)
+  {
+  }
+})
+
+When(/^I click yes to confirm editing job request$/, function(){
+  action.clickElement(jobRequestPage.editJobConfirmationYesButton)
 })
 
 Then(/^the job created success message should appear$/, function(){

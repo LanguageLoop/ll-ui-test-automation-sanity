@@ -1,11 +1,24 @@
-
-
 const parameters =require('./params.js')
 var HtmlReporter= require('@rpii/wdio-html-reporter').HtmlReporter
 //var reportAggregator =require('@rpii/wdio-html-reporter').ReportAggregator
 var htmlFormat = require('wdio-html-format-reporter')
+const GlobalData=require('./test/data/GlobalData')
+const { Given, When, Then, AfterAll } = require('cucumber');
+
+var bulkUploadPage=require('./test/pages/Booking/BulkUploadPage')
+var jobRequestPage=require('./test/pages/Booking/JobRequestPage')
+var jobDetailsPage=require('./test/pages/Booking/JobDetailsPage')
+
+var interpretingPage=require('./test/pages/Interpreting/InterpretingPage')
+var Login = require( './test/pages/Login/Login')
+
+var homePage=require('./test/pages/Home/HomePage')
+
+var chai= require('chai')
+var action=require('./test/utils/actions')
+var datetime=require('./test/utils/datetime')
 exports.config = {
-   
+  
     //
     // ====================
     // Runner Configuration
@@ -158,7 +171,7 @@ exports.config = {
  //
     // If you are using Cucumber you need to specify the location of your step definitions.
     cucumberOpts: {
-        require: ['./test/stepdefinition/*.js'],        // <string[]> (file/dir) require files before executing features
+        require: ['./test/stepdefinition/**/*.js'],        // <string[]> (file/dir) require files before executing features
         backtrace: false,   // <boolean> show full backtrace for errors
         requireModule: [],  // <string[]> ("extension:module") require files with the given EXTENSION after requiring MODULE (repeatable)
         dryRun: false,      // <boolean> invoke formatters without executing steps
@@ -189,7 +202,7 @@ exports.config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      */
      onPrepare: function (config, capabilities) {
-
+       // GlobalData=require('./test/data/GlobalData')
      },
     /**
      * Gets executed before a worker process is spawned and can be used to initialise specific service
@@ -209,8 +222,33 @@ exports.config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {Array.<String>} specs List of spec file paths that are to be run
      */
-    // beforeSession: function (config, capabilities, specs) {
-    // },
+     beforeSession: function (config, capabilities, specs) {
+        
+        // Test data variables
+        global.GlobalData=GlobalData
+
+        //Utility function variables
+        global.action=action
+        global.datetime=datetime
+
+        // Cucumber library variables        
+        global.Given=Given 
+        global.When=When
+        global.Then=Then
+        global.AfterAll=AfterAll
+
+        // Chai library variables
+        global.chai=chai
+        
+        // Page object file variables
+        global.jobRequestPage=jobRequestPage
+        global.bulkUploadPage=bulkUploadPage
+        global.jobDetailsPage=jobDetailsPage
+        global.interpretingPage=interpretingPage
+        global.Login=Login
+        global.homePage=homePage
+        
+     },
     /**
      * Gets executed before test execution begins. At this point you can access to all global
      * variables like `browser`. It is the perfect place to define custom commands.

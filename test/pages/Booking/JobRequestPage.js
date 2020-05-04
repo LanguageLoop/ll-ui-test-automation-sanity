@@ -2,11 +2,11 @@
 module.exports={
 
     get campusPinInput(){
-        return $('//input[contains(@class,"campusPin")]')
+        return $('//input[contains(@id,"CampusPIN")]')
     },
 
     get requesterNameDropdown(){
-        return $('//*[text()="Requester Name"]/../div/div')
+        return $('//*[text()="Requester Name"]/..//input/..')
     },
     get languageDropdown(){
         return $('//label[text()="Language"]/../div/div')
@@ -48,6 +48,10 @@ module.exports={
         return $('//a[text()="Submit"]')
     },
 
+    get continueButton(){
+        return $('//*[text()="Duplication Job Request"]/../..//input[@value="Continue"]')
+    },
+
     get nextButton(){
         return $('//input[@value="Next"]')
     },
@@ -57,7 +61,7 @@ module.exports={
     },
 
     get requesterNameSearchInput(){
-        return $('//input[@class="select2-input" and @role="combobox"][1]')
+        return $('//*[text()="Requester Name"]/..//input')
     },
 
     get manualAllocationCheckBox(){
@@ -119,7 +123,26 @@ module.exports={
 
     get interpreterSearchResultsCheckBoxes(){
         return $$('//*[text()="Find Interpreter"]/../..//table//input')
-    }
+    },
+
+    get successMessageText(){
+        return $('//span[@class="Feedback_Message_Text"]')
+    },
+
+    get editJobConfirmationYesButton()
+    {
+        return $('//input[@value="Yes" and contains(@name,"dialogModal")]')
+    },
+
+    get confirmationDate()
+    {
+        return $('//*[contains(@id,"confirmDate")]')
+    },
+
+    get confirmationTime()
+    {
+        return $('//input[contains(@id,"ConfirmationTime")]/..')
+    },
 
 
 }

@@ -1,11 +1,11 @@
 @Booking
 Feature: Create new booking for Interpreters
 
-   Background: Background name
+   Background: Load Loopedin login page
    Given the looped in login page is opened
   
 
-   @CreateJobRequest
+   @CreateJobRequest 
    Scenario Outline: Create Booking with minimal required field values
    When I login with "<username>" and "<password>"
    And I click Interpreting header link
@@ -19,6 +19,7 @@ Feature: Create new booking for Interpreters
    And I enter schedule "<date>" and "<time>"
    And I enter "<email>" email address
    And I click save and proceed to summary button
+   And I handle duplicate job warning window
    And I click submit button
    Then the job created success message should appear
 
@@ -26,7 +27,7 @@ Feature: Create new booking for Interpreters
    Examples:
    | username           | password | dropdownfilter | campus pin | Requester Name      | language   | assignment type   | date         | time  | duration | email        |
    | LLAdmin@looped.in  | Uranus@6 | Management     |  33124     |  Automation Tester  |  AFRIKAANS | Interview-Halfday | short notice | 09:30 | 4 hours  | hh@bb.com.au |
-  
+   
    @LongNotice
    Examples:
    | username           | password | dropdownfilter | campus pin | Requester Name      | language   | assignment type   | date         | time  | duration | email        |
@@ -49,6 +50,7 @@ Feature: Create new booking for Interpreters
    And I enter manual reason "<manual reason>"
    And I enter "<email>" email address
    And I click save and proceed to summary button
+   And I handle duplicate job warning window
    And I click submit button
    Then the job created success message should appear
 
@@ -72,6 +74,7 @@ Feature: Create new booking for Interpreters
    And I select gender "<gender preference>"
    And I enter "<email>" email address
    And I click save and proceed to summary button
+   And I handle duplicate job warning window
    And I click submit button
    Then the job created success message should appear
 
@@ -96,6 +99,7 @@ Feature: Create new booking for Interpreters
    And I click add interpreters button
    And I enter "<email>" email address
    And I click save and proceed to summary button
+   And I handle duplicate job warning window
    And I click submit button
    Then the job created success message should appear
 
@@ -119,6 +123,7 @@ Feature: Create new booking for Interpreters
    And I select ancestry "<ancestry preference>"
    And I enter "<email>" email address
    And I click save and proceed to summary button
+   And I handle duplicate job warning window
    And I click submit button
    Then the job created success message should appear
 
@@ -142,6 +147,7 @@ Feature: Create new booking for Interpreters
    And I select religion "<religion preference>"
    And I enter "<email>" email address
    And I click save and proceed to summary button
+   And I handle duplicate job warning window
    And I click submit button
    Then the job created success message should appear
 
@@ -158,8 +164,29 @@ Feature: Create new booking for Interpreters
    And I click on Duplicate button
    And I enter schedule "<date>" and "<time>"
    And I click save and proceed to summary button
+   And I handle duplicate job warning window
    And I click submit button
    Then the job created success message should appear
+
+   Examples:
+   | username           | password | dropdownfilter | campus pin | Requester Name      | language   | assignment type   | date         | time  | duration | email        | job status  |
+   | LLAdmin@looped.in  | Uranus@6 | Management     |  33124     |  Automation Tester  |  AFRIKAANS | Interview-Halfday | short notice | 09:30 | 4 hours  | hh@bb.com.au | Unallocated |
+  
+  @CreateJobRequest @BulkUpload
+  Scenario Outline: Upload bulk jobs through excel file
+   When I login with "<username>" and "<password>"
+   And I click Interpreting header link
+   And I select "<dropdownfilter>" from the filter dropdown
+   And I click on bulk upload button
+   And I upload bulk booking file
+   And I enter campus pin "<campus pin>"
+   And I select "<Requester Name>" from the requester name dropdown
+   And I click on next link
+   And Job upload confirmation message is displayed
+   And I enter assignment type "<assignment type>" for the bulk jobs
+   And I click on next link
+   And I click on confirm link
+   Then Bookings created confirmation message is displayed
 
    Examples:
    | username           | password | dropdownfilter | campus pin | Requester Name      | language   | assignment type   | date         | time  | duration | email        | job status  |
