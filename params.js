@@ -8,9 +8,21 @@ module.exports =
 function gettags()
 {
     var temp_tags=process.argv.slice();
-    if(temp_tags.length>2)
+    var tt=process.argv.toString()
+    if(process.argv.toString().includes("tags"))
     {
-        return temp_tags[3].split("=")[1]
+       for(param of temp_tags)
+       {
+           if(param.toString().includes("tags"))
+           {
+            var temp= param.split("=")[1].toString()
+            temp=temp.replace(","," or ")
+           // temp=temp.replace("&"," and ")
+            return temp
+           }
+       }      
+  
+       
     }
-    
+    return ' '
 }

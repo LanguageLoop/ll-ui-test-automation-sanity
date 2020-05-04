@@ -1,10 +1,24 @@
-
-
 const parameters =require('./params.js')
 var HtmlReporter= require('@rpii/wdio-html-reporter').HtmlReporter
-var reportAggregator =require('@rpii/wdio-html-reporter').ReportAggregator
+//var reportAggregator =require('@rpii/wdio-html-reporter').ReportAggregator
+var htmlFormat = require('wdio-html-format-reporter')
+const GlobalData=require('./test/data/GlobalData')
+const { Given, When, Then, AfterAll } = require('cucumber');
+
+var bulkUploadPage=require('./test/pages/Booking/BulkUploadPage')
+var jobRequestPage=require('./test/pages/Booking/JobRequestPage')
+var jobDetailsPage=require('./test/pages/Booking/JobDetailsPage')
+
+var interpretingPage=require('./test/pages/Interpreting/InterpretingPage')
+var Login = require( './test/pages/Login/Login')
+
+var homePage=require('./test/pages/Home/HomePage')
+
+var chai= require('chai')
+var action=require('./test/utils/actions')
+var datetime=require('./test/utils/datetime')
 exports.config = {
-   
+  
     //
     // ====================
     // Runner Configuration
@@ -12,32 +26,22 @@ exports.config = {
     //
     // WebdriverIO allows it to run your tests in arbitrary locations (e.g. locally or
     // on a remote machine).
-    reporters: ['spec',
-    [HtmlReporter, {
-        debug: false,
-        outputDir: './reports/html-reports/',
-        filename: 'report.html',
-        reportTitle: 'Test Execution',
-        
-        //to show the report in a browser when done
-        showInBrowser: false,
+  reporters: 
+  ['spec',
+ [ HtmlReporter,
+   {
+            outputDir: './reports/html-reports/',
+            filename: 'report.html',
+            reportTitle: 'Test Report Title',
+            
+            //to show the report in a browser when done
+            showInBrowser: false,
 
-        //to turn on screenshots after every test
-        useOnAfterCommandForScreenshot: true,
+            //to turn on screenshots after every test
+            useOnAfterCommandForScreenshot: false,  
 
-        // to use the template override option, can point to your own file in the test project:
-        // templateFilename: path.resolve(__dirname, '../template/wdio-html-reporter-alt-template.hbs'),
-        
-        // to add custom template functions for your custom template:
-        // templateFuncs: {
-        //     addOne: (v) => {
-        //         return v+1;
-        //     },
-        // },
-
-        //to initialize the logger
-    }
-    ]
+    
+  }]
 ],
     // ...    
   
@@ -75,7 +79,7 @@ exports.config = {
     // and 30 processes will get spawned. The property handles how many capabilities
     // from the same test should run tests.
     //
-    maxInstances: 10,
+    maxInstances: 1,
     //
     // If you have trouble getting all important capabilities together, check out the
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
@@ -86,9 +90,12 @@ exports.config = {
         // maxInstances can get overwritten per capability. So if you have an in-house Selenium
         // grid with only 5 firefox instances available you can make sure that not more than
         // 5 instances get started at a time.
-        maxInstances: 5,
+       // maxInstances: 5,
         //
         browserName: 'chrome',
+        'goog:chromeOptions': {
+            args: ['--start-maximized']     
+           }
         // If outputDir is provided WebdriverIO can capture driver session logs
         // it is possible to configure which logTypes to include/exclude.
         // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
@@ -101,7 +108,7 @@ exports.config = {
     // Define all options that are relevant for the WebdriverIO instance here
     //
     // Level of logging verbosity: trace | debug | info | warn | error | silent
-    logLevel: 'info',
+    logLevel: 'silent',
     //
     // Set specific log levels per logger
     // loggers:
@@ -164,7 +171,7 @@ exports.config = {
  //
     // If you are using Cucumber you need to specify the location of your step definitions.
     cucumberOpts: {
-        require: ['./test/stepdefinition/*.js'],        // <string[]> (file/dir) require files before executing features
+        require: ['./test/stepdefinition/**/*.js'],        // <string[]> (file/dir) require files before executing features
         backtrace: false,   // <boolean> show full backtrace for errors
         requireModule: [],  // <string[]> ("extension:module") require files with the given EXTENSION after requiring MODULE (repeatable)
         dryRun: false,      // <boolean> invoke formatters without executing steps
@@ -178,6 +185,7 @@ exports.config = {
         tagExpression:parameters.tags ,  // <string> (expression) only execute the features or scenarios with tags matching the expression
         timeout: 60000,     // <number> timeout for step definitions
         ignoreUndefinedDefinitions: false, // <boolean> Enable this config to treat undefined definitions as warnings.
+        retry: 1
     },
     
     //
@@ -194,17 +202,7 @@ exports.config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      */
      onPrepare: function (config, capabilities) {
-        let reportAggregator1 = new ReportAggregator({
-            outputDir: './reports/html-reports/',
-            filename: 'master-report.html',
-            reportTitle: 'Master Report',
-            browserName : browser.capabilities.browserName,
-            // to use the template override option, can point to your own file in the test project:
-            // templateFilename: path.resolve(__dirname, '../template/wdio-html-reporter-alt-template.hbs')
-        });
-        reportAggregator.clean() ;
-
-        reportAggregator = reportAggregator1;
+       // GlobalData=require('./test/data/GlobalData')
      },
     /**
      * Gets executed before a worker process is spawned and can be used to initialise specific service
@@ -224,8 +222,33 @@ exports.config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {Array.<String>} specs List of spec file paths that are to be run
      */
-    // beforeSession: function (config, capabilities, specs) {
-    // },
+     beforeSession: function (config, capabilities, specs) {
+        
+        // Test data variables
+        global.GlobalData=GlobalData
+
+        //Utility function variables
+        global.action=action
+        global.datetime=datetime
+
+        // Cucumber library variables        
+        global.Given=Given 
+        global.When=When
+        global.Then=Then
+        global.AfterAll=AfterAll
+
+        // Chai library variables
+        global.chai=chai
+        
+        // Page object file variables
+        global.jobRequestPage=jobRequestPage
+        global.bulkUploadPage=bulkUploadPage
+        global.jobDetailsPage=jobDetailsPage
+        global.interpretingPage=interpretingPage
+        global.Login=Login
+        global.homePage=homePage
+        
+     },
     /**
      * Gets executed before test execution begins. At this point you can access to all global
      * variables like `browser`. It is the perfect place to define custom commands.
@@ -259,26 +282,35 @@ exports.config = {
     /**
      * Runs after a Cucumber step
      */
-    // afterStep: function ({ uri, feature, step }, context, { error, result, duration, passed, retries }) {
-    // },
-    /**
-     * Runs after a Cucumber scenario
-     */
-    afterScenario: function (uri, feature, scenario, result, sourceLocation) {
+     afterStep: function ({ uri, feature, step }, context, { error, result, duration, passed, retries }) {
         const path = require('path');
         const moment = require('moment');
 
         // if test passed, ignore, else take and save screenshot.
-      //  if (scenario.passed) {
-      //      return;
-      //  }
+        if (!passed) {
         const timestamp = moment().format('YYYYMMDD-HHmmss.SSS');
         const filepath = path.join('reports/html-reports/screenshots/', timestamp + '.png');
-        console.log("FILENAME:::::::::::::::::::::"+filepath)
-
         browser.saveScreenshot(filepath);
        process.emit('test:screenshot', filepath);
+        }
      },
+    /**
+     * Runs after a Cucumber scenario
+     */
+    /*afterScenario: function (uri, feature, scenario, result, sourceLocation) {
+        const path = require('path');
+        const moment = require('moment');
+
+        // if test passed, ignore, else take and save screenshot.
+        //if (result.error != undefined) {
+            console.log("KANE")
+           // return;
+       // }
+        const timestamp = moment().format('YYYYMMDD-HHmmss.SSS');
+        const filepath = path.join('reports/html-reports/screenshots/', timestamp + '.png');
+        browser.saveScreenshot(filepath);
+       process.emit('test:screenshot', filepath);
+     }, */
     /**
      * Runs after a Cucumber feature
      */
@@ -320,11 +352,6 @@ exports.config = {
      * @param {<Object>} results object containing test results
      */
      onComplete: async function(exitCode, config, capabilities, results) {
-        await reportAggregator.createReport( {
-                config: config,
-                capabilities: capabilities,
-                results : results
-            });
         
      },
     /**
