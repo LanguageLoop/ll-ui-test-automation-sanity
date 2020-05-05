@@ -30,11 +30,9 @@ module.exports={
         elt.waitForClickable()
         elt.click()
         browser.keys(value)
-        browser.pause(2000)
+        browser.pause(1000)
         browser.keys('Enter')
         browser.pause(1000)
-        //browser.keys('Enter')
-
     },
 
     clickElement(elt)
@@ -68,11 +66,12 @@ module.exports={
     enterDateAndTime(dateField,timeField,dateValue,timeValue)
     {
         this.clearValue(dateField)
-        this.enterValueAndPressReturn(dateField,dateValue)  
+        this.enterValueAndPressReturn(dateField,dateValue.toString())  
         browser.pause(1000)
-        browser.keys("Tab")
+        //browser.keys("Tab")
         this.clickElement(timeField)
-        this.enterValueAndPressReturn(timeField,timeValue)
+        browser.pause(1000)
+        this.enterValue(timeField,timeValue)
     }
 
 }

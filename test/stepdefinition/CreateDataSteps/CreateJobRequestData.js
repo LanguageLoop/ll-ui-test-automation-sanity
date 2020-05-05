@@ -1,12 +1,8 @@
-const { Given, When, Then, AfterAll } = require('cucumber');
-var jobRequestPage=require('../../pages/Booking/JobRequestPage')
-var homePage=require('../../pages/Home/HomePage')
-var interpretingPage=require('../../pages/Interpreting/InterpretingPage')
-var chai= require('chai')
-var action=require('../../utils/actions')
-var datetime=require('../../utils/datetime')
 
-When(/^I create a new job request with minimal fields$/, function(){
+
+When(/^I create a new job request with minimal fields "(.*)"$/, function(notice){
+    var temp_date_time=datetime.getScheduleDateTime(notice,"9:30")
+    
     action.clickElement(homePage.InterpretingLink)
     action.selectTextFromDropdown(interpretingPage.filterDropdown,"Management")
     action.clickElement(interpretingPage.newJobRequestButton)
@@ -15,9 +11,7 @@ When(/^I create a new job request with minimal fields$/, function(){
     action.clickElement(jobRequestPage.nextButton)
     action.enterValueAndPressReturn(jobRequestPage.languageDropdown,"ARABIC")
     action.enterValueAndPressReturn(jobRequestPage.assignmentTypeDropdown,"Interview-Halfday")
-    action.enterValueAndPressReturn(jobRequestPage.dateInput,datetime.getLongNoticeDate().toString())  
-    browser.pause(1000)
-    action.enterValue(jobRequestPage.timeInput,"09:30")
+    action.enterDateAndTime(jobRequestPage.dateInput,jobRequestPage.timeInput, temp_date_time[0],temp_date_time[1] )
     action.enterValue(jobRequestPage.confirmEmailInput,"hh@ll.com.au")
     action.clickElement(jobRequestPage.saveAndProceedToSummaryButton)
     

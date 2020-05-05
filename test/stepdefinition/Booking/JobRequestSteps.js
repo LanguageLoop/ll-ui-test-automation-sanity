@@ -13,22 +13,8 @@ When(/^I enter campus pin "(.*)"$/,function(campuspin){
 })
 
 When(/^I enter schedule "(.*)" and "(.*)"$/,function(dateStr,timeStr){
-  var temp_date= new Date()
-  var temp_time=timeStr
-  switch(dateStr)
-  {
-    case "long notice":
-      temp_date=datetime.getLongNoticeDate().toString()
-      break
-    case "short notice":
-      temp_date=datetime.getShortNoticeDate().toString()
-      temp_time=temp_date.getHours()+":"+temp_date.getMinutes()
-      break
-    case "fortnight after":
-      temp_date=datetime.getFortnightDate().toString()
-      break
-  }
-  action.enterDateAndTime(jobRequestPage.dateInput,jobRequestPage.timeInput,temp_date,temp_time)
+  var temp_date_time = datetime.getScheduleDateTime(dateStr,timeStr)
+  action.enterDateAndTime(jobRequestPage.dateInput,jobRequestPage.timeInput,temp_date_time[0],temp_date_time[1])
 })
 
 When(/^I enter confirmation date and time$/, function(){
@@ -42,6 +28,8 @@ When(/^I select assignment type "(.*)"$/, function(assignmenttype){
 })
 
 When(/^I enter "(.*)" email address$/,function(email){
+  jobRequestPage.confirmEmailInput.scrollIntoView()
+  browser.pause(2000)
   action.enterValue(jobRequestPage.confirmEmailInput,email)
 })
 

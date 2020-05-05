@@ -5,13 +5,15 @@
   "main": "index.js",
   "scripts": {
     "test": "./node_modules/.bin/wdio wdio.conf.js",
-    "browserstack": "./node_modules/.bin/wdio wdio.browserstack.conf.js"
+    "browserstack": "./node_modules/.bin/wdio wdio.browserstack.conf.js",
+    "aws-android-chrome": "./node_modules/.bin/wdio wdio.aws.android.browser.conf.js"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@rpii/wdio-html-reporter": "^6.0.1",
     "@wdio/allure-reporter": "^5.22.4",
+    "@wdio/appium-service": "^6.1.0",
     "@wdio/cli": "^6.0.15",
     "@wdio/cucumber-framework": "^6.0.13",
     "@wdio/junit-reporter": "^6.0.14",
@@ -26,6 +28,7 @@
     "deepmerge": "^4.2.2",
     "lodash": "^4.17.15",
     "node-fetch": "^2.6.0",
+    "npm-bundle": "^3.0.3",
     "pngjs": "^5.0.0",
     "wdio-chromedriver-service": "^6.0.1",
     "wdio-html-format-reporter": "^0.4.0",
@@ -34,6 +37,7 @@
   },
   "dependencies": {
     "log4js": "^6.2.0",
+    "npm-pack-all": "^1.11.1",
     "source-map-support": "^0.5.16"
   }
 }

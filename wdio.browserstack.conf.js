@@ -9,11 +9,13 @@ host: 'hub.browserstack.com',
 capabilities: [{
     name: 'LoopedIn Regression',
     build:'Regression',
-    'os': 'Windows',
-    'os_version': '10',
-    'browser': 'Chrome',
-    'browser_version': '81.0',
-    'resolution':'1920x1080',
+    device: 'Google Pixel',
+    browserName: 'chrome',
+   // 'os': 'Android',
+    //'os_version': '8.0.0',
+    //'browser': 'Chrome',
+    //'browser_version': '81.0',
+   // 'resolution':'1920x1080',
     'goog:chromeOptions': {
         args: ['--start-maximized']     
        }

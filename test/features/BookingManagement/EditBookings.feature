@@ -8,7 +8,7 @@ Feature: Edit existing booking
  @EditJobRequest @MinimalFields
   Scenario Outline: Edit a job request details and verify the changes
    When I login with "<username>" and "<password>"
-   And I create a new job request with minimal fields
+   And I create a new job request with minimal fields "<job notice length>"
    And I click Interpreting header link
    And I search for created job request
    And I click on job id from interpreting job search results
@@ -21,6 +21,7 @@ Feature: Edit existing booking
    And I click yes to confirm editing job request 
   
    Examples:
-   | username           | password | dropdownfilter | campus pin | Requester Name      | language   | assignment type      | date            | time  | duration | email        | job status  |
-   | LLAdmin@looped.in  | Uranus@6 | Management     |  33124     |  Automation Tester  |  AFRIKAANS | Zero min and ongoing | fortnight after | 09:30 | 4 hours  | hh@bb.com.au | Unallocated |
+   | job notice length | username           | password | dropdownfilter | campus pin | Requester Name      | language   | assignment type      | date            | time  | duration | email        | job status  |
+   | short notice      | LLAdmin@looped.in  | Uranus@6 | Management     |  33124     |  Automation Tester  |  AFRIKAANS | Zero min and ongoing | fortnight after | 09:30 | 4 hours  | hh@bb.com.au | Unallocated |
+   | long notice       | LLAdmin@looped.in  | Uranus@6 | Management     |  33124     |  Automation Tester  |  AFRIKAANS | Zero min and ongoing | fortnight after | 09:30 | 4 hours  | hh@bb.com.au | Unallocated |
   
