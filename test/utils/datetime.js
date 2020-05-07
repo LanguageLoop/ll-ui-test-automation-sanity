@@ -20,6 +20,11 @@ module.exports={
                 schedule.push(temp_date)
                 schedule.push(temp_time)
                 break
+              case "fortnight after":
+                temp_date=this.getFortnightDate().toString()
+                schedule.push(temp_date)
+                schedule.push(timeStr)
+                break
         }
         return schedule
     },

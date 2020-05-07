@@ -44,6 +44,7 @@ module.exports={
 
     selectTextFromDropdown(elt,text)
     {
+        browser.pause(1000)
         elt.waitForExist()
         elt.waitForEnabled()
         elt.waitForClickable()
@@ -65,6 +66,7 @@ module.exports={
 
     enterDateAndTime(dateField,timeField,dateValue,timeValue)
     {
+        browser.pause(1000)
         this.clearValue(dateField)
         this.enterValueAndPressReturn(dateField,dateValue.toString())  
         browser.pause(1000)

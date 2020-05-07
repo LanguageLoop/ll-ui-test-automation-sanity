@@ -21,6 +21,7 @@
     "@wdio/mocha-framework": "^6.0.13",
     "@wdio/spec-reporter": "^6.0.12",
     "@wdio/sync": "^6.0.12",
+    "appium": "^1.17.1",
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
     "chromedriver": "^80.0.2",

@@ -27,6 +27,10 @@ When(/^I select assignment type "(.*)"$/, function(assignmenttype){
   action.enterValueAndPressReturn(jobRequestPage.assignmentTypeDropdown,assignmenttype)
 })
 
+When(/^I select NAATI type "(.*)"$/, function(naati){
+  action.selectTextFromDropdown(jobRequestPage.naatiLevelDropdown,naati)
+})
+
 When(/^I enter "(.*)" email address$/,function(email){
   jobRequestPage.confirmEmailInput.scrollIntoView()
   browser.pause(2000)
