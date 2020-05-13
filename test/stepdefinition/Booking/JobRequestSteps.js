@@ -96,7 +96,6 @@ When(/^I click add preferred interpreter button$/,function(){
 
 When(/^I select "(.*)" interpreters from the list$/,function(count){
   var check_boxes=jobRequestPage.interpreterSearchResultsCheckBoxes
-  console.log("RAHANE :"+check_boxes.length)
   for(i=0;i<count;i++)
   {
     action.clickElement(check_boxes[i])

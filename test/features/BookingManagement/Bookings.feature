@@ -25,13 +25,13 @@ Feature: Create new booking for Interpreters
 
    @ShortNotice
    Examples:
-   | username           | password | dropdownfilter | campus pin | Requester Name      | language   | assignment type   | date         | time  | duration | email        |
-   | LLAdmin@looped.in  | Uranus@6 | Management     |  33124     |  Automation Tester  |  AFRIKAANS | Interview-Halfday | short notice | 09:30 | 4 hours  | hh@bb.com.au |
+   | username           | password  | dropdownfilter | campus pin | Requester Name      | language   | assignment type   | date         | time  | duration | email        |
+   | LLAdmin@looped.in  | Uranus@6  | Management     |  33124     |  Automation Tester  |  AFRIKAANS | Interview-Halfday | short notice | 09:30 | 4 hours  | hh@bb.com.au |
    
    @LongNotice
    Examples:
-   | username           | password | dropdownfilter | campus pin | Requester Name      | language   | assignment type   | date         | time  | duration | email        |
-   | LLAdmin@looped.in  | Uranus@6 | Management     |  33124     |  Automation Tester  |  AFRIKAANS | Interview-Halfday | long notice  | 09:30 | 4 hours  | hh@bb.com.au |
+   | username           | password  | dropdownfilter | campus pin | Requester Name      | language   | assignment type   | date         | time  | duration | email        |
+   | LLAdmin@looped.in  | Uranus@6  | Management     |  33124     |  Automation Tester  |  AFRIKAANS | Interview-Halfday | long notice  | 09:30 | 4 hours  | hh@bb.com.au |
   
   
    @CreateJobRequest @ManualReason

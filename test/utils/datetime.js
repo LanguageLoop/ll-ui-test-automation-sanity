@@ -5,27 +5,28 @@ module.exports={
     getScheduleDateTime(notice,timeStr)
     {
         var temp_date=""
-        var temp_time=""
+        var temp_time=timeStr
         var schedule= new Array()
         switch(notice)
         {
               case "long notice":
                 temp_date=this.getLongNoticeDate().toString()
-                schedule.push(temp_date)
-                schedule.push(timeStr)
                 break
               case "short notice":
                 temp_date=this.getShortNoticeDate().toString()
                 temp_time=this.getShortNoticeTime().toString()
-                schedule.push(temp_date)
-                schedule.push(temp_time)
                 break
               case "fortnight after":
                 temp_date=this.getFortnightDate().toString()
-                schedule.push(temp_date)
-                schedule.push(timeStr)
+                break
+              case "two hours after":
+                temp_date=new Date()
+                temp_date=temp_date.getDate()+"-"+(temp_date.getMonth()+1)+"-"+temp_date.getFullYear()
+                temp_time=this.getTwoHoursTime().toString()
                 break
         }
+        schedule.push(temp_date)
+        schedule.push(temp_time)
         return schedule
     },
 
@@ -51,6 +52,14 @@ module.exports={
         temp_date.setDate(temp_date.getDate()+5)
         temp_date=temp_date.getDate()+"-"+(temp_date.getMonth()+1)+"-"+temp_date.getFullYear()
         return temp_date
+    },
+
+    getTwoHoursTime()
+    {
+        temp_date=new Date()
+        temp_date.setHours(temp_date.getHours() + 2)
+        temp_time=temp_date.getHours()+":"+temp_date.getMinutes()
+        return temp_time
     },
 
     getConfirmationDate()

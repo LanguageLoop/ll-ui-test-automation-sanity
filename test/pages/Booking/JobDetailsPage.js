@@ -11,6 +11,31 @@ module.exports = {
         return $('//input[@value="Edit"]')
     },
 
+    get cancelButton()
+    {
+        return $('//*[contains(@id,"wtbtnCancel")]')
+    },
+
+    get confirmCancelYesButton()
+    {
+        return $('//*[text()="Are you sure, you want to cancel?"]/../../../../..//input[@value="Yes"]')
+    },
+
+    get cancelReasonDropdown()
+    {
+        return $('//*[text()="Reason"]/../..//select')
+    },
+
+    get cancelOnBehalfDropdown()
+    {
+        return $('//*[text()="On Behalf"]/../..//select') 
+    },
+
+    get cancelSubmitButton()
+    {
+        return $$('//*[contains(@id,"ConfirmationModal") and @value="Submit" and @class="Button"]')[1]
+    },
+
     get editConfirmationMessage()
     {
         return $('//*[contains(text(),"Job Detail was successfully saved")]')
@@ -24,6 +49,26 @@ module.exports = {
     get jobIdLabel()
     {
         return $('//*[contains(text(),"Job ID #")]')
+    },
+
+    get noJobsListedMessage()
+    {
+        return $('//td[text()="No jobs to show..."]')
+    },
+
+    get jobCancelledWithoutFeeMessage()
+    {
+        return $('//td[text()="Cancelled - without fee"]')
+    },
+
+    get jobCancelledWithFeeMessage()
+    {
+        return $('//td[text()="Cancelled with fee"]')
+    },
+
+    get jobCancellationFeeConfirmYesButton()
+    {
+        return $('//*[contains(text(),"This job will incur Cancel Fee of")]/../../../../../../..//input[@value="Yes"]')
     },
 
     get contractorListTable()
