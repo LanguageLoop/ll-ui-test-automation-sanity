@@ -12,6 +12,7 @@ Feature: Cancel existing booking
    And I click Interpreting header link
    And I search for created job request
    And I click on job id from interpreting job search results
+   And I switch to the job allocation window
    And I click on Cancel button
    And I click confirm cancel yes button
    And I select "<cancel reason>" cancel reason
@@ -33,6 +34,7 @@ Feature: Cancel existing booking
    And I click Interpreting header link
    And I search for created job request
    And I click on job id from interpreting job search results
+   And I switch to the job allocation window
    And I set the contractor job status to "<contractor job status>"
    And I click on Cancel button
    And I click confirm cancel yes button
@@ -53,6 +55,7 @@ Feature: Cancel existing booking
    And I click Interpreting header link
    And I search for created job request
    And I click on job id from interpreting job search results
+   And I switch to the job allocation window
    And I set the contractor job status to "<contractor job status>"
    And I click on Cancel button
    And I confirm yes to cancellation fee

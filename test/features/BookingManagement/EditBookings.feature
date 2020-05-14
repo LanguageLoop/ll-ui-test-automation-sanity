@@ -12,6 +12,7 @@ Feature: Edit existing booking
    And I click Interpreting header link
    And I search for created job request
    And I click on job id from interpreting job search results
+   And I switch to the job allocation window
    And I click on Edit button
    And I select assignment type "<assignment type>"
    And I enter schedule "<date>" and "<time>"
@@ -23,6 +24,7 @@ Feature: Edit existing booking
    And I click yes to confirm editing job request
    And I search for created job request
    And I click on job id from interpreting job search results
+   And I switch to the job allocation window
    Then I verify the assignment type "<assignment type>" is updated
    And I verify the gender preference "<gender preference>" is updated
   
@@ -38,6 +40,7 @@ Feature: Edit existing booking
    And I click Interpreting header link
    And I search for created job request
    And I click on job id from interpreting job search results
+   And I switch to the job allocation window
    And I set the contractor job status to "<contractor job status>"
    And I click on Edit button
    And I select assignment type "<assignment type>"
@@ -47,6 +50,7 @@ Feature: Edit existing booking
    And I click yes to confirm editing job request 
    And I search for created job request
    And I click on job id from interpreting job search results
+   And I switch to the job allocation window
    Then I verify the assignment type "<assignment type>" is updated
 
    Examples:
@@ -61,6 +65,7 @@ Feature: Edit existing booking
    And I click Interpreting header link
    And I search for created job request
    And I click on job id from interpreting job search results
+   And I switch to the job allocation window
    And I set the contractor job status to "<contractor job status>"
    And I click on accept metro service checkbox
    And I click on Edit button
@@ -71,8 +76,25 @@ Feature: Edit existing booking
    And I click yes to confirm editing job request 
    And I search for created job request
    And I click on job id from interpreting job search results
+   And I switch to the job allocation window
    Then I verify the NAATI "<NAATI>" is updated
 
    Examples:
    | job notice length | username           | password | dropdownfilter | campus pin | Requester Name      | language   | assignment type      | date            | time  | duration | email        | job status  | contractor job status | NAATI          | gender preference |
    | short notice      | LLAdmin@looped.in  | Uranus@6 | Management     |  33124     |  Automation Tester  |  AFRIKAANS | Zero min and ongoing | fortnight after | 09:30 | 4 hours  | hh@bb.com.au | Unallocated | Allocated             | Non-Accredited |  Female           |
+
+   @BookingDataSetup
+  Scenario Outline: Edit a job request details and verify the changes
+   When I login with "<username>" and "<password>"
+   And I create a new job request with minimal fields "<job notice length>"
+
+   Examples:
+   | username          | password | job notice length |
+   | LLAdmin@looped.in | Uranus@6 | long notice       |
+   | LLAdmin@looped.in | Uranus@6 | short notice      |
+   | LLAdmin@looped.in | Uranus@6 | long notice       |
+   | LLAdmin@looped.in | Uranus@6 | short notice      |
+   | LLAdmin@looped.in | Uranus@6 | long notice       |
+   | LLAdmin@looped.in | Uranus@6 | short notice      |
+   | LLAdmin@looped.in | Uranus@6 | long notice       |
+   | LLAdmin@looped.in | Uranus@6 | short notice      |

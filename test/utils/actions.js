@@ -8,6 +8,7 @@ module.exports={
         elt.waitForEnabled()
         elt.waitForClickable()
         elt.click()
+        this.clearValue(elt)
         browser.pause(1000)
         elt.setValue(value)
         browser.pause(1000)
@@ -29,6 +30,8 @@ module.exports={
         elt.waitForEnabled()
         elt.waitForClickable()
         elt.click()
+        //this.clearValue(elt)
+        browser.pause(1000)
         browser.keys(value)
         browser.pause(1000)
         browser.keys('Enter')
@@ -40,6 +43,13 @@ module.exports={
         elt.waitForExist({timeout:5000})
         elt.waitForClickable()
         elt.click() 
+    },
+
+    doubleClickElement(elt)
+    {
+        elt.waitForExist({timeout:5000})
+        elt.waitForClickable()
+        elt.doubleClick() 
     },
 
     selectTextFromDropdown(elt,text)

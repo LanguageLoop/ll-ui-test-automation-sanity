@@ -1,4 +1,5 @@
 
 module.exports={
-    EDIT_BOOKING_SEARCH_JOB_ID:""
+    EDIT_BOOKING_SEARCH_JOB_ID:"",
+    ACCEPT_BOOKING_JOB_ID     :""
 }
