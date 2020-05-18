@@ -5,7 +5,7 @@ var action=require('../../utils/actions')
 
 Given(/^the looped in login page is opened$/,  function(){
    browser.reloadSession()
-   browser.url("https://li-test.languageloop.com.au/LoopedIn_th/Login.aspx")
+   browser.url("https://li-uat.languageloop.com.au/LoopedIn_th/Login.aspx")
 })
 
 

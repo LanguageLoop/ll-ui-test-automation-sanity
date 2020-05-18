@@ -19,7 +19,7 @@ When(/^I enter schedule "(.*)" and "(.*)"$/,function(dateStr,timeStr){
 
 When(/^I enter confirmation date and time$/, function(){
   var temp_date=datetime.getConfirmationDate().toString()
-  var temp_time="9:30"
+  var temp_time=datetime.getConfirmationTime().toString()
   action.enterDateAndTime(jobRequestPage.confirmationDate,jobRequestPage.confirmationTime,temp_date,temp_time)
 })
 
@@ -123,6 +123,13 @@ When(/^I click yes to confirm editing job request$/, function(){
 
 Then(/^the job created success message should appear$/, function(){
   chai.expect(action.elementExists(jobRequestPage.successMessage)).to.be.true
+  jobRequestPage.successMessageText.waitForExist({timeout:3000})
+  browser.waitUntil(
+      () => jobRequestPage.successMessageText.getText().includes("The Job#"), 20000, 'link not visible'
+  );
+  var jobNumber = jobRequestPage.successMessageText.getText().match(/\d+/g).map(Number)
+
+  GlobalData.EDIT_BOOKING_SEARCH_JOB_ID=jobNumber
 })
 
 

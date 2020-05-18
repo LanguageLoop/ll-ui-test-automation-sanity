@@ -141,7 +141,7 @@ module.exports={
 
     get confirmationTime()
     {
-        return $('//input[contains(@id,"ConfirmationTime")]/..')
+        return $('//input[contains(@id,"ConfirmationTime")]')
     },
 
 

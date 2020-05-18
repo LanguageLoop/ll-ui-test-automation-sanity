@@ -24,6 +24,20 @@ Feature: Interpreter features
    | suzanehanna@hotmail.com  | Test1    | Cancelled           |  13-05-2022 | 1537266 |
    | suzanehanna@hotmail.com  | Test1    | Failed to Complete  |  13-05-2022 | 1537266 |
 
+ @RejectJobs 
+  Scenario Outline: Search for jobs as an interpreter in various  job stages
+   When I login with "<contractor username>" and "<contractor password>"
+   And I select "<dropdownfilter>" from the filter dropdown
+   And I click on first job id from interpreting job list
+   And I click reject job button
+   And I select "Rejected Jobs" from the filter dropdown
+   And I search for selected job request
+   Then I verify the job is listed in search results
+   
+   Examples:
+  | job notice length |admin username    | admin password | contractor username      | contractor password | dropdownfilter      | to date     | job id  |
+  | long notice       |LLAdmin@looped.in |   Uranus@6     | suzanehanna@hotmail.com  | Test1               | Available Jobs      |  13-05-2022 | 1560450 |
+  
 
 @AcceptJobs 
   Scenario Outline: Search for jobs as an interpreter in various  job stages
@@ -42,20 +56,7 @@ Feature: Interpreter features
   | suzanehanna@hotmail.com  | Test1               | Available Jobs      |  13-05-2022 |
   | suzanehanna@hotmail.com  | Test1               | Rejected Jobs       |  13-05-2022 |
   
-  @RejectJobs 
-  Scenario Outline: Search for jobs as an interpreter in various  job stages
-   When I login with "<contractor username>" and "<contractor password>"
-   And I select "<dropdownfilter>" from the filter dropdown
-   And I click on first job id from interpreting job list
-   And I click reject job button
-   And I select "Rejected Jobs" from the filter dropdown
-   And I search for selected job request
-   Then I verify the job is listed in search results
-   
-   Examples:
-  | job notice length |admin username    | admin password | contractor username      | contractor password | dropdownfilter      | to date     | job id  |
-  | long notice       |LLAdmin@looped.in |   Uranus@6     | suzanehanna@hotmail.com  | Test1               | Available Jobs      |  13-05-2022 | 1560450 |
-  
+ 
  @UnavailableJobs 
   Scenario Outline: Search for jobs as an interpreter in various  job stages
    When I login with "<contractor username>" and "<contractor password>"

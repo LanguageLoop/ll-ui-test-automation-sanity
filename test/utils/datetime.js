@@ -49,7 +49,7 @@ module.exports={
     getLongNoticeDate()
     {
         temp_date=new Date()
-        temp_date.setDate(temp_date.getDate()+5)
+        temp_date.setDate(temp_date.getDate()+9)
         temp_date=temp_date.getDate()+"-"+(temp_date.getMonth()+1)+"-"+temp_date.getFullYear()
         return temp_date
     },
@@ -65,9 +65,17 @@ module.exports={
     getConfirmationDate()
     {
         temp_date=new Date()
-        temp_date.setDate(temp_date.getDate()+3)
+        temp_date.setHours(temp_date.getHours()+22)
         temp_date=temp_date.getDate()+"-"+(temp_date.getMonth()+1)+"-"+temp_date.getFullYear()
         return temp_date
+    },
+
+    getConfirmationTime()
+    {
+        temp_date=new Date()
+        temp_date.setHours(temp_date.getHours()+22)
+        temp_time=temp_date.getHours()+":"+temp_date.getMinutes()
+        return temp_time
     },
 
     getFortnightDate()

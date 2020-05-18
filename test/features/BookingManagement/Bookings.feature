@@ -18,6 +18,7 @@ Feature: Create new booking for Interpreters
    And I select assignment type "<assignment type>"
    And I enter schedule "<date>" and "<time>"
    And I enter "<email>" email address
+   And I enter confirmation date and time
    And I click save and proceed to summary button
    And I handle duplicate job warning window
    And I click submit button
@@ -26,12 +27,12 @@ Feature: Create new booking for Interpreters
    @ShortNotice
    Examples:
    | username           | password  | dropdownfilter | campus pin | Requester Name      | language   | assignment type   | date         | time  | duration | email        |
-   | LLAdmin@looped.in  | Uranus@6  | Management     |  33124     |  Automation Tester  |  AFRIKAANS | Interview-Halfday | short notice | 09:30 | 4 hours  | hh@bb.com.au |
+   | LLAdmin@looped.in  | Uranus@6  | Management     |  33124     |  Automation Tester  |  ARABIC    |   Halfday         | short notice | 09:30 | 4 hours  | hh@bb.com.au |
    
    @LongNotice
    Examples:
    | username           | password  | dropdownfilter | campus pin | Requester Name      | language   | assignment type   | date         | time  | duration | email        |
-   | LLAdmin@looped.in  | Uranus@6  | Management     |  33124     |  Automation Tester  |  AFRIKAANS | Interview-Halfday | long notice  | 09:30 | 4 hours  | hh@bb.com.au |
+   | LLAdmin@looped.in  | Uranus@6  | Management     |  33124     |  Automation Tester  |  ARABIC    |  Halfday          | long notice  | 09:30 | 4 hours  | hh@bb.com.au |
   
   
    @CreateJobRequest @ManualReason
@@ -49,6 +50,7 @@ Feature: Create new booking for Interpreters
    And I click on manual reason checkbox
    And I enter manual reason "<manual reason>"
    And I enter "<email>" email address
+   And I enter confirmation date and time
    And I click save and proceed to summary button
    And I handle duplicate job warning window
    And I click submit button
@@ -56,7 +58,7 @@ Feature: Create new booking for Interpreters
 
    Examples:
    | username           | password | dropdownfilter | campus pin | Requester Name      | language   | assignment type   | date         | time  | duration | email        | manual reason      |
-   | LLAdmin@looped.in  | Uranus@6 | Management     |  33124     |  Automation Tester  |  AFRIKAANS | Interview-Halfday | short notice | 09:30 | 4 hours  | hh@bb.com.au | manual reason text |
+   | LLAdmin@looped.in  | Uranus@6 | Management     |  33124     |  Automation Tester  |  ARABIC    |      Halfday      | short notice | 09:30 | 4 hours  | hh@bb.com.au | manual reason text |
   
    @CreateJobRequest @GenderPreference @GenderMust
    Scenario Outline: Create Booking with gender preference
@@ -73,6 +75,7 @@ Feature: Create new booking for Interpreters
    And I click gender preference must checkbox
    And I select gender "<gender preference>"
    And I enter "<email>" email address
+   And I enter confirmation date and time
    And I click save and proceed to summary button
    And I handle duplicate job warning window
    And I click submit button
@@ -80,7 +83,7 @@ Feature: Create new booking for Interpreters
 
    Examples:
    | username           | password | dropdownfilter | campus pin | Requester Name      | language   | assignment type   | date         | time  | duration | email        | gender preference  |
-   | LLAdmin@looped.in  | Uranus@6 | Management     |  33124     |  Automation Tester  |  AFRIKAANS | Interview-Halfday | short notice | 09:30 | 4 hours  | hh@bb.com.au | Female             |
+   | LLAdmin@looped.in  | Uranus@6 | Management     |  33124     |  Automation Tester  |  ARABIC    |  Halfday          | short notice | 09:30 | 4 hours  | hh@bb.com.au | Female             |
   
    @CreateJobRequest @PreferredInterpreters @InterpreterMust
    Scenario Outline: Create Booking with preferred interpreters
@@ -98,6 +101,7 @@ Feature: Create new booking for Interpreters
    And I select "<interpreter count>" interpreters from the list
    And I click add interpreters button
    And I enter "<email>" email address
+   And I enter confirmation date and time
    And I click save and proceed to summary button
    And I handle duplicate job warning window
    And I click submit button
@@ -105,7 +109,7 @@ Feature: Create new booking for Interpreters
 
    Examples:
    | username           | password | dropdownfilter | campus pin | Requester Name      | language   | assignment type   | date         | time  | duration | email        | interpreter count  |
-   | LLAdmin@looped.in  | Uranus@6 | Management     |  33124     |  Automation Tester  |  ARABIC    | Interview-Halfday | short notice | 09:30 | 4 hours  | hh@bb.com.au | 3                  |
+   | LLAdmin@looped.in  | Uranus@6 | Management     |  33124     |  Automation Tester  |  ARABIC    |      Halfday      | short notice | 09:30 | 4 hours  | hh@bb.com.au | 3                  |
   
   @CreateJobRequest @AncestryPreference @AncestryMust
    Scenario Outline: Create Booking with ancestry preference must
@@ -122,6 +126,7 @@ Feature: Create new booking for Interpreters
    And I click ancestry preference must checkbox
    And I select ancestry "<ancestry preference>"
    And I enter "<email>" email address
+   And I enter confirmation date and time
    And I click save and proceed to summary button
    And I handle duplicate job warning window
    And I click submit button
@@ -129,7 +134,7 @@ Feature: Create new booking for Interpreters
 
    Examples:
    | username           | password | dropdownfilter | campus pin | Requester Name      | language   | assignment type   | date         | time  | duration | email        | ancestry preference  |
-   | LLAdmin@looped.in  | Uranus@6 | Management     |  33124     |  Automation Tester  |  AFRIKAANS | Interview-Halfday | short notice | 09:30 | 4 hours  | hh@bb.com.au | Austrian             |
+   | LLAdmin@looped.in  | Uranus@6 | Management     |  33124     |  Automation Tester  |  ARABIC    |   Halfday         | short notice | 09:30 | 4 hours  | hh@bb.com.au | Austrian             |
   
   @CreateJobRequest @ReligionPreference @ReligionMust
    Scenario Outline: Create Booking with religion must preference
@@ -146,6 +151,7 @@ Feature: Create new booking for Interpreters
    And I click religion preference must checkbox
    And I select religion "<religion preference>"
    And I enter "<email>" email address
+   And I enter confirmation date and time
    And I click save and proceed to summary button
    And I handle duplicate job warning window
    And I click submit button
@@ -153,14 +159,17 @@ Feature: Create new booking for Interpreters
 
    Examples:
    | username           | password | dropdownfilter | campus pin | Requester Name      | language   | assignment type   | date         | time  | duration | email        | religion preference  |
-   | LLAdmin@looped.in  | Uranus@6 | Management     |  33124     |  Automation Tester  |  AFRIKAANS | Interview-Halfday | short notice | 09:30 | 4 hours  | hh@bb.com.au | Christian            |
+   | LLAdmin@looped.in  | Uranus@6 | Management     |  33124     |  Automation Tester  |  ARABIC    |     Halfday       | short notice | 09:30 | 4 hours  | hh@bb.com.au | Christian            |
   
   @CreateJobRequest @DuplicateJob
   Scenario Outline: Create a job request as a duplicate of another job
    When I login with "<username>" and "<password>"
+   And I create a new job request with minimal fields "<job notice length>"
    And I click Interpreting header link
+   And I search for created job request
    And I select "<job status>" job status
    And I click on job id from interpreting job search results
+   And I switch to the job allocation window
    And I click on Duplicate button
    And I enter schedule "<date>" and "<time>"
    And I click save and proceed to summary button
@@ -169,8 +178,8 @@ Feature: Create new booking for Interpreters
    Then the job created success message should appear
 
    Examples:
-   | username           | password | dropdownfilter | campus pin | Requester Name      | language   | assignment type   | date         | time  | duration | email        | job status  |
-   | LLAdmin@looped.in  | Uranus@6 | Management     |  33124     |  Automation Tester  |  AFRIKAANS | Interview-Halfday | short notice | 09:30 | 4 hours  | hh@bb.com.au | Unallocated |
+   | job notice length | username           | password | dropdownfilter | campus pin | Requester Name      | language   | assignment type   | date         | time  | duration | email        | job status  |
+   |  long notice      | LLAdmin@looped.in  | Uranus@6 | Management     |  33124     |  Automation Tester  |  ARABIC    |     Halfday       | long notice  | 09:30 | 4 hours  | hh@bb.com.au | Unallocated |
   
   @CreateJobRequest @BulkUpload
   Scenario Outline: Upload bulk jobs through excel file
@@ -189,6 +198,6 @@ Feature: Create new booking for Interpreters
    Then Bookings created confirmation message is displayed
 
    Examples:
-   | username           | password | dropdownfilter | campus pin | Requester Name      | language   | assignment type   | date         | time  | duration | email        | job status  |
-   | LLAdmin@looped.in  | Uranus@6 | Management     |  33124     |  Automation Tester  |  AFRIKAANS | Interview-Halfday | short notice | 09:30 | 4 hours  | hh@bb.com.au | Unallocated |
+   | job notice length | username           | password | dropdownfilter | campus pin | Requester Name      | language   | assignment type   | date         | time  | duration | email        | job status  |
+   | long notice       | LLAdmin@looped.in  | Uranus@6 | Management     |  33124     |  Automation Tester  |  ARABIC    |  Zero min ongoing | short notice | 09:30 | 4 hours  | hh@bb.com.au | Unallocated |
   

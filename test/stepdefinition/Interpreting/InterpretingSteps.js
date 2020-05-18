@@ -17,7 +17,7 @@ When(/^I select "(.*)" job status$/,function(jobstatus){
 
 When(/^I click on job id from interpreting job search results$/, function(){
   browser.pause(2000)
-  action.clickElement(interpretingPage.jobIdLinkFromSearchResult)
+  action.clickElement(interpretingPage.jobIdColumnFromSearchResult)
   browser.pause(5000)
 })
 

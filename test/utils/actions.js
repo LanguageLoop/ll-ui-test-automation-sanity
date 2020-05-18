@@ -80,7 +80,7 @@ module.exports={
         this.clearValue(dateField)
         this.enterValueAndPressReturn(dateField,dateValue.toString())  
         browser.pause(1000)
-        //browser.keys("Tab")
+        browser.keys("Tab")
         this.clickElement(timeField)
         browser.pause(1000)
         this.enterValue(timeField,timeValue)

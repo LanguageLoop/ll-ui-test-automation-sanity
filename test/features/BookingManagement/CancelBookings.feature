@@ -6,7 +6,7 @@ Feature: Cancel existing booking
    
 
  @CancelUnallocatedJobRequest
-  Scenario Outline: Cancel a job request
+  Scenario Outline: Cancel a unallocated job request
    When I login with "<username>" and "<password>"
    And I create a new job request with minimal fields "<job notice length>"
    And I click Interpreting header link
