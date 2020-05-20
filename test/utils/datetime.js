@@ -49,7 +49,7 @@ module.exports={
     getLongNoticeDate()
     {
         temp_date=new Date()
-        temp_date.setDate(temp_date.getDate()+9)
+        temp_date.setDate(temp_date.getDate()+7)
         temp_date=temp_date.getDate()+"-"+(temp_date.getMonth()+1)+"-"+temp_date.getFullYear()
         return temp_date
     },

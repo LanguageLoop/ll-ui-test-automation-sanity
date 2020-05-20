@@ -1,7 +1,3 @@
-const { Given, When, Then, AfterAll } = require('cucumber');
-var bulkUploadPage=require('../../pages/Booking/BulkUploadPage')
-var action=require('../../utils/actions')
-var chai= require('chai')
 
 When(/^I upload bulk booking file$/, function(){
     action.uploadFile(bulkUploadPage.fileUploadControl,"./test/data/Bulk_Upload_Bookings.xlsx")

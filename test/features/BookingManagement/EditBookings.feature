@@ -27,6 +27,8 @@ Feature: Edit existing booking
    And I switch to the job allocation window
    Then I verify the assignment type "<assignment type>" is updated
    And I verify the gender preference "<gender preference>" is updated
+   And The job id is added to the file
+
   
   @shortnotice
    Examples:
@@ -57,6 +59,7 @@ Feature: Edit existing booking
    And I click on job id from interpreting job search results
    And I switch to the job allocation window
    Then I verify the assignment type "<assignment type>" is updated
+   And The job id is added to the file
 
    Examples:
    | job notice length | username           | password | dropdownfilter | campus pin | Requester Name      | language   | assignment type      | date            | time  | duration | email        | job status  | contractor job status |
@@ -83,6 +86,7 @@ Feature: Edit existing booking
    And I click on job id from interpreting job search results
    And I switch to the job allocation window
    Then I verify the NAATI "<NAATI>" is updated
+   And The job id is added to the file
 
    Examples:
    | job notice length | username           | password | dropdownfilter | campus pin | Requester Name      | language   | assignment type      | date            | time  | duration | email        | job status  | contractor job status | NAATI          | gender preference |

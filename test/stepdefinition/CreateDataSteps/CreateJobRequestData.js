@@ -44,6 +44,6 @@ jobRequestPage.continueButton.click()
     );
     var jobNumber = jobRequestPage.successMessageText.getText().match(/\d+/g).map(Number)
 
-    GlobalData.EDIT_BOOKING_SEARCH_JOB_ID=jobNumber
+    GlobalData.CURRENT_JOB_ID=jobNumber
 
 })

@@ -1,6 +1,4 @@
-const { Given, When, Then, AfterAll } = require('cucumber');
-var interpretingPage=require('../../pages/Interpreting/InterpretingPage')
-var action=require('../../utils/actions')
+
 
 When(/^I select "(.*)" from the filter dropdown$/,   function(listitem){
   action.selectTextFromDropdown(interpretingPage.filterDropdown,listitem)
@@ -23,7 +21,7 @@ When(/^I click on job id from interpreting job search results$/, function(){
 
 When(/^I click on first job id from interpreting job list$/, function(){
   browser.pause(2000)
-  GlobalData.ACCEPT_BOOKING_JOB_ID = interpretingPage.jobIdColumnFromSearchResult.getText()
+  GlobalData.CURRENT_JOB_ID = interpretingPage.jobIdColumnFromSearchResult.getText()
   action.clickElement(interpretingPage.jobIdLinkFromSearchResult)
   browser.pause(5000)
 })
@@ -46,13 +44,13 @@ When(/^I click on bulk upload button$/, function(){
 When(/^I search for created job request$/, function(){
   action.clickElement(interpretingPage.searchJobInput)
   action.clearValue(interpretingPage.searchJobInput)
-  action.enterValueAndPressReturn(interpretingPage.searchJobInput,GlobalData.EDIT_BOOKING_SEARCH_JOB_ID.toString())
+  action.enterValueAndPressReturn(interpretingPage.searchJobInput,GlobalData.CURRENT_JOB_ID.toString())
 })
 
 When(/^I search for selected job request$/, function(){
   action.clickElement(interpretingPage.searchJobInput)
   action.clearValue(interpretingPage.searchJobInput)
-  action.enterValueAndPressReturn(interpretingPage.searchJobInput,GlobalData.ACCEPT_BOOKING_JOB_ID.toString())
+  action.enterValueAndPressReturn(interpretingPage.searchJobInput,GlobalData.CURRENT_JOB_ID.toString())
 })
 
 When(/^I search for job request "(.*)"$/, function(jobid){
@@ -91,10 +89,25 @@ When(/^I click return job button$/, function(){
   action.clickElement(interpretingPage.returnJobButton)
 })
 
+When(/^I click "(.*)" user link$/, function(user){
+  action.clickElement($('//*[text()="'+user+'"]'))
+})
+
 Then(/^I verify the job table is displayed$/, function(){
   chai.expect(action.elementExists(interpretingPage.jobTable)).to.be.true
 })
 
 Then(/^I verify the job is listed in search results$/, function(){
   chai.expect(action.elementExists(interpretingPage.jobIdLinkFromSearchResult)).to.be.true
+})
+
+Then(/^The job id is added to the file$/, function(){
+browser.pause(1000)
+console.log("Scenario name :"+scenarioName)
+  fs.appendFile(JOB_ID_FILENAME, "Job id : "+GlobalData.CURRENT_JOB_ID+" Test : "+scenarioName + "\n", (err) => {
+    // throws an error, you could also catch it here
+    if (err) throw err;
+
+    // success case, the file was saved
+});
 })

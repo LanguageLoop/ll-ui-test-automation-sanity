@@ -129,7 +129,20 @@ Then(/^the job created success message should appear$/, function(){
   );
   var jobNumber = jobRequestPage.successMessageText.getText().match(/\d+/g).map(Number)
 
-  GlobalData.EDIT_BOOKING_SEARCH_JOB_ID=jobNumber
+  GlobalData.CURRENT_JOB_ID=jobNumber
+  /*browser.pause(1000)
+console.log("Scenario name :"+scenarioName)
+  fs.appendFile(JOB_ID_FILENAME, "Job id : "+jobNumber+" Test : "+scenarioName + "\n", (err) => {
+    // throws an error, you could also catch it here
+    if (err) throw err;
+
+    // success case, the file was saved
+});*/
+})
+
+Then(/^I verify the created job id is listed$/, function(){
+  browser.pause(2000)
+  chai.expect(action.elementExists('//a[text()="'+GlobalData.CURRENT_JOB_ID+'"]')).to.be.true
 })
 
 

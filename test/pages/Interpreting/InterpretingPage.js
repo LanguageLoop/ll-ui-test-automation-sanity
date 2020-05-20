@@ -34,7 +34,7 @@ module.exports={
 
     get jobIdLinkFromSearchResult()
     {
-        return $('//a[text()="'+GlobalData.EDIT_BOOKING_SEARCH_JOB_ID+'" or text()="'+GlobalData.ACCEPT_BOOKING_JOB_ID+'"]')
+        return $('//a[text()="'+GlobalData.CURRENT_JOB_ID+'"]')
     },
 
     get jobSummaryLink()

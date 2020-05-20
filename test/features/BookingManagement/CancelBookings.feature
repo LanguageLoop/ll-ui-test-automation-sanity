@@ -20,6 +20,7 @@ Feature: Cancel existing booking
    And I submit cancel job confirmation
    And I search for created job request
    Then I confirm the job is cancelled without fee
+   And The job id is added to the file
   
    Examples:
    |   cancel reason    |   on behalf       | job notice length | username           | password | dropdownfilter | campus pin | Requester Name      | language   | assignment type      | date            | time  | duration | email        | job status  |
@@ -43,7 +44,8 @@ Feature: Cancel existing booking
    And I submit cancel job confirmation
    And I search for created job request
    Then I confirm the job is cancelled without fee
-  
+   And The job id is added to the file
+ 
    Examples:
    |   cancel reason    |   on behalf       | job notice length | username           | password | dropdownfilter | campus pin | Requester Name      | language   | assignment type      | date            | time  | duration | email        | job status  | contractor job status | 
    | NES client no-show | Automation Tester | long notice       | LLAdmin@looped.in  | Uranus@6 | Management     |  33124     |  Automation Tester  |  AFRIKAANS | Zero min and ongoing | fortnight after | 09:30 | 4 hours  | hh@bb.com.au | Unallocated | Allocated             |
@@ -64,6 +66,7 @@ Feature: Cancel existing booking
    And I submit cancel job confirmation
    And I search for created job request
    Then I confirm the job is cancelled with fee
+   And The job id is added to the file
   
    Examples:
    |   cancel reason    |   on behalf       | job notice length | username           | password | dropdownfilter | campus pin | Requester Name      | language   | assignment type      | date            | time  | duration | email        | job status  | contractor job status | 

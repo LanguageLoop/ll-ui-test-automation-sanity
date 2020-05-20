@@ -14,9 +14,14 @@ var Login = require( './test/pages/Login/Login')
 
 var homePage=require('./test/pages/Home/HomePage')
 
+var myProfilePage= require('./test/pages/MyProfile/MyProfile')
+
 var chai= require('chai')
 var action=require('./test/utils/actions')
 var datetime=require('./test/utils/datetime')
+var fs = require('fs')
+var JOB_ID_FILENAME="jobid.txt"
+var scenarioName=""
 exports.config = {
   
     //
@@ -223,7 +228,11 @@ exports.config = {
      * @param {Array.<String>} specs List of spec file paths that are to be run
      */
      beforeSession: function (config, capabilities, specs) {
+        //job id list output file name. this list of job ids can be used to verify the triggered email
+        global.JOB_ID_FILENAME= JOB_ID_FILENAME
         
+        global.fs= fs
+        global.scenarioName=scenarioName
         // Test data variables
         global.GlobalData=GlobalData
 
@@ -247,6 +256,7 @@ exports.config = {
         global.interpretingPage=interpretingPage
         global.Login=Login
         global.homePage=homePage
+        global.myProfilePage= myProfilePage
         
      },
     /**
@@ -255,8 +265,15 @@ exports.config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {Array.<String>} specs List of spec file paths that are to be run
      */
-    // before: function (capabilities, specs) {
-    // },
+     before: function (capabilities, specs) {
+        fs.writeFile(JOB_ID_FILENAME, "", (err) => {
+            // throws an error, you could also catch it here
+            if (err) throw err;
+        
+            // success case, the file was saved
+            console.log('Job id list file created');
+        });
+     },
     /**
      * Runs before a WebdriverIO command gets executed.
      * @param {String} commandName hook command name
@@ -272,8 +289,13 @@ exports.config = {
     /**
      * Runs before a Cucumber scenario
      */
-    // beforeScenario: function (uri, feature, scenario, sourceLocation) {
-    // },
+     beforeScenario: function (uri, feature, scenario, sourceLocation) {
+         GlobalData.EDIT_BOOKING_SEARCH_JOB_ID=""
+         GlobalData.ACCEPT_BOOKING_JOB_ID=""
+         GlobalData.CURRENT_JOB_ID=""
+         global.scenarioName=scenario.name
+         console.log("PUJARA :"+scenario.name)
+     },
     /**
      * Runs before a Cucumber step
      */
@@ -297,20 +319,15 @@ exports.config = {
     /**
      * Runs after a Cucumber scenario
      */
-    /*afterScenario: function (uri, feature, scenario, result, sourceLocation) {
-        const path = require('path');
-        const moment = require('moment');
-
-        // if test passed, ignore, else take and save screenshot.
-        //if (result.error != undefined) {
-            console.log("KANE")
-           // return;
-       // }
-        const timestamp = moment().format('YYYYMMDD-HHmmss.SSS');
-        const filepath = path.join('reports/html-reports/screenshots/', timestamp + '.png');
-        browser.saveScreenshot(filepath);
-       process.emit('test:screenshot', filepath);
-     }, */
+    afterScenario: function (uri, feature, scenario, result, sourceLocation) {
+       
+      /*  fs.appendFile(JOB_ID_FILENAME, "Job id : "+GlobalData.CURRENT_JOB_ID +" Test : "+scenario.name + "\n", (err) => {
+            // throws an error, you could also catch it here
+            if (err) throw err;
+        
+            // success case, the file was saved
+        }); */
+     }, 
     /**
      * Runs after a Cucumber feature
      */
