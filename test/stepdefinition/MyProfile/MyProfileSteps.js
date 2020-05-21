@@ -101,6 +101,65 @@ When(/^I click expired language toggle$/, function(){
     action.clickElement(myProfilePage.languageShowExpiredToggle)
 })
 
+When(/^I upload statutory declaration document$/, function(){
+    action.clickElement(myProfilePage.statutoryDeclarationToggleButton)
+    browser.pause(2000)
+    action.clickElement(myProfilePage.statutoryDeclarationUploadFileLink)
+    browser.pause(2000)
+    action.uploadFile(myProfilePage.clearanceDocumentUploadControl,"./test/data/Statutory Declaration.docx")
+    browser.pause(2000)
+    $$('//*[contains(@id,"wtcontContractorUploadAction")]//input[@value="Save"]')[1].click()
+    browser.pause(2000)
+})
+
+When(/^I upload work eligibility document$/, function(){
+    action.clickElement(myProfilePage.workEligibilityUploadLink)
+    browser.pause(2000)
+    action.uploadFile(myProfilePage.workEligibilityDocumentUploadControl,"./test/data/Working rights.docx")
+    browser.pause(2000)
+    $$('//*[contains(@id,"wtcontContractorUploadAction")]//input[@value="Save"]')[0].click()
+    browser.pause(2000)
+})
+
+When(/^I upload hepatitis document$/, function(){
+    action.clickElement(myProfilePage.hepatitisToggleButton)
+    browser.pause(2000)
+    action.clickElement(myProfilePage.hepatitisUploadFileLink)
+    browser.pause(2000)
+    action.uploadFile(myProfilePage.clearanceDocumentUploadControl,"./test/data/Hepatitis.docx")
+    browser.pause(2000)
+    $$('//*[contains(@id,"wtcontContractorUploadAction")]//input[@value="Save"]')[1].click()
+    browser.pause(2000)
+})
+
+When(/^I upload working with children document$/, function(){
+    action.clickElement(myProfilePage.workingWithChildrenToggleButton)
+    browser.pause(2000)
+    action.clickElement(myProfilePage.workingWithChildrenUploadFileLink)
+    browser.pause(2000)
+    action.uploadFile(myProfilePage.clearanceDocumentUploadControl,"./test/data/Working With Children.docx")
+    browser.pause(2000)
+    $$('//*[contains(@id,"wtcontContractorUploadAction")]//input[@value="Save"]')[1].click()
+    browser.pause(2000)
+})
+
+Then(/^I verify the statutory declaration document is uploaded$/, function(){
+    browser.pause(2000)
+    chai.expect(action.elementExists(myProfilePage.statutoryDocumentLink)).to.be.true
+})
+
+Then(/^I verify the work eligibility document is uploaded$/, function(){
+    chai.expect(action.elementExists(myProfilePage.workEligibilityDocumentLink)).to.be.true
+})
+
+Then(/^I verify the hepatitis document is uploaded$/, function(){
+    chai.expect(action.elementExists(myProfilePage.hepatitisDocumentLink)).to.be.true
+})
+
+Then(/^I verify the working with children document is uploaded$/, function(){
+    chai.expect(action.elementExists(myProfilePage.workingWithChildrenUploadFileLink)).to.be.true
+})
+
 Then(/^I verify naati table is present$/, function(){
     chai.expect(action.elementExists(myProfilePage.naatiTable)).to.be.true
 })

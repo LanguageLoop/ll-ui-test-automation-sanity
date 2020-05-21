@@ -150,7 +150,58 @@ module.exports ={
 
     get naatiTable(){
         return $('//table[contains(@id,"wttrNAATIAccreditation")]')
-    }
+    },
 
+    get workEligibilityUploadLink(){
+        return $('//*[text()="Work Eligibility"]/..//a[text()="Upload a document"]')
+    },
+
+    get workEligibilityDocumentLink(){
+        return $('//*[text()="Working rights.docx"]')
+    },
+
+    get hepatitisToggleButton(){
+        return $('//*[text()="Hepatitis B"]/../../..//*[contains(@name,"wtlblToggle")]')
+    },
+
+    get hepatitisDocumentLink(){
+        return $('.//*[text()="Hepatitis.docx"]')
+    },
+
+    get hepatitisUploadFileLink(){
+        return $('//*[text()="Hepatitis B"]/../../..//a[text()="Upload File"]')
+    },
+
+    get statutoryDeclarationToggleButton(){
+        return $('//*[text()="Statutory Declaration"]/../../..//*[contains(@name,"wtlblToggle")]')
+    },
+
+    get statutoryDeclarationUploadFileLink(){
+        return $('//*[text()="Statutory Declaration"]/../../..//a[text()="Upload File"]')
+    },
+
+    get statutoryDocumentLink(){
+        return $('//*[text()="Statutory Declaration.docx"]')
+    },
+
+    get workingWithChildrenToggleButton(){
+        return $('//*[text()="Working With Children"]/../../..//*[contains(@name,"wtlblToggle")]')
+    },
+
+    get workingWithChildrenDocumentLink(){
+        return $('//*[text()="Working With Children.docx"]')
+    },
+
+    get workingWithChildrenUploadFileLink(){
+        return $('//*[text()="Working With Children"]/../../..//a[text()="Upload File"]')
+    },
+
+    get clearanceDocumentUploadControl(){
+        return $('//*[text()="Proof of Clearance"]/../..//input[@type="file"]')
+    },
+
+    get workEligibilityDocumentUploadControl(){
+        return $('//*[text()="Proof of PR / Visa"]/../..//input[@type="file"]')
+    },
 
 }
