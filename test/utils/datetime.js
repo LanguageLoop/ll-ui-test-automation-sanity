@@ -30,7 +30,43 @@ module.exports={
         return schedule
     },
 
+    getConfirmationDateTime(notice,timeStr)
+    {
+        var temp_date=""
+        var temp_time=timeStr
+        var schedule= new Array()
+        switch(notice)
+        {
+              case "long notice":
+                temp_date=this.getLongNoticeConfirmationDate().toString()
+                break
+              case "short notice":
+                temp_date=this.getShortNoticeConfirmationDate().toString()
+                temp_time=this.getShortNoticeConfirmationTime().toString()
+                break
+              case "fortnight after":
+                temp_date=this.getFortnightConfirmationDate().toString()
+                break
+              case "two hours after":
+                temp_date=new Date()
+                temp_date=temp_date.getDate()+"-"+(temp_date.getMonth()+1)+"-"+temp_date.getFullYear()
+                temp_time=this.getTwoHoursConfirmationTime().toString()
+                break
+        }
+        schedule.push(temp_date)
+        schedule.push(temp_time)
+        return schedule
+    },
+
     getShortNoticeDate()
+    {
+        temp_date=new Date()
+        temp_date.setHours(temp_date.getHours() + 23)
+        temp_date=temp_date.getDate()+"-"+(temp_date.getMonth()+1)+"-"+temp_date.getFullYear()
+        return temp_date
+    },
+
+    getShortNoticeConfirmationDate()
     {
         temp_date=new Date()
         temp_date.setHours(temp_date.getHours() + 23)
@@ -46,6 +82,14 @@ module.exports={
         return temp_time
     },
 
+    getShortNoticeConfirmationTime()
+    {
+        temp_date=new Date()
+        temp_date.setHours(temp_date.getHours() + 21)
+        temp_time=temp_date.getHours()+":"+temp_date.getMinutes()
+        return temp_time
+    },
+
     getLongNoticeDate()
     {
         temp_date=new Date()
@@ -54,10 +98,26 @@ module.exports={
         return temp_date
     },
 
+    getLongNoticeConfirmationDate()
+    {
+        temp_date=new Date()
+        temp_date.setDate(temp_date.getDate()+6)
+        temp_date=temp_date.getDate()+"-"+(temp_date.getMonth()+1)+"-"+temp_date.getFullYear()
+        return temp_date
+    },
+
     getTwoHoursTime()
     {
         temp_date=new Date()
         temp_date.setHours(temp_date.getHours() + 2)
+        temp_time=temp_date.getHours()+":"+temp_date.getMinutes()
+        return temp_time
+    },
+
+    getTwoHoursConfirmationTime()
+    {
+        temp_date=new Date()
+        temp_date.setHours(temp_date.getHours() + 1)
         temp_time=temp_date.getHours()+":"+temp_date.getMinutes()
         return temp_time
     },
@@ -84,6 +144,15 @@ module.exports={
         temp_date.setDate(temp_date.getDate()+14)
         temp_date=temp_date.getDate()+"-"+(temp_date.getMonth()+1)+"-"+temp_date.getFullYear()
         return temp_date
+    },
+
+    getFortnightConfrimationDate()
+    {
+        temp_date=new Date()
+        temp_date.setDate(temp_date.getDate()+13)
+        temp_date=temp_date.getDate()+"-"+(temp_date.getMonth()+1)+"-"+temp_date.getFullYear()
+        return temp_date
     }
+    
 
 }

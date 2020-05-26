@@ -99,7 +99,7 @@ exports.config = {
         //
         browserName: 'chrome',
         'goog:chromeOptions': {
-            args: ['--start-maximized','--disable-web-security']     
+            args: ['--start-maximized']     
            }
         // If outputDir is provided WebdriverIO can capture driver session logs
         // it is possible to configure which logTypes to include/exclude.
@@ -124,10 +124,10 @@ exports.config = {
     // - @wdio/sumologic-reporter
     // - @wdio/cli, @wdio/config, @wdio/sync, @wdio/utils
     // Level of logging verbosity: trace | debug | info | warn | error | silent
-    // logLevels: {
-    //     webdriver: 'info',
-    //     '@wdio/applitools-service': 'info'
-    // },
+     /*logLevels: {
+        webdriver: 'error',
+        '@wdio/applitools-service': 'error'
+     },*/
     //
     // If you only want to run your tests until a specific amount of tests have failed use
     // bail (default is 0 - don't bail, run all tests).
@@ -294,7 +294,6 @@ exports.config = {
          GlobalData.ACCEPT_BOOKING_JOB_ID=""
          GlobalData.CURRENT_JOB_ID=""
          global.scenarioName=scenario.name
-         console.log("PUJARA :"+scenario.name)
      },
     /**
      * Runs before a Cucumber step

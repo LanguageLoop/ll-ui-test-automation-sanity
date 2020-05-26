@@ -18,7 +18,8 @@ module.exports = {
 
     get confirmCancelYesButton()
     {
-        return $('//*[text()="Are you sure, you want to cancel?"]/../../../../..//input[@value="Yes"]')
+       // return $('//*[text()="Are you sure, you want to cancel?"]/../../../../..//input[@value="Yes"]')
+       return $('//*[contains(@id,"wtConfirmationModal_block_wtActions_wtBtnYes")]')
     },
 
     get cancelReasonDropdown()

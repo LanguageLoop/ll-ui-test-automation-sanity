@@ -2,6 +2,7 @@
 
 When(/^I create a new job request with minimal fields "(.*)"$/,  function(notice){
     var temp_date_time=datetime.getScheduleDateTime(notice,"9:30")
+    var temp_conf_date_time= datetime.getConfirmationDateTime(notice,"9:30")
   
     
     action.clickElement(homePage.InterpretingLink)
@@ -13,10 +14,8 @@ When(/^I create a new job request with minimal fields "(.*)"$/,  function(notice
     action.enterValueAndPressReturn(jobRequestPage.languageDropdown,"ARABIC")
     action.enterValueAndPressReturn(jobRequestPage.assignmentTypeDropdown,"Halfday")
     action.selectTextFromDropdown(jobRequestPage.naatiLevelDropdown, "Certified Interpreter")
-    action.enterDateAndTime(jobRequestPage.dateInput,jobRequestPage.timeInput, temp_date_time[0],temp_date_time[1] )
-   // var temp_date1=datetime.getConfirmationDate().toString()
-     //var temp_time1=datetime.getConfirmationTime().toString()
-     //action.enterDateAndTime(jobRequestPage.confirmationDate,jobRequestPage.confirmationTime,temp_date1,temp_time1)
+    action.enterDateAndTime(jobRequestPage.dateInput,jobRequestPage.timeInput, temp_date_time[0],temp_date_time[1] )   
+    action.enterDateAndTime(jobRequestPage.confirmationDate,jobRequestPage.confirmationTime,temp_conf_date_time[0],temp_conf_date_time[1])
     browser.pause(2000)
     browser.keys('Tab')
     browser.pause(2000)
@@ -27,10 +26,7 @@ When(/^I create a new job request with minimal fields "(.*)"$/,  function(notice
 
     try{
       jobRequestPage.continueButton.waitForExist({timeout:5000})
-      console.log("ROHIT :::::")
-jobRequestPage.continueButton.click()
-        console.log("SHARMA :::::")
-
+      jobRequestPage.continueButton.click()
     
     }
   catch(Err)

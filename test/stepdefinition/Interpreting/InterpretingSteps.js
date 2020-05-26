@@ -93,6 +93,7 @@ When(/^I click "(.*)" user link$/, function(user){
   action.clickElement($('//*[text()="'+user+'"]'))
 })
 
+
 Then(/^I verify the job table is displayed$/, function(){
   chai.expect(action.elementExists(interpretingPage.jobTable)).to.be.true
 })

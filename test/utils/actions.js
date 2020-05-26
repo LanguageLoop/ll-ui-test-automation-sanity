@@ -30,7 +30,6 @@ module.exports={
         elt.waitForEnabled()
         elt.waitForClickable()
         elt.click()
-        //this.clearValue(elt)
         browser.pause(1000)
         browser.keys(value)
         browser.pause(1000)
@@ -77,6 +76,7 @@ module.exports={
     enterDateAndTime(dateField,timeField,dateValue,timeValue)
     {
         browser.pause(1000)
+        this.clickElement(dateField)
         this.clearValue(dateField)
         this.enterValueAndPressReturn(dateField,dateValue.toString())  
         browser.pause(1000)
@@ -84,6 +84,18 @@ module.exports={
         this.clickElement(timeField)
         browser.pause(1000)
         this.enterValue(timeField,timeValue)
+    },
+
+    enterLocation(locationField,location)
+    {
+        browser.pause(1000)
+        this.clickElement(locationField)
+        this.enterValue(locationField,location)
+        browser.pause(1000)
+        browser.keys("ArrowDown")
+        browser.pause(1000)
+        browser.keys("Enter")
+        browser.pause(2000)
     }
 
 }
