@@ -22,6 +22,14 @@ module.exports = {
        return $('//*[contains(@id,"wtConfirmationModal_block_wtActions_wtBtnYes")]')
     },
 
+    get lateRejectionConfirmYesButton(){
+        return $('//*[contains(text(),"incur a penalty of Late Arrival - Rejected")]/../../../../../../..//input[@value="Yes"]')
+    },
+
+    get interpreterNoShowConfirmYesButton(){
+        return $('//*[contains(text(),"incur a penalty of Interpreter No Show")]/../../../../../../..//input[@value="Yes"]')
+    },
+
     get cancelReasonDropdown()
     {
         return $('//*[text()="Reason"]/../..//select')
@@ -82,13 +90,51 @@ module.exports = {
         return $('//a[text()="Auto Notification"]')
     },
 
+    get noStatusLink()
+    {
+        return $('//a[text()="- No Status -"]')
+    },
+
+    get noStatusLink()
+    {
+        return $('//a[text()="Unavailable"]')
+    },
+
+    get refusedJobLink()
+    {
+        return $('//a[text()="Refused Job"]')
+    },
+
     get jobContractorStatusDropdown()
     {
         return $('//select[contains(@id,"JobContractorStatus")]')
     },
 
-    get assignmentTypeLabel()
+    get noStatusLink()
     {
+        return $('//a[text()="- No Status -"]')
+    },
+
+    get sendNotificationLink()
+    {
+        return $('//a[text()="Send Notification"]')
+    },
+
+    get allocatedLink()
+    {
+        return $('//a[text()="Allocated"]')
+    },
+
+    get returnedLink()
+    {
+        return $('//a[text()="Returned"]')
+    },
+
+    get searchContractorInput(){
+        return $('//input[@placeholder="Search by Name or Contractor ID"]')
+    },
+
+    get assignmentTypeLabel(){
         return $('//label[text()="Assignment Type"]/../following-sibling::div')
     },
 

@@ -13,6 +13,7 @@ When(/^I select "(.*)" job status$/,function(jobstatus){
   action.selectTextFromDropdown(interpretingPage.jobStatusDropdown,jobstatus)
 })
 
+
 When(/^I click on job id from interpreting job search results$/, function(){
   browser.pause(2000)
   action.clickElement(interpretingPage.jobIdColumnFromSearchResult)
@@ -57,6 +58,7 @@ When(/^I search for job request "(.*)"$/, function(jobid){
   action.clickElement(interpretingPage.searchJobInput)
   action.clearValue(interpretingPage.searchJobInput)
   action.enterValueAndPressReturn(interpretingPage.searchJobInput,jobid)
+  browser.pause(2000)
 })
 
 When(/^I enter from date "(.*)"$/, function(fromdate){

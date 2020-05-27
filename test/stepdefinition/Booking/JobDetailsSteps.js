@@ -19,6 +19,14 @@ When(/^I click confirm cancel yes button$/, function(){
     action.clickElement(jobDetailsPage.confirmCancelYesButton)
 })
 
+When(/^I click yes to confirm late rejection$/, function(){
+    action.clickElement(jobDetailsPage.lateRejectionConfirmYesButton)
+})
+
+When(/^I click yes to confirm no show$/, function(){
+    action.clickElement(jobDetailsPage.interpreterNoShowConfirmYesButton)
+})
+
 When(/^I select "(.*)" cancel reason$/, function(reason){
     browser.pause(2000)
     action.selectTextFromDropdown(jobDetailsPage.cancelReasonDropdown, reason)
@@ -37,12 +45,34 @@ When(/^I confirm yes to cancellation fee$/, function(){
     action.clickElement(jobDetailsPage.jobCancellationFeeConfirmYesButton)
 })
 
-When(/^I set the contractor job status to "(.*)"$/, function(jobstatus){
+When(/^I search for contractor "(.*)"$/, function(contractor){
+    browser.pause(2000)
+    action.enterValueAndPressReturn(jobDetailsPage.searchContractorInput,contractor)
+})
+
+When(/^I get the first contractor on list$/, function(){
+    browser.pause(2000)
+    GlobalData.CONTRACTOR_NAME= $('//div[contains(@class,"ContractorName")]//a[contains(@id,"ContractorList")]').getText()
+})
+
+When(/^I search for first contractor on list$/, function(){
+    browser.pause(2000)
+    action.enterValueAndPressReturn(jobDetailsPage.searchContractorInput,GlobalData.CONTRACTOR_NAME)
+})
+
+When(/^I refresh the page$/, function(){
     browser.pause(5000)
     browser.refresh()
+})
+
+When(/^I set the contractor job status from "(.*)" to "(.*)"$/, function(original_jobstatus,new_jobstatus){
+    browser.pause(5000)
     action.elementExists(jobDetailsPage.contractorListTable)
-    action.clickElement(jobDetailsPage.autoNotificationLink)
-    action.selectTextFromDropdown(jobDetailsPage.jobContractorStatusDropdown,jobstatus)
+    action.clickElement($('//div[@class="ContractorTable"]//a[text()="'+original_jobstatus+'"]'))
+    browser.pause(5000)
+    //action.clickElement(jobDetailsPage.autoNotificationLink)
+    action.selectTextFromDropdown(jobDetailsPage.jobContractorStatusDropdown,new_jobstatus)
+    browser.pause(9000)
 })
 
 When(/^I click on accept metro service checkbox$/, function(){
@@ -67,4 +97,8 @@ Then(/^I confirm the job is cancelled without fee$/,function(){
 
 Then(/^I confirm the job is cancelled with fee$/,function(){
     chai.expect(action.elementExists(jobDetailsPage.jobCancelledWithFeeMessage)).to.be.true
+})
+
+Then(/^I confirm the job status "(.*)"$/, function(jobstatus){
+    chai.expect(action.elementExists($('//div[@class="ContractorTable"]//a[text()="'+jobstatus+'"]'))).to.be.true
 })

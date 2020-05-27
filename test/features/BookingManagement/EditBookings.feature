@@ -61,7 +61,8 @@ Feature: Edit existing booking
    And I search for created job request
    And I click on job id from interpreting job search results
    And I switch to the job allocation window
-   And I set the contractor job status to "<contractor job status>"
+   And I refresh the page
+   And I set the contractor job status from "<original job status>" to "<contractor job status>"
    And I click on accept metro service checkbox
    And I click on Edit button
    And I select language "<language>"
@@ -77,8 +78,8 @@ Feature: Edit existing booking
    And The job id is added to the file
 
    Examples:
-   |contractor job status| job notice length | username           | password | dropdownfilter | campus pin | Requester Name      | language   | assignment type      | date            | time  | duration | email        | job status  | contractor job status |
-   | Allocated           | short notice      | LLAdmin@looped.in  | Uranus@6 | Management     |  33124     |  Automation Tester  |  AFRIKAANS | Zero min ongoing     | fortnight after | 09:30 | 4 hours  | hh@bb.com.au | Unallocated | Allocated             |
+  | original job status  |contractor job status| job notice length | username           | password | dropdownfilter | campus pin | Requester Name      | language   | assignment type      | date            | time  | duration | email        | job status  | contractor job status |
+  |  Auto Notification   | Allocated           | short notice      | LLAdmin@looped.in  | Uranus@6 | Management     |  33124     |  Automation Tester  |  AFRIKAANS | Zero min ongoing     | fortnight after | 09:30 | 4 hours  | hh@bb.com.au | Unallocated | Allocated             |
 
  
  
@@ -90,6 +91,7 @@ Feature: Edit existing booking
    And I search for created job request
    And I click on job id from interpreting job search results
    And I switch to the job allocation window
+   And I refresh the page
    And I set the contractor job status to "<contractor job status>"
    And I click on accept metro service checkbox
    And I click on Edit button
