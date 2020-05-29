@@ -13,6 +13,7 @@ var interpretingPage=require('./test/pages/Interpreting/InterpretingPage')
 var Login = require( './test/pages/Login/Login')
 
 var homePage=require('./test/pages/Home/HomePage')
+var claimsPage=require('./test/pages/Claims/ClaimsPage')
 
 var myProfilePage= require('./test/pages/MyProfile/MyProfile')
 
@@ -256,6 +257,7 @@ exports.config = {
         global.interpretingPage=interpretingPage
         global.Login=Login
         global.homePage=homePage
+        global.claimsPage=claimsPage
         global.myProfilePage= myProfilePage
         
      },

@@ -66,7 +66,7 @@ When(/^I refresh the page$/, function(){
 })
 
 When(/^I set the contractor job status from "(.*)" to "(.*)"$/, function(original_jobstatus,new_jobstatus){
-    browser.pause(5000)
+    browser.pause(2000)
     action.elementExists(jobDetailsPage.contractorListTable)
     action.clickElement($('//div[@class="ContractorTable"]//a[text()="'+original_jobstatus+'"]'))
     browser.pause(5000)

@@ -84,7 +84,7 @@ Feature: Changing status of the booking for interpreters
   |job id    | original status   | contractor job status   | dropdownfilter |  job status   |  contractor name    |
   | 1578054  | Auto Notification | Voicemail Left          | Management     |   Unallocated |   Suzane            |
  
- @AllocatedStatus  
+ @AllocatedStatus  @NoShow @LateArrival
   Scenario Outline: Change the status to voicemail left
    And I search for created job request
    And I click on job id from interpreting job search results

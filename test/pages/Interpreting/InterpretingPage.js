@@ -13,7 +13,7 @@ module.exports={
 
     get searchJobInput()
     {
-        return $('//input[contains(@placeholder,"Search by Job I")]')
+        return $('//input[contains(@placeholder,"Search by")]')
     },
 
     get jobStatusDropdown()
@@ -23,7 +23,7 @@ module.exports={
 
     get jobIdColumnFromSearchResult()
     {
-        return $('//*[@data-loopedin-columnname="JobId" or @data-divname="JobIdCol"]')
+        return $('//*[@data-loopedin-columnname="JobId" or @data-divname="JobIdCol" or @data-columnname="JobId"]')
     },
 
     get jobIdsColumnFromSearchResult()

@@ -8,5 +8,9 @@ module.exports = {
     get logoutButton()
     {
         return $('//a[@title="Logout"]')
+    },
+
+    get claimsLink(){
+        return $('//a[text()="Claims"]')
     }
 }
