@@ -97,7 +97,7 @@ Feature: Contractor Management features
     | suzanehanna@hotmail.com | Test1      |  Suzane HANNA     |
 
 @Hepatitis
-   Scenario Outline: Upload statutory declaration document and verify
+   Scenario Outline: Upload hepatitis b vaccination document and verify
     When I login with "<username>" and "<password>"
     And I click "<contractor name>" user link
     And I upload hepatitis document
@@ -108,7 +108,7 @@ Feature: Contractor Management features
     | suzanehanna@hotmail.com | Test1      |  Suzane HANNA     |
 
 @WorkWithChildren
-   Scenario Outline: Upload statutory declaration document and verify
+   Scenario Outline: Upload working with children document and verify
     When I login with "<username>" and "<password>"
     And I click "<contractor name>" user link
     And I upload working with children document
@@ -119,7 +119,7 @@ Feature: Contractor Management features
     | suzanehanna@hotmail.com | Test1      |  Suzane HANNA     |
 
 @WorkEligibility
-   Scenario Outline: Upload statutory declaration document and verify
+   Scenario Outline: Upload work eligibility document and verify
     When I login with "<username>" and "<password>"
     And I click "<contractor name>" user link
     And I upload work eligibility document

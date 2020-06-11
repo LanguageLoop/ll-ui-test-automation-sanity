@@ -5,5 +5,8 @@ module.exports={
     CURRENT_JOB_ID:"",
     CONTRACTOR_NAME:"",
     CONTRACTOR_FEE:"",
-    CAMPUS_FEE:""
+    CAMPUS_FEE:"",
+    JOB_FINISH_TIME:"",
+    NEW_JOB_FINISH_TIME:"",
+    JOB_ACTUAL_MINUTES:""
 }

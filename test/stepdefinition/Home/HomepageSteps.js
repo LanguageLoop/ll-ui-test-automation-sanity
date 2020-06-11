@@ -9,6 +9,11 @@ When(/^I click Claims header link$/,   function(){
    browser.pause(2000)
 })
 
+When(/^I click account management link$/, function(){
+   action.clickElement(homePage.accountManagementLink)
+   browser.pause(2000)
+})
+
 When(/^I click logout button$/, function(){
    action.clickElement(homePage.logoutButton)
 })

@@ -14,6 +14,10 @@ var Login = require( './test/pages/Login/Login')
 
 var homePage=require('./test/pages/Home/HomePage')
 var claimsPage=require('./test/pages/Claims/ClaimsPage')
+var devPage=require('./test/pages/DevPage/DevPage')
+var campusDetailsPage=require('./test/pages/CampusDetails/CampusDetails')
+var accountManagementPage=require('./test/pages/AccountManagement/AccountManagementPage')
+
 
 var myProfilePage= require('./test/pages/MyProfile/MyProfile')
 
@@ -259,6 +263,10 @@ exports.config = {
         global.homePage=homePage
         global.claimsPage=claimsPage
         global.myProfilePage= myProfilePage
+        global.devPage= devPage
+        global.campusDetailsPage=campusDetailsPage
+        global.accountManagementPage=accountManagementPage
+
         
      },
     /**

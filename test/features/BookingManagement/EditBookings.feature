@@ -5,7 +5,7 @@ Feature: Edit existing booking
    Given the looped in login page is opened
    
 
- @EditUnallocatedJobRequest @TriggerEmailFields
+ @EditUnallocatedJobRequest @TriggerEmailFields1
   Scenario Outline: Edit a job request details fields that trigger emails 
    When I login with "<username>" and "<password>"
    And I create a new job request with minimal fields "<job notice length>"
@@ -24,7 +24,6 @@ Feature: Edit existing booking
    And I select "1" interpreters from the list
    And I click add interpreters button
    And I enter department "<department>"
-   And I enter your reference number "<reference number>"
    And I enter PO number "<PO Number>"
    And I click nes link
    And I enter nes first name "<nes first name>"
@@ -62,12 +61,14 @@ Feature: Edit existing booking
    And I click on job id from interpreting job search results
    And I switch to the job allocation window
    And I refresh the page
-   And I set the contractor job status from "<original job status>" to "<contractor job status>"
    And I click on accept metro service checkbox
+   And I refresh the page
+   And I set the contractor job status from "<original job status>" to "<contractor job status>"
    And I click on Edit button
    And I select language "<language>"
    And I select assignment type "<assignment type>"
    And I enter "<email>" email address
+   And I enter confirmation phone number "<confirmation phone number>"
    And I click save and proceed to summary button
    And I handle duplicate job warning window
    And I click yes to confirm editing job request 
@@ -78,12 +79,12 @@ Feature: Edit existing booking
    And The job id is added to the file
 
    Examples:
-  | original job status  |contractor job status| job notice length | username           | password | dropdownfilter | campus pin | Requester Name      | language   | assignment type      | date            | time  | duration | email        | job status  | contractor job status |
-  |  Auto Notification   | Allocated           | short notice      | LLAdmin@looped.in  | Uranus@6 | Management     |  33124     |  Automation Tester  |  AFRIKAANS | Zero min ongoing     | fortnight after | 09:30 | 4 hours  | hh@bb.com.au | Unallocated | Allocated             |
+  | original job status  |contractor job status| job notice length | username           | password | dropdownfilter | campus pin | Requester Name      | language   | assignment type      | date            | time  | duration | email        | job status  | contractor job status | confirmation phone number |
+  |  Auto Notification   | Allocated           | short notice      | LLAdmin@looped.in  | Uranus@6 | Management     |  33124     |  Automation Tester  |  AFRIKAANS | Zero min ongoing     | fortnight after | 09:30 | 4 hours  | hh@bb.com.au | Unallocated | Allocated             | 0399999997                |
 
  
  
-@EditAllocatedJobRequest @TriggerEmailFields
+@EditAllocatedJobRequest @TriggerEmailFields @Video
   Scenario Outline: Edit a allocated job request fields that trigger email to interpreter
    When I login with "<username>" and "<password>"
    And I create a new job request with minimal fields "<job notice length>"
@@ -92,8 +93,7 @@ Feature: Edit existing booking
    And I click on job id from interpreting job search results
    And I switch to the job allocation window
    And I refresh the page
-   And I set the contractor job status to "<contractor job status>"
-   And I click on accept metro service checkbox
+   And I set the contractor job status from "Auto Notification" to "<contractor job status>"
    And I click on Edit button
    And I click back link
    And I click on job details tab "<job detail>"
@@ -103,6 +103,7 @@ Feature: Edit existing booking
    And I select duration "<duration>"
    And I select NAATI type "<NAATI>"
    And I enter "<email>" email address
+   And I enter confirmation phone number "<confirmation phone number>"
    And I enter report to location "<report location>"
    And I enter report to name "<report name>"
    And I enter interpreter instructions "<instruction>"
@@ -116,8 +117,8 @@ Feature: Edit existing booking
    And The job id is added to the file
 
    Examples:
-   | job notice length | username           | password | dropdownfilter | campus pin | Requester Name      | language   | assignment type      | date            | time  | duration   | email        | job status  | contractor job status | NAATI          | gender preference | job detail          | new time  |  instruction  |  report location | report name     | address                 |
-   | short notice      | LLAdmin@looped.in  | Uranus@6 | Management     |  33124     |  Auto Tester        |  ALBANIAN  | Zero min ongoing     | fortnight after | 09:30 | 8 hours    | hh@bb.com.au | Unallocated | Allocated             | Non-Accredited |  Female           | Prebooked Video     | 11:30     |  have fun     |  New Zealand     | Interpreter A   | St Kilda VIC, Australia | 
-   | long notice       | LLAdmin@looped.in  | Uranus@6 | Management     |  33124     |  Auto Tester        |  ALBANIAN  | Zero min ongoing     | fortnight after | 09:30 | 8 hours  | hh@bb.com.au | Unallocated | Allocated             | Non-Accredited |  Female           | Prebooked Telephone | 11:30     |  have fun     |  New Zealand     | Interpreter A   | St Kilda VIC, Australia |
+   | job notice length | username           | password | dropdownfilter | campus pin | Requester Name      | language   | assignment type      | date            | time  | duration   | email        | job status  | contractor job status | NAATI          | gender preference | job detail          | new time  |  instruction  |  report location | report name     | address                 | confirmation phone number |
+   | short notice      | LLAdmin@looped.in  | Uranus@6 | Management     |  33124     |  Auto Tester        |  ALBANIAN  | Zero min ongoing     | fortnight after | 09:30 | 8 hours    | hh@bb.com.au | Unallocated | Allocated             | Non-Accredited |  Female           | Prebooked Video     | 11:30     |  have fun     |  New Zealand     | Interpreter A   | St Kilda VIC, Australia |  0399999997               |
+   | long notice       | LLAdmin@looped.in  | Uranus@6 | Management     |  33124     |  Auto Tester        |  ALBANIAN  | Zero min ongoing     | fortnight after | 09:30 | 8 hours    | hh@bb.com.au | Unallocated | Allocated             | Non-Accredited |  Female           | Prebooked Telephone | 11:30     |  have fun     |  New Zealand     | Interpreter A   | St Kilda VIC, Australia |  0399999997               |
 
 

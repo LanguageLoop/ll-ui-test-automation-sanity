@@ -27,10 +27,9 @@ When(/^I enter schedule "(.*)" and "(.*)"$/,function(dateStr,timeStr){
   action.enterDateAndTime(jobRequestPage.dateInput,jobRequestPage.timeInput,temp_date_time[0],temp_date_time[1])
 })
 
-When(/^I enter confirmation date and time$/, function(){
-  var temp_date=datetime.getConfirmationDate().toString()
-  var temp_time=datetime.getConfirmationTime().toString()
-  action.enterDateAndTime(jobRequestPage.confirmationDate,jobRequestPage.confirmationTime,temp_date,temp_time)
+When(/^I enter confirmation date and time "(.*)" and "(.*)"$/, function(notice,timeStr){
+  var temp_date_time=datetime.getConfirmationDateTime(notice,timeStr)
+  action.enterDateAndTime(jobRequestPage.confirmationDate,jobRequestPage.confirmationTime,temp_date_time[0],temp_date_time[1])
 })
 
 When(/^I select assignment type "(.*)"$/, function(assignmenttype){
@@ -204,6 +203,7 @@ When(/^I select confirmation mode "(.*)"$/, function(confirmationmode){
 })
 
 When(/^I enter confirmation phone number "(.*)"$/, function(phonenumber){
+  browser.pause(2000)
   action.enterValue(jobRequestPage.confirmPhoneNumberInput,phonenumber)
 })
 
@@ -215,6 +215,11 @@ When(/^I click on job details tab "(.*)"$/, function(jobdetail){
       break
     case "Prebooked Video":
       action.clickElement(jobRequestPage.prebookedVideoTab)
+      browser.pause(2000)
+      action.clickElement(jobRequestPage.videoLinkEditorInput)
+      browser.pause(2000)
+      browser.keys("Link to video")
+     // action.enterValue(jobRequestPage.videoLinkEditorInput,"Link to video")
       break
     case "Prebooked Telephone":
       action.clickElement(jobRequestPage.prebookedTelephoneTab)

@@ -24,7 +24,7 @@ Feature: Claims processing features
    | LLAdmin@looped.in  | Uranus@6    | Cancelled & Signed off |  13-05-2022 | 1537266 |
 
   @ProcessClaims @ProcessCampus @ProcessContractor
-  Scenario Outline: Process claims
+  Scenario Outline: Process claims - process contractor, campus
    When I login with "<username>" and "<password>"
    And I click Claims header link  
    And I close all special search criteria
@@ -48,7 +48,7 @@ Feature: Claims processing features
    | LLAdmin@looped.in  | Uranus@6    | Completed   |  13-05-2022 | 1560450 | Signed off   |
 
   @ProcessClaims @ProcessCampusAndContractor
-  Scenario Outline: Process claims
+  Scenario Outline: Process claims - process campus and contractor
    When I login with "<username>" and "<password>"
    And I click Claims header link  
    And I close all special search criteria
@@ -71,7 +71,7 @@ Feature: Claims processing features
    | LLAdmin@looped.in  | Uranus@6    | Completed   |  13-05-2022 | 1560450 | Signed off   |
 
   @ProcessClaims @ProcessCampusOnly
-  Scenario Outline: Process claims
+  Scenario Outline: Process claims -  process campus only
    When I login with "<username>" and "<password>"
    And I click Claims header link  
    And I close all special search criteria
@@ -93,8 +93,8 @@ Feature: Claims processing features
    | username           | password    | status      | to date     | job id  | claim status |
    | LLAdmin@looped.in  | Uranus@6    | Completed   |  13-05-2022 | 1560450 | Processed    |
 
-  @ProcessClaims @ReprocessCampusOnly
-  Scenario Outline: Process claims
+  @ProcessClaims @ReprocessCampusOnly 
+  Scenario Outline: Process claims - campus only
    When I login with "<username>" and "<password>"
    And I click Claims header link  
    And I close all special search criteria
@@ -119,7 +119,7 @@ Feature: Claims processing features
    | LLAdmin@looped.in  | Uranus@6    | Signed off  |  13-05-2022 | 1560450 | Signed off   |
 
   @ProcessClaims @ReprocessContractorOnly
-  Scenario Outline: Process claims
+  Scenario Outline: Process claims - contractor only
    When I login with "<username>" and "<password>"
    And I click Claims header link  
    And I close all special search criteria
@@ -144,7 +144,7 @@ Feature: Claims processing features
    | LLAdmin@looped.in  | Uranus@6    | Signed off  |  13-05-2022 | 1560450 | Signed off   |
 
   @ProcessClaims @ReprocessCampusAndContractor
-  Scenario Outline: Process claims
+  Scenario Outline: Process claims - reprocess campus and contractor
    When I login with "<username>" and "<password>"
    And I click Claims header link  
    And I close all special search criteria
@@ -167,3 +167,80 @@ Feature: Claims processing features
    Examples:
    | username           | password    | status      | to date     | job id  | claim status |
    | LLAdmin@looped.in  | Uranus@6    | Signed off  |  13-05-2022 | 1560450 | Signed off   |
+
+   @ProcessClaims @Extend
+  Scenario Outline: Process claims - extension
+   When I login with "<username>" and "<password>"
+   And I click Claims header link  
+   And I close all special search criteria
+   And I select "<status>" job status
+   And I get the campus fee for first job
+   And I get the contractor fee for first job
+   And I click on first job id from claims job list
+   And I switch to the claims window
+   Then I verify the contractor fee
+   And I verify the campus fee
+   And I get job finish time
+   And I get job actual minutes
+   And I enter new job finish time
+
+   Examples:
+   | username           | password    | status      | to date     | job id  | claim status |
+   | LLAdmin@looped.in  | Uranus@6    | Completed   |  13-05-2022 | 1560450 | Signed off   |
+
+ @BulkProcessClaims
+  Scenario Outline: Process claims - bulk claims
+   When I login with "<username>" and "<password>"
+   And I click Claims header link  
+   And I close all special search criteria
+   And I select "<status>" job status
+   And I select "2" jobs from search results
+   And I click bulk process claim button
+   And I confirm bulk claim process dialog
+   Then I confirm the bulk claim process success message appears
+
+   Examples:
+   | username           | password    | status      | to date     | job id  | claim status |
+   | LLAdmin@looped.in  | Uranus@6    | Completed   |  13-05-2022 | 1560450 | Signed off   |
+
+  @ProcessClaims @VicRoads
+  Scenario Outline: Process claims - vic roads
+   When I login with "<username>" and "<password>"
+   And I create a new vic roads job request with minimal fields "long notice"
+   And I click Interpreting header link
+   And I search for created job request
+   And I click on job id from interpreting job search results
+   And I switch to the job allocation window
+   And I refresh the page
+   And I search for contractor "Belthrand HABIYAKARE"
+   And I set the contractor job status from "Not eligible" to "Allocated"
+   And I navigate to dev page
+   And I set the job to "Complete"
+   And the looped in login page is opened
+   And I login with "<username>" and "<password>"
+   And I click Claims header link  
+   And I close all special search criteria
+   And I search for created job request
+   And I click advanced search link
+   And I select "Travel Fee" search criteria category
+   And I select ">" search criteria condition
+   And I select "<status>" job status
+   And I get the campus fee for first job
+   And I get the contractor fee for first job
+   And I click on first job id from claims job list
+   And I switch to the claims window
+   Then I verify the contractor fee
+   And I verify the campus fee
+   And I verify vic road travel fee
+   And I click process campus button
+   And I click process contractor button
+   And I click Claims header link
+   And I close all special search criteria
+   And I search for selected job request
+   And I select "Signed off" job status
+   Then I verify the job status is "<claim status>"
+   
+   Examples:
+   | username           | password    | status      | to date     | job id  | claim status | campus name            |
+   | LLAdmin@looped.in  | Uranus@6    | Completed   |  13-05-2022 | 1560450 | Signed off   | vic roads wodonga      |
+

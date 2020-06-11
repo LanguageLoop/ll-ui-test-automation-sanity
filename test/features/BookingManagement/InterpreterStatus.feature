@@ -30,6 +30,9 @@ Feature: Changing status of the booking for interpreters
    And I set the contractor job status from "Refused Job" to "Voicemail Left"
    Then I confirm the job status "Voicemail Left"
 
+   And I search for first contractor on list
+   And I refresh the page
+   And I search for first contractor on list
    And I set the contractor job status from "Voicemail Left" to "Allocated"
    And I set the contractor job status from "Allocated" to "Returned"
    And I search for first contractor on list
@@ -48,7 +51,7 @@ Feature: Changing status of the booking for interpreters
   | 1578054  | Auto Notification | Voicemail Left          | Management     |   Unallocated |   Suzane            |
  
  @UnavailableStatus  
-  Scenario Outline: Change the status to voicemail left
+  Scenario Outline: Change the status to unavailable 
    And I search for created job request
    And I click on job id from interpreting job search results
    And I switch to the job allocation window
@@ -67,12 +70,18 @@ Feature: Changing status of the booking for interpreters
    And I set the contractor job status from "Refused Job" to "Unavailable"
    Then I confirm the job status "Unavailable"
 
+   And I search for first contractor on list
+   And I refresh the page
+   And I search for first contractor on list
    And I set the contractor job status from "Unavailable" to "Allocated"
    And I set the contractor job status from "Allocated" to "Returned"
    And I search for first contractor on list
    And I set the contractor job status from "Returned" to "Unavailable"
    Then I confirm the job status "Unavailable"
 
+   And I search for first contractor on list
+   And I refresh the page
+   And I search for first contractor on list
    And I set the contractor job status from "Unavailable" to "Allocated"
    And I set the contractor job status from "Allocated" to "Transfer"
    And I search for first contractor on list
@@ -85,7 +94,7 @@ Feature: Changing status of the booking for interpreters
   | 1578054  | Auto Notification | Voicemail Left          | Management     |   Unallocated |   Suzane            |
  
  @AllocatedStatus  @NoShow @LateArrival
-  Scenario Outline: Change the status to voicemail left
+  Scenario Outline: Change the status to Allocated, Returned, Late Arrival No Show, Interpreter No Show
    And I search for created job request
    And I click on job id from interpreting job search results
    And I switch to the job allocation window

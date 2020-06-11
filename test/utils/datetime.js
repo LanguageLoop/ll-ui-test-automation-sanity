@@ -94,6 +94,10 @@ module.exports={
     {
         temp_date=new Date()
         temp_date.setDate(temp_date.getDate()+7)
+        if(temp_date.getDay()==0 || temp_date.getDay()==6)
+        {
+            temp_date.setDate(temp_date.getDate()+2)
+        }
         temp_date=temp_date.getDate()+"-"+(temp_date.getMonth()+1)+"-"+temp_date.getFullYear()
         return temp_date
     },
@@ -101,7 +105,11 @@ module.exports={
     getLongNoticeConfirmationDate()
     {
         temp_date=new Date()
-        temp_date.setDate(temp_date.getDate()+6)
+        temp_date.setDate(temp_date.getDate()+4)
+        if(temp_date.getDay()==0 || temp_date.getDay()==6)
+        {
+            temp_date.setDate(temp_date.getDate()+2)
+        }
         temp_date=temp_date.getDate()+"-"+(temp_date.getMonth()+1)+"-"+temp_date.getFullYear()
         return temp_date
     },
@@ -142,6 +150,10 @@ module.exports={
     {
         temp_date=new Date()
         temp_date.setDate(temp_date.getDate()+14)
+        if(temp_date.getDay()==0 || temp_date.getDay()==6)
+        {
+            temp_date.setDate(temp_date.getDate()+2)
+        }
         temp_date=temp_date.getDate()+"-"+(temp_date.getMonth()+1)+"-"+temp_date.getFullYear()
         return temp_date
     },
@@ -150,6 +162,10 @@ module.exports={
     {
         temp_date=new Date()
         temp_date.setDate(temp_date.getDate()+13)
+        if(temp_date.getDay()==0 || temp_date.getDay()==6)
+        {
+            temp_date.setDate(temp_date.getDate()+2)
+        }
         temp_date=temp_date.getDate()+"-"+(temp_date.getMonth()+1)+"-"+temp_date.getFullYear()
         return temp_date
     }

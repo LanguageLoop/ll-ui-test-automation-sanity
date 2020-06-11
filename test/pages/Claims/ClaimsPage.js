@@ -67,9 +67,54 @@ module.exports ={
 
     get reprocessCampusAndContractorConfirmYesButton(){
         return $('//*[text()="Reprocess Campus"]/../..//input[@value="Yes"]')
-    }
+    },
 
+    get campusCentreColumn(){
+        return $('//*[@data-columnname="CampusTitle"]')
+    },
 
+    get jobFinishedDateTimeInput(){
+        return $('//*[text()="Job Finished"]/../..//input')
+    },
 
+    get actualMinutesInput(){
+        return $('//*[text()="Actual Minute(s)"]/../..//input')
+    },
+
+    get selectJobsCheckboxes(){
+        return $$('//*[@data-columnname="Selected"]')
+    },
+
+    get bulkClaimProcessButton(){
+        return $('//input[@value="Bulk Process Campus(es)"]')
+    },
+
+    get bulkClaimConfirmOkButton(){
+        return $('//*[text()="Bulk Process Confirmation"]/../..//input[@value="Ok"]')
+    },
+
+    get bulkClaimProcessConfirmMessage(){
+        return $('//*[contains(text(),"succesfully processed")]')
+    },
+
+    get travelledKMInput(){
+        return $('//*[text()="Travelled KMs"]/..//input')
+    },
+
+    get travelFeeInput(){
+        return $('//*[text()="Travel KM Fee"]/..//input')
+    },
+
+    get advancedSearchLink(){
+        return $('//a[contains(text(),"Advanced search")]')
+    },
+
+    get advanceSearchCategoryDropdown(){
+        return $$('//select[contains(@name,"AdvanceSearchRule")]')[0]
+    },
+
+    get advanceSearchConditionDropdown(){
+        return $$('//select[contains(@name,"AdvanceSearchRule")]')[1]
+    },
 
 }

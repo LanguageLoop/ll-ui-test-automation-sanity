@@ -10,6 +10,11 @@ module.exports = {
         return $('//a[@title="Logout"]')
     },
 
+    get accountManagementLink()
+    {
+        return $('//a[text()="Account Management"]')
+    },
+
     get claimsLink(){
         return $('//a[text()="Claims"]')
     }

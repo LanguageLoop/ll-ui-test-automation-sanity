@@ -227,6 +227,10 @@ module.exports={
 
     get interpreterInstructionsInput(){
         return $('//*[text()="Interpreter Instructions"]/..//textarea')
+    },
+
+    get videoLinkEditorInput(){
+        return $$('//div[@role="presentation"]')[1]
     }
 
 

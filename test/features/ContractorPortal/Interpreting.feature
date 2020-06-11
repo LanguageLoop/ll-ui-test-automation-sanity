@@ -25,7 +25,7 @@ Feature: Interpreter features
    | suzanehanna@hotmail.com  | Test1    | Failed to Complete  |  13-05-2022 | 1537266 |
 
  @RejectJobs 
-  Scenario Outline: Search for jobs as an interpreter in various  job stages
+  Scenario Outline: Reject jobs
    When I login with "<contractor username>" and "<contractor password>"
    And I select "<dropdownfilter>" from the filter dropdown
    And I click on first job id from interpreting job list
@@ -40,7 +40,7 @@ Feature: Interpreter features
   
 
 @AcceptJobs 
-  Scenario Outline: Search for jobs as an interpreter in various  job stages
+  Scenario Outline: Accept jobs
    When I login with "<contractor username>" and "<contractor password>"
    And I select "<dropdownfilter>" from the filter dropdown
    And I click on first job id from interpreting job list
@@ -58,7 +58,7 @@ Feature: Interpreter features
   
  
  @UnavailableJobs 
-  Scenario Outline: Search for jobs as an interpreter in various  job stages
+  Scenario Outline: Unavailable for job
    When I login with "<contractor username>" and "<contractor password>"
    And I select "<dropdownfilter>" from the filter dropdown
    And I click on first job id from interpreting job list
