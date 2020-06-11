@@ -284,9 +284,8 @@ When(/^I enter field name "(.*)"$/, function(name){
     action.enterValue(campusDetailsPage.fieldNameInput,name)
 })
 
-When(/^I click add custom field button$/, function(){
-    browser.pause(2000)
-    action.clickElement(customizedFieldAddButton)
+When(/^I click custom field add button$/, function(){
+    action.clickElement(campusDetailsPage.customizedFieldAddButton)
     browser.pause(2000)
 })
 

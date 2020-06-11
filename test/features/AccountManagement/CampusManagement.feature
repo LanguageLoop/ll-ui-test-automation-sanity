@@ -219,7 +219,7 @@ Feature: Campus Management features
    And I click the first campus link from search results
    And I click add custom field button
    And I enter field name "<field name>"
-   And I click add custom field button
+   And I click custom field add button
    Then I verify custom field is added "<field name>"
    And I delete added custom field
 
