@@ -1,14 +1,18 @@
 
 
 When(/^I create a new job request with minimal fields "(.*)"$/,  function(notice){
-   createJobRequest(notice,"33124","Halfday","ARABIC","Certified Interpreter")
+   createJobRequest(notice,"33124","Halfday","ARABIC","Certified Interpreter","Automation Tester")
 })
 
 When(/^I create a new vic roads job request with minimal fields "(.*)"$/,  function(notice){
-  createJobRequest(notice,"15432","Truck Drive","KIRUNDI","Non-Accredited")
+  createJobRequest(notice,"15432","Truck Drive","Kirundi","Non-Accredited","Automation Tester")
 })
 
-function createJobRequest(notice, campuspin,assignmenttype,language,naatilevel)
+When(/^I create a new vic roads job request for bulk requests "(.*)"$/,  function(notice){
+  createJobRequest(notice,"10139","Car Drive","ARABIC","Paraprofessional","Automation Tester")
+})
+
+function createJobRequest(notice, campuspin,assignmenttype,language,naatilevel,requester)
 {
   var temp_date_time=datetime.getScheduleDateTime(notice,"9:30")
   var temp_conf_date_time= datetime.getConfirmationDateTime(notice,"9:30")
@@ -19,7 +23,7 @@ function createJobRequest(notice, campuspin,assignmenttype,language,naatilevel)
   action.clickElement(interpretingPage.newJobRequestButton)
 
   action.enterValueAndPressReturn(jobRequestPage.campusPinInput,campuspin)
-  action.enterValueAndPressReturn(jobRequestPage.requesterNameDropdown,"Automation Tester")
+  action.enterValueAndPressReturn(jobRequestPage.requesterNameDropdown,requester)
   action.clickElement(jobRequestPage.nextButton)
   action.enterValueAndPressReturn(jobRequestPage.languageDropdown,language)
   action.enterValueAndPressReturn(jobRequestPage.assignmentTypeDropdown,assignmenttype)

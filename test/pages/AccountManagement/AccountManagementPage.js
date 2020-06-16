@@ -1,5 +1,7 @@
 
 module.exports ={
+
+    //*** CAMPUS MANAGEMENT SECTION ******///
     get searchCampusInput()
     {
         return $('//input[contains(@placeholder,"Search by Campus Name")]')
@@ -111,8 +113,21 @@ module.exports ={
 
     get assignButton(){
         return $('//input[@value="Assign"]')
-    }
+    },
 
+    //*** CONTRACT MANAGEMENT SECTION ******///
+
+    get searchContractInput(){
+        return $('//input[contains(@placeholder,"Search by Contract")]')
+    },
+
+    get firstContract(){
+        return $('//table[contains(@id,"ContractTable")]//td')
+    },
+
+    get addContractLink(){
+        return $('//*[contains(text(),"Add contract")]')
+    }
 
 
 

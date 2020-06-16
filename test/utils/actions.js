@@ -39,7 +39,7 @@ module.exports={
 
     clickElement(elt)
     {
-        elt.waitForExist({timeout:5000})
+        elt.waitForExist({timeout:10000})
         elt.waitForClickable()
         elt.click() 
     },

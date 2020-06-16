@@ -191,13 +191,43 @@ Feature: Claims processing features
  @BulkProcessClaims
   Scenario Outline: Process claims - bulk claims
    When I login with "<username>" and "<password>"
+   And I create a new vic roads job request for bulk requests "long notice"
+   And I click Interpreting header link
+   And I search for created job request
+   And I click on job id from interpreting job search results
+   And I switch to the job allocation window
+   And I refresh the page
+   And I search for contractor "RAHEEM"
+   And I set the contractor job status from "Not eligible" to "Allocated"
+   And I navigate to dev page
+   And I set the job to "Complete"
+ # Get the rsc fee of the newly created job request
+   And the looped in login page is opened
+   And I login with "<username>" and "<password>"
    And I click Claims header link  
    And I close all special search criteria
    And I select "<status>" job status
-   And I select "2" jobs from search results
+   And I search for created job request
+   And I click on first job id from claims job list
+   And I switch to the claims window
+   And I get the rsc fee
+# perform bulk process action. one of the job request selected should the newly created job request
+   And I switch to the claims main window
+   And I close all special search criteria
+   And I select "<status>" job status
+   And I search for job request " "
+   And I select "1" jobs from search results
+   And I search for created job request
+   And I select "1" jobs from search results
    And I click bulk process claim button
    And I confirm bulk claim process dialog
    Then I confirm the bulk claim process success message appears
+
+   And I select "Processed" job status
+   And I search for created job request
+   And I click on first job id from claims job list
+
+
 
    Examples:
    | username           | password    | status      | to date     | job id  | claim status |

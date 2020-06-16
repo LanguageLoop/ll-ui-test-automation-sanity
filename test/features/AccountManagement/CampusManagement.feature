@@ -140,8 +140,8 @@ Feature: Campus Management features
    | username          | password   | campus id |
    | LLAdmin@looped.in |  Uranus@6  | 33124     | 
 
-   @ViewCampus  @NAATI1
-  Scenario Outline: View campus check travel rates section.
+   @ViewCampus  @AddNAATIOverride
+  Scenario Outline: Add naati override for campus.
    When I login with "<username>" and "<password>"
    And I click account management link 
    And I search for campus "<campus id>"
@@ -149,7 +149,7 @@ Feature: Campus Management features
    And I click add naati override button
    And I select service language "<language>"
    And I select service naati level "<naati level>"
-   And I click save override naati button
+   And I click save naati button
    Then I verify the override naati is added "<language>"
    And I delete added override naati
 

@@ -196,7 +196,7 @@ When(/^I select service naati level "(.*)"$/, function(level){
     action.selectTextFromDropdown(campusDetailsPage.naatiLevelDropdown,level)
 })
 
-When(/^I click save override naati button$/, function(){
+When(/^I click save naati button$/, function(){
     action.clickElement(campusDetailsPage.saveNAATIOverrideButton)
     browser.pause(2000)
 })

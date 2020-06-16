@@ -19,7 +19,7 @@ When(/^I close all special search criteria$/, function(){
 })
 
 When(/^I click on first job id from claims job list$/, function(){
-    browser.pause(2000)
+    browser.pause(4000)
     GlobalData.CURRENT_JOB_ID = interpretingPage.jobIdColumnFromSearchResult.getText()
     action.clickElement(interpretingPage.jobIdColumnFromSearchResult)
     browser.pause(5000)
@@ -27,6 +27,11 @@ When(/^I click on first job id from claims job list$/, function(){
 
   When(/^I switch to the claims window$/, function(){
     browser.switchWindow('Claim Details *')
+    browser.pause(3000)
+  })
+
+  When(/^I switch to the claims main window$/, function(){
+    browser.switchWindow('Claims*')
     browser.pause(3000)
   })
 
@@ -157,6 +162,17 @@ When(/^I select "(.*)" search criteria category$/, function(criteria){
 When(/^I select "(.*)" search criteria condition$/, function(condition){
     action.selectTextFromDropdown(claimsPage.advanceSearchConditionDropdown,condition)
     browser.pause(2000)
+})
+
+When(/^I get the rsc fee$/, function(){
+    browser.pause(4000)
+
+    GlobalData.RSC_FEE= claimsPage.rscFeeInput.getAttribute("value")
+})
+
+Then(/^I verify rsc fee is not changed$/, function(){
+    console.log("VIHARI ******** "+GlobalData.RSC_FEE)
+    chai.expect(GlobalData.RSC_FEE==claimsPage.rscFeeInput.getAttribute("value")).to.be.true
 })
 
 Then(/^I confirm the bulk claim process success message appears$/, function(){

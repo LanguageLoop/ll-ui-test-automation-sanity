@@ -17,7 +17,7 @@ var claimsPage=require('./test/pages/Claims/ClaimsPage')
 var devPage=require('./test/pages/DevPage/DevPage')
 var campusDetailsPage=require('./test/pages/CampusDetails/CampusDetails')
 var accountManagementPage=require('./test/pages/AccountManagement/AccountManagementPage')
-
+var contractManagementPage= require('./test/pages/ContractManagement/ContractManagement')
 
 var myProfilePage= require('./test/pages/MyProfile/MyProfile')
 
@@ -266,6 +266,7 @@ exports.config = {
         global.devPage= devPage
         global.campusDetailsPage=campusDetailsPage
         global.accountManagementPage=accountManagementPage
+        global.contractManagementPage=contractManagementPage
 
         
      },

@@ -33,6 +33,10 @@ module.exports ={
         return $('//label[text()="Contractor Payment"]/..//input')
     },
 
+    get rscFeeInput(){
+        return $('//label[text()="RSC Fee"]/..//input')
+    },
+
     get processCampusButton(){
         return $('//input[@value="Process Campus"]')
     },

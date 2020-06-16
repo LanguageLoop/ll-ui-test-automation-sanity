@@ -8,5 +8,7 @@ module.exports={
     CAMPUS_FEE:"",
     JOB_FINISH_TIME:"",
     NEW_JOB_FINISH_TIME:"",
-    JOB_ACTUAL_MINUTES:""
+    JOB_ACTUAL_MINUTES:"",
+    CONTRACT_TITLE:"",
+    RSC_FEE:""
 }
