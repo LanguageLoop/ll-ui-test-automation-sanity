@@ -195,7 +195,7 @@ Feature: Campus Management features
    | LLAdmin@looped.in |  Uranus@6  | 32548     | GERMAN - Pre-booked Video    |
 
   @ViewCampus  @CommonInstruction
-  Scenario Outline: View campus check travel rates section.
+  Scenario Outline: View campus check common instructions section.
    When I login with "<username>" and "<password>"
    And I click account management link 
    And I search for campus "<campus id>"

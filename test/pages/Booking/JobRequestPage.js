@@ -194,7 +194,7 @@ module.exports={
     },
 
     get commonInstructionCheckBox(){
-        return $('//*[text()="New Campus Common Instructions"]/..//input')
+        return $('//*[text()="Common Instructions & Language Notes"]/..//input')
     },
 
     get addJobFileLink(){

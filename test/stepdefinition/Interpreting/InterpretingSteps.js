@@ -1,6 +1,7 @@
 
 
 When(/^I select "(.*)" from the filter dropdown$/,   function(listitem){
+  browser.pause(2000)
   action.selectTextFromDropdown(interpretingPage.filterDropdown,listitem)
   browser.pause(2000)
 })

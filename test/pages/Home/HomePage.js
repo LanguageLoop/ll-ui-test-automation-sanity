@@ -17,5 +17,9 @@ module.exports = {
 
     get claimsLink(){
         return $('//a[text()="Claims"]')
+    },
+
+    get contractorEngagementLink(){
+        return $('//a[text()="Contractor Engagement"]')
     }
 }

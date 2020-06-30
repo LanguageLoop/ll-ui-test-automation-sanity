@@ -205,6 +205,6 @@ Feature: Create new booking for Interpreters
    Then Bookings created confirmation message is displayed
 
    Examples:
-   | job notice length | username           | password | dropdownfilter | campus pin | Requester Name      | language   | assignment type   | date         | time  | duration | email        | job status  |
-   | long notice       | LLAdmin@looped.in  | Uranus@6 | Management     |  33124     |  Automation Tester  |  ARABIC    |  Zero min ongoing | short notice | 09:30 | 4 hours  | hh@bb.com.au | Unallocated |
+   | job notice length | username           | password | dropdownfilter | campus pin | Requester Name      | language   | assignment type           | date         | time  | duration | email        | job status  |
+   | long notice       | LLAdmin@looped.in  | Uranus@6 | Management     |  33124     |  Automation Tester  |  ARABIC    |  Zero min ongoing         | short notice | 09:30 | 4 hours  | hh@bb.com.au | Unallocated |
   

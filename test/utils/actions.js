@@ -32,7 +32,7 @@ module.exports={
         elt.click()
         browser.pause(1000)
         browser.keys(value)
-        browser.pause(1000)
+        browser.pause(2000)
         browser.keys('Enter')
         browser.pause(1000)
     },
@@ -88,13 +88,16 @@ module.exports={
 
     enterLocation(locationField,location)
     {
+       
         browser.pause(1000)
         this.clickElement(locationField)
         this.enterValue(locationField,location)
-        browser.pause(1000)
-        browser.keys("ArrowDown")
-        browser.pause(1000)
-        browser.keys("Enter")
+        browser.pause(3000)
+        var temp= $$('//*[@class="pac-matched"]')[0] 
+        temp.click()
+      //  browser.keys("ArrowDown")
+        browser.pause(2000)
+       // browser.keys("Enter")
         browser.pause(2000)
     }
 

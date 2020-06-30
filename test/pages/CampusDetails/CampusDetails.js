@@ -283,7 +283,7 @@ module.exports ={
 
     get commonInstructionTableRows()
     {
-        return $$('//*[contains(text(),"Common Instructions Override")]/../../..//table//tr')
+        return $$('//*[contains(text(),"Common Instructions")]/../../..//table//tr')
     },
 
     get removeCommonInstructionButton()
@@ -303,7 +303,7 @@ module.exports ={
 
     get commonInstructionAddButton()
     {
-        return $('//*[text()="Manage Common Instruction"]/../..//input[@value="Add"]')
+        return $('//*[text()="Manage Common Instruction"]/../..//input[@value="Add" or @value="Save"]')
     },
 
     get customizedFieldAddLink()

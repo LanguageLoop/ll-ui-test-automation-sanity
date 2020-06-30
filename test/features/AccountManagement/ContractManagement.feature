@@ -42,21 +42,76 @@ Feature: Contract Management features
    | username          | password   | contract title      | contract number | payment terms     | commencement date | completion date |
    | LLAdmin@looped.in |  Uranus@6  | Automation Contract |  234234R        |  Automation terms |  today            |  20-12-2033     |
 
-  # @AddMinimumNAATILevel
-  # Scenario Outline: Add minium naati level for contract
-  # When I login with "<username>" and "<password>"
-  # And I click account management link 
+   @AddMinimumNAATILevel
+   Scenario Outline: Add minium naati level for contract
+   When I login with "<username>" and "<password>"
+   And I click account management link 
   
-  # And I search for contract title "<contract title>"
-  # And I click the first contract link from search results
+   And I search for contract title "<contract title>"
+   And I click the first contract link from search results
   
-  # And I click add minimum naati level
-  # And I select service language "<language>"
-  # And I select service naati level "<naati level>"
-  # And I click save naati button 
+   And I click add minimum naati level
+   And I select service language "<language>"
+   And I select service naati level "<naati level>"
+   And I click save naati button 
   # Then I verify the minimum naati is added "<language>"
-  # And I delete added miniumum naati
+   #And I delete added miniumum naati
 
-   # Examples: 
-   #| username          | password   | contract title                      | language                     | naati level |
-   #| LLAdmin@looped.in |  Uranus@6  | Victorian Government - Bill To test | AFRIKAANS - Pre-booked Video | Recognised  |
+    Examples: 
+   | username          | password   | contract title                      | language                     | naati level |
+   | LLAdmin@looped.in |  Uranus@6  | Victorian Government - Bill To test | AFRIKAANS - Pre-booked Video | Recognised  |
+
+   @AddCommonInstructions 
+   Scenario Outline: Add common instructions for contract
+   When I login with "<username>" and "<password>"
+   And I click account management link 
+  
+   And I search for contract title "<contract title>"
+   And I click the first contract link from search results
+  
+   And I click add common instructions button
+   And I enter common instruction title "<title>"
+   And I enter common instruction description "<description>"
+   And I click add common instruction button
+   Then I verify common instruction title and description "<title>","<description>"
+
+    Examples: 
+   | username          | password   | contract title                      | title              | description         |
+   | LLAdmin@looped.in |  Uranus@6  | Victorian Government - Bill To test | Automation Testing | simple description  |
+
+   @AddContractRate
+   Scenario Outline: Add contract rates
+   When I login with "<username>" and "<password>"
+   And I click account management link 
+  
+   And I search for contract title "<contract title>"
+   And I click the first contract link from search results
+  
+   And I click add contract rates
+   And I enter contract rate details "<rate name>","<hour>","<language>","<contract min period>","<contract min rate>","<contract ongoing>","<contractor min period>","<contractor min rate>","<contractor ongoing>"
+   Then I verify contract rate is added
+
+    Examples: 
+   | username          | password   |language                          | contract title                     | rate name       | hour             | contract min period | contract min rate | contract ongoing | contractor min period | contractor min rate | contractor ongoing|
+   | LLAdmin@looped.in |  Uranus@6  | All Languages - Pre-booked Video | Victorian Government - Bill To test| Automation Rate | Business Hour A  |    2                |    200            |  15              |      2                |     250             |     15            |    
+
+    
+   @AddAssignmentType
+   Scenario Outline: Add assignment types for contract
+   When I login with "<username>" and "<password>"
+   And I click account management link 
+  
+   And I search for contract title "<contract title>"
+   And I click the first contract link from search results
+  
+   And I click add assignment type
+   And I enter assignment type label "<assignment label> "
+  
+   And I click add assignment button
+   Then I verify assignment type is added
+   And I delete assignment type
+
+    Examples: 
+   | username          | password   | contract title                      | assignment label      | description         |
+   | LLAdmin@looped.in |  Uranus@6  | Victorian Government - Bill To test | Automation Assignment | simple description  |
+          

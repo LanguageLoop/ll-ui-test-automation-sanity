@@ -68,25 +68,110 @@ When(/^I click add minimum naati level$/, function(){
     browser.pause(2000)
 })
 
+When(/^I click add contract rates$/, function(){
+    browser.pause(2000)
+    action.clickElement(contractManagementPage.addContractRateButton)
+})
+
+When(/^I enter contract rate details "(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)"$/, function(name,businesshour,language,contractminperiod,contractminrate,contractongoing,contractorminperiod,contractorminrate,contractorongoing){
+    browser.pause(2000)
+    name = name + (Math.floor(Math.random() * 100000) + 1).toString()
+    GlobalData.CONTRACT_NAME= name
+    action.enterValue(contractManagementPage.contractNameInput, name)
+    action.selectTextFromDropdown(contractManagementPage.contractBusinessHour,businesshour)
+   // action.selectTextFromDropdown(contractManagementPage.contractLanguageDropdown, language)
+   action.enterValueAndPressReturn(contractManagementPage.contractLanguageDropdown, language)
+
+    action.clickElement(contractManagementPage.scheduleSegment)
+
+    //contract section
+    action.enterValue(contractManagementPage.minimumPeriodContract, contractminperiod)
+    action.enterValue(contractManagementPage.minimumRateContract, contractminrate)
+    action.enterValue(contractManagementPage.ongoingPeriodContract, contractongoing)
+
+    //contractor section
+    action.enterValue(contractManagementPage.minimumPeriodContractor, contractorminperiod)
+    action.enterValue(contractManagementPage.minimumRateContractor, contractorminrate)
+    action.enterValue(contractManagementPage.ongoingPeriodContractor, contractorongoing)
+
+    //click save button
+    action.clickElement(contractManagementPage.saveContractRateButton)
+    browser.pause(2000)
+})
+
+When(/^I click add assignment type$/, function(){
+    browser.pause(2000)
+    action.clickElement(contractManagementPage.addAssignmentTypeLink)
+})
+
+When(/^I enter assignment type label "(.*)"$/, function(label){
+    label = label + (Math.floor(Math.random() * 100000) + 1).toString()
+    GlobalData.ASSIGNMENT_LABEL= label
+    browser.pause(2000)
+    action.enterValue(contractManagementPage.assignmentLabelInput,label)
+})
+
+When(/^I click add assignment button$/, function(){
+    browser.pause(2000)
+    action.clickElement(contractManagementPage.addAssignmentTypeButton)
+})
+
+Then(/^I verify assignment type is added$/, function(){
+    browser.pause(2000)
+    var tlength= contractManagementPage.assignmentTypeTableRows.length
+    var elt = contractManagementPage.assignmentTypeTableRows[tlength-3].$$('td')[0].$('a').getText()
+    chai.expect(elt==GlobalData.ASSIGNMENT_LABEL).to.be.true
+
+})
+
+Then(/^I delete assignment type$/, function(){
+    var tlength= contractManagementPage.assignmentTypeTableRows.length
+    var dlength= contractManagementPage.disableLink.length
+
+    contractManagementPage.assignmentTypeTableRows[tlength-3].$('label').click()
+    browser.pause(3000)
+    contractManagementPage.disableLink[dlength-1].click()
+   // contractManagementPage.assignmentTypeTableRows[tlength-3].$('//a[text()="Disable"]').
+    browser.pause(3000)
+  //  browser.positionClick(0)
+
+})
+
+Then(/^I verify contract rate is added$/, function(){
+    browser.pause(2000)
+  // action.clickElement(contractManagementPage.prebookedVideoContractRates)
+    var elt = $('//*[contains(text(),"Contract Rates Schedules")]/../../..//*[contains(text(),"Pre-booked Video")]/../..//table').$('//a[text()="'+GlobalData.CONTRACT_NAME+'"]')
+})
+
 Then(/^I verify the minimum naati is added "(.*)"$/, function(naati){
     //click on the last added item from the override naati section
+    browser.refresh()
+    browser.pause(3000)
     var naatiLength= contractManagementPage.naatiMinimumLevelItems.length
     action.clickElement(contractManagementPage.naatiMinimumLevelItems[naatiLength-1])
      browser.pause(3000)
     // verify if the added naati item is present
     var tlength= contractManagementPage.naatiMinimumLevelTables.length
-    var temp =contractManagementPage.naatiMinimumLevelTables[tlength-1].$('//td').getText()
+    var temp =contractManagementPage.naatiMinimumLevelTables[tlength-1].$('//a').getText()
+
     chai.expect(naati.includes(temp)).to.be.true
     browser.pause(3000)
 })
 
 Then(/^I delete added miniumum naati$/, function(){
     browser.pause(2000)
+   
     var tlength= contractManagementPage.naatiMinimumLevelTables.length
-    console.log("DHAWAN :: "+tlength +" ::: "+contractManagementPage.naatiMinimumLevelTables[tlength-1].$('//tr//label').getAttribute("id"))
-    action.clickElement(contractManagementPage.naatiMinimumLevelTables[tlength-1].$('//tr//td[3]'))
-    browser.pause(2000)
-    action.clickElement(contractManagementPage.naatiMinimumLevelTables[tlength-1].$('//*[contains(text(),"Remove")]'))
+    console.log("LANG TABLE INDEX : "+contractManagementPage.naatiMinimumLevelTables[tlength-2].$$('//tbody//td')[0].getText())
+    console.log("DHAWAN :: "+tlength +" ::: "+contractManagementPage.naatiMinimumLevelTables[tlength-1].$('//div[contains(@id,"wtcontAction")]').getAttribute("class"))
+   // action.clickElement(contractManagementPage.naatiMinimumLevelTables[tlength-1].$('//div[contains(@id,"wtcontAction")]'))
+   // contractManagementPage.naatiMinimumLevelTables[tlength-1].$$('//tbody//td')[1].click()
+    browser.pause(3000)
+    contractManagementPage.naatiMinimumLevelTables[1].$$('//tbody//tr')[1].$$('td')[2].click()
+    contractManagementPage.naatiMinimumLevelTables[1].$$('//tbody//tr')[1].$$('td')[2].moveTo()
+   // contractManagementPage.naatiMinimumLevelTables[tlength-1].$$('//tbody//td')[2].$('//div[contains(@id,"wtcontAction")]').doubleClick()
+    browser.pause(5000)
+    action.clickElement(contractManagementPage.naatiMinimumLevelTables[1].$('tbody').$('//*[contains(text(),"Remove")]'))
     browser.pause(2000)
    
 })

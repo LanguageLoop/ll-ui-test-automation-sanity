@@ -10,5 +10,8 @@ module.exports={
     NEW_JOB_FINISH_TIME:"",
     JOB_ACTUAL_MINUTES:"",
     CONTRACT_TITLE:"",
-    RSC_FEE:""
+    RSC_FEE:"",
+    CONTRACT_RATE_NAME:"",
+    ASSIGNMENT_LABEL:"",
+    NEW_CONTRACTOR_NAME:""
 }

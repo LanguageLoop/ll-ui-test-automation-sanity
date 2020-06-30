@@ -18,6 +18,7 @@ var devPage=require('./test/pages/DevPage/DevPage')
 var campusDetailsPage=require('./test/pages/CampusDetails/CampusDetails')
 var accountManagementPage=require('./test/pages/AccountManagement/AccountManagementPage')
 var contractManagementPage= require('./test/pages/ContractManagement/ContractManagement')
+var contractorEngagementPage= require('./test/pages/ContractorEngagement/ContractorEngagement')
 
 var myProfilePage= require('./test/pages/MyProfile/MyProfile')
 
@@ -89,7 +90,7 @@ exports.config = {
     // and 30 processes will get spawned. The property handles how many capabilities
     // from the same test should run tests.
     //
-    maxInstances: 1,
+    maxInstances: 5,
     //
     // If you have trouble getting all important capabilities together, check out the
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
@@ -267,6 +268,7 @@ exports.config = {
         global.campusDetailsPage=campusDetailsPage
         global.accountManagementPage=accountManagementPage
         global.contractManagementPage=contractManagementPage
+        global.contractorEngagementPage= contractorEngagementPage
 
         
      },
