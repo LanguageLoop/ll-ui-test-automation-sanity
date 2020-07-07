@@ -194,7 +194,7 @@ exports.config = {
         profile: [],        // <string[]> (name) specify the profile to use
         strict: false,      // <boolean> fail if there are any undefined or pending steps
         tagExpression:parameters.tags ,  // <string> (expression) only execute the features or scenarios with tags matching the expression
-        timeout: 60000,     // <number> timeout for step definitions
+        timeout: 200000,     // <number> timeout for step definitions
         ignoreUndefinedDefinitions: false, // <boolean> Enable this config to treat undefined definitions as warnings.
         retry: 0
     },
@@ -320,7 +320,7 @@ exports.config = {
         const path = require('path');
         const moment = require('moment');
 
-        // if test passed, ignore, else take and save screenshot.
+       // if test passed, ignore, else take and save screenshot.
         if (!passed) {
         const timestamp = moment().format('YYYYMMDD-HHmmss.SSS');
         const filepath = path.join('reports/html-reports/screenshots/', timestamp + '.png');

@@ -4,7 +4,7 @@ module.exports={
     enterValue(elt, value)
     {
 
-        elt.waitForExist()
+        elt.waitForDisplayed()
         elt.waitForEnabled()
         elt.waitForClickable()
         elt.click()
@@ -17,7 +17,7 @@ module.exports={
     clearValue(elt)
     {
         browser.pause(1000)
-        elt.waitForExist()
+        elt.waitForDisplayed()
         elt.waitForEnabled()
         elt.waitForClickable()
         elt.click()
@@ -26,7 +26,7 @@ module.exports={
 
     enterValueAndPressReturn(elt, value)
     {
-        elt.waitForExist()
+        elt.waitForDisplayed()
         elt.waitForEnabled()
         elt.waitForClickable()
         elt.click()
@@ -39,14 +39,14 @@ module.exports={
 
     clickElement(elt)
     {
-        elt.waitForExist({timeout:10000})
+        elt.waitForDisplayed({timeout:10000})
         elt.waitForClickable()
         elt.click() 
     },
 
     doubleClickElement(elt)
     {
-        elt.waitForExist({timeout:5000})
+        elt.waitForDisplayed({timeout:5000})
         elt.waitForClickable()
         elt.doubleClick() 
     },
@@ -54,7 +54,7 @@ module.exports={
     selectTextFromDropdown(elt,text)
     {
         browser.pause(1000)
-        elt.waitForExist()
+        elt.waitForDisplayed()
         elt.waitForEnabled()
         elt.waitForClickable()
         elt.selectByVisibleText(text) 
@@ -62,7 +62,7 @@ module.exports={
 
     elementExists(elt)
     {
-       return elt.waitForExist({timeout:6000})
+       return elt.waitForDisplayed({timeout:5000})
     },
 
     uploadFile(elt,filepath)

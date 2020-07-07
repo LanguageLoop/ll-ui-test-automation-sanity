@@ -5,7 +5,7 @@ Feature: Create new booking for Interpreters
    Given the looped in login page is opened
   
 
-   @CreateJobRequest
+   @CreateJobRequest1
    Scenario Outline: Create Booking with minimal required field values
    When I login with "<username>" and "<password>"
    And I click Interpreting header link
@@ -169,6 +169,7 @@ Feature: Create new booking for Interpreters
   @CreateJobRequest @DuplicateJob
   Scenario Outline: Create a job request as a duplicate of another job
    When I login with "<username>" and "<password>"
+   And I click Interpreting header link
    And I create a new job request with minimal fields "<job notice length>"
    And I click Interpreting header link
    And I search for created job request

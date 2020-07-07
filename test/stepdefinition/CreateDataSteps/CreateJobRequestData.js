@@ -21,39 +21,38 @@ function createJobRequest(notice, campuspin,assignmenttype,language,naatilevel,r
   action.clickElement(homePage.InterpretingLink)
   action.selectTextFromDropdown(interpretingPage.filterDropdown,"Management")
   action.clickElement(interpretingPage.newJobRequestButton)
-
   action.enterValueAndPressReturn(jobRequestPage.campusPinInput,campuspin)
   action.enterValueAndPressReturn(jobRequestPage.requesterNameDropdown,requester)
   action.clickElement(jobRequestPage.nextButton)
+
   action.enterValueAndPressReturn(jobRequestPage.languageDropdown,language)
+
   action.enterValueAndPressReturn(jobRequestPage.assignmentTypeDropdown,assignmenttype)
   action.selectTextFromDropdown(jobRequestPage.naatiLevelDropdown, naatilevel)
-  action.enterDateAndTime(jobRequestPage.dateInput,jobRequestPage.timeInput, temp_date_time[0],temp_date_time[1] )   
-  action.enterDateAndTime(jobRequestPage.confirmationDate,jobRequestPage.confirmationTime,temp_conf_date_time[0],temp_conf_date_time[1])
-  browser.pause(2000)
-  browser.keys('Tab')
-  browser.pause(2000)
+  action.enterDateAndTime(jobRequestPage.dateInput,jobRequestPage.timeInput, temp_date_time[0],temp_date_time[1] ) 
+  
   action.enterValue(jobRequestPage.confirmEmailInput,"hh@ll.com.au")
+ // browser.pause(4000)
 
+  action.enterDateAndTime(jobRequestPage.confirmationDate,jobRequestPage.confirmationTime,temp_conf_date_time[0],temp_conf_date_time[1])
+ // browser.keys('Tab')
+  browser.pause(2000)
   action.clickElement(jobRequestPage.saveAndProceedToSummaryButton)
   browser.pause(2000)
 
-  try{
-    jobRequestPage.continueButton.waitForExist({timeout:5000})
+  if(action.elementExists(jobRequestPage.continueButton))
+  {
     jobRequestPage.continueButton.click()
-  
   }
-catch(Err)
-   {
-    }
   browser.pause(2000)
+
   action.clickElement(jobRequestPage.submitButton)
-  jobRequestPage.successMessageText.waitForExist({timeout:3000})
-  browser.waitUntil(
-      () => jobRequestPage.successMessageText.getText().includes("The Job#"), 20000, 'link not visible'
+ jobRequestPage.successMessageText.waitForExist({timeout:6000})
+browser.waitUntil(
+      () => jobRequestPage.successMessageText.getText().includes("The Job#"), 5000, 'link not visible'
   );
   var jobNumber = jobRequestPage.successMessageText.getText().match(/\d+/g).map(Number)
-
   GlobalData.CURRENT_JOB_ID=jobNumber
+
 
 }
