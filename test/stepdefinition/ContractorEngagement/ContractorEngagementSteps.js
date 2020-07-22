@@ -8,7 +8,6 @@ When(/^I enter contractor details "(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*
         name = name + (Math.floor(Math.random() * 1000000) + 1).toString()
         email = email + (Math.floor(Math.random() * 1000000) + 1).toString()
         mob = "0"+(400000000+(Math.floor(Math.random() * 100000000) + 1)).toString()
-        console.log("LAXMAN $$$"+mob)
         GlobalData.NEW_CONTRACTOR_NAME= name     
     browser.pause(2000)
 

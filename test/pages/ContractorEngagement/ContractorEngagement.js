@@ -33,6 +33,11 @@ module.exports = {
         return $('//*[text()="My Details"]/../..//*[text()="Mobile"]/..//input')
     },
 
+    get telephoneInput(){
+        return $('//*[text()="My Details"]/../..//*[text()="Telephone"]/..//input')
+    },
+
+
     get countryOfBirthDropdown(){
         return $('//*[text()="My Details"]/../..//*[text()="Country of Birth"]/..//select')
     },
@@ -46,8 +51,27 @@ module.exports = {
         return $('//*[text()="My Details"]/../..//*[text()="Contact Preference"]/..//*[text()="Email"]/..//input')
     },
 
+    get smsPreferenceCheckbox()
+    {
+        return $('//*[text()="My Details"]/../..//*[text()="Contact Preference"]/..//*[text()="SMS"]/..//input')
+    },
+
+    get gstRegisteredCheckbox()
+    {
+        return $('//*[text()="My Details"]/../..//*[text()="Contractor is registered for GST"]/..//input')
+    },
+
+    get regionalCheckbox()
+    {
+        return $('//*[text()="My Details"]/../..//*[text()="Regional Contractor"]/..//*[text()="SMS"]/..//input')
+    },
+
     get dateOfBirthDropdown(){
         return $('//*[text()="My Details"]/../..//*[text()="DOB"]/..//input')
+    },
+
+    get activationDateInput(){
+        return $('//*[text()="My Details"]/../..//*[text()="Start Activation Date Time"]/..//input')  
     },
 
     get addressInput(){
@@ -119,6 +143,27 @@ module.exports = {
     get naatiAccreditationDropdown(){
         return $('//*[contains(text(),"NAATI Accreditation")]/../..//*[text()="NAATI Accreditation"]/..//select')
     },
+
+    get checkNAATIButton(){
+        return $('//*[contains(text(),"NAATI Accreditation")]/../..//input[@value="Validate"]')
+    },
+
+    get naatiNumberInput(){
+        return $('//*[contains(text(),"NAATI Accreditation")]/../..//*[text()="NAATI Number/Practitioner ID"]/..//input')
+        
+    },
+
+    get dateIssuedInput(){
+        return $('//*[contains(text(),"NAATI Accreditation")]/../..//*[text()="Date Issued"]/..//input')
+        
+    },
+
+    get dateOfExpiryInput(){
+        return $('//*[contains(text(),"NAATI Accreditation")]/../..//*[text()="Expiry Date"]/..//input')
+        
+    },
+
+
 
     get saveAndCloseButton(){
         return $('//*[contains(text(),"NAATI Accreditation")]/../..//input[@value="Save & Close"]')
@@ -204,12 +249,24 @@ module.exports = {
         return $('//*[text()="Add clearance"]/../..//*[text()="Card type"]/..//select')
     },
 
+    get stateDropdown(){
+        return $('//*[text()="Add clearance"]/../..//*[text()="State of issue"]/..//select')
+    },
+
     get documentReceivedDate(){
         return $('//*[text()="Add clearance"]/../..//*[text()="Document Received Date"]/..//input')
     },
 
     get documentExpiryDate(){
         return $('//*[text()="Add clearance"]/../..//*[text()="Date of expiry"]/..//input')
+    },
+
+    get cardNumberInput(){
+        return $('//*[text()="Add clearance"]/../..//*[text()="Card number"]/..//input')
+    },
+
+    get policeDateInput(){
+        return $('//*[text()="Add clearance"]/../..//*[text()="Date of issue"]/..//input')
     },
 
     get saveClearanceButton(){

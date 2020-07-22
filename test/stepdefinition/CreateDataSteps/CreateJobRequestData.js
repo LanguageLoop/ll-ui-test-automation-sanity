@@ -40,9 +40,12 @@ function createJobRequest(notice, campuspin,assignmenttype,language,naatilevel,r
   action.clickElement(jobRequestPage.saveAndProceedToSummaryButton)
   browser.pause(2000)
 
-  if(action.elementExists(jobRequestPage.continueButton))
+  try{
+    jobRequestPage.continueButton.waitForExist({timeout:3000})
+    action.clickElement(jobRequestPage.continueButton)
+  }
+  catch(Err)
   {
-    jobRequestPage.continueButton.click()
   }
   browser.pause(2000)
 

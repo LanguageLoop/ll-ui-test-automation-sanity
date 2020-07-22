@@ -1,6 +1,6 @@
 
 When(/^I navigate to dev page$/, function(){
-    browser.url("https://li-uat.languageloop.com.au/DeveloperScreen/Home.aspx")
+    browser.url("https://li-test.languageloop.com.au/DeveloperScreen/Home.aspx")
 })
 
 When(/^I set the job to "(.*)"$/, function(status){
