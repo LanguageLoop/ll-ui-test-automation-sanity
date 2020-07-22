@@ -4,10 +4,11 @@ module.exports={
     enterValue(elt, value)
     {
 
-        elt.waitForExist()
+        elt.waitForDisplayed()
         elt.waitForEnabled()
         elt.waitForClickable()
         elt.click()
+        this.clearValue(elt)
         browser.pause(1000)
         elt.setValue(value)
         browser.pause(1000)
@@ -16,7 +17,7 @@ module.exports={
     clearValue(elt)
     {
         browser.pause(1000)
-        elt.waitForExist()
+        elt.waitForDisplayed()
         elt.waitForEnabled()
         elt.waitForClickable()
         elt.click()
@@ -25,28 +26,35 @@ module.exports={
 
     enterValueAndPressReturn(elt, value)
     {
-        elt.waitForExist()
+        elt.waitForDisplayed()
         elt.waitForEnabled()
         elt.waitForClickable()
         elt.click()
+        browser.pause(1000)
         browser.keys(value)
         browser.pause(2000)
         browser.keys('Enter')
         browser.pause(1000)
-        //browser.keys('Enter')
-
     },
 
     clickElement(elt)
     {
-        elt.waitForExist({timeout:5000})
+        elt.waitForDisplayed({timeout:10000})
         elt.waitForClickable()
         elt.click() 
     },
 
+    doubleClickElement(elt)
+    {
+        elt.waitForDisplayed({timeout:5000})
+        elt.waitForClickable()
+        elt.doubleClick() 
+    },
+
     selectTextFromDropdown(elt,text)
     {
-        elt.waitForExist()
+        browser.pause(1000)
+        elt.waitForDisplayed()
         elt.waitForEnabled()
         elt.waitForClickable()
         elt.selectByVisibleText(text) 
@@ -54,7 +62,7 @@ module.exports={
 
     elementExists(elt)
     {
-       return elt.waitForExist()
+       return elt.waitForDisplayed({timeout:5000})
     },
 
     uploadFile(elt,filepath)
@@ -67,12 +75,30 @@ module.exports={
 
     enterDateAndTime(dateField,timeField,dateValue,timeValue)
     {
+        browser.pause(1000)
+        this.clickElement(dateField)
         this.clearValue(dateField)
-        this.enterValueAndPressReturn(dateField,dateValue)  
+        this.enterValueAndPressReturn(dateField,dateValue.toString())  
         browser.pause(1000)
         browser.keys("Tab")
         this.clickElement(timeField)
-        this.enterValueAndPressReturn(timeField,timeValue)
+        browser.pause(1000)
+        this.enterValue(timeField,timeValue)
+    },
+
+    enterLocation(locationField,location)
+    {
+       
+        browser.pause(1000)
+        this.clickElement(locationField)
+        this.enterValue(locationField,location)
+        browser.pause(3000)
+        var temp= $$('//*[@class="pac-matched"]')[0] 
+        temp.click()
+      //  browser.keys("ArrowDown")
+        browser.pause(2000)
+       // browser.keys("Enter")
+        browser.pause(2000)
     }
 
 }

@@ -13,10 +13,21 @@ var interpretingPage=require('./test/pages/Interpreting/InterpretingPage')
 var Login = require( './test/pages/Login/Login')
 
 var homePage=require('./test/pages/Home/HomePage')
+var claimsPage=require('./test/pages/Claims/ClaimsPage')
+var devPage=require('./test/pages/DevPage/DevPage')
+var campusDetailsPage=require('./test/pages/CampusDetails/CampusDetails')
+var accountManagementPage=require('./test/pages/AccountManagement/AccountManagementPage')
+var contractManagementPage= require('./test/pages/ContractManagement/ContractManagement')
+var contractorEngagementPage= require('./test/pages/ContractorEngagement/ContractorEngagement')
+
+var myProfilePage= require('./test/pages/MyProfile/MyProfile')
 
 var chai= require('chai')
 var action=require('./test/utils/actions')
 var datetime=require('./test/utils/datetime')
+var fs = require('fs')
+var JOB_ID_FILENAME="jobid.txt"
+var scenarioName=""
 exports.config = {
   
     //
@@ -79,7 +90,7 @@ exports.config = {
     // and 30 processes will get spawned. The property handles how many capabilities
     // from the same test should run tests.
     //
-    maxInstances: 1,
+    maxInstances: 5,
     //
     // If you have trouble getting all important capabilities together, check out the
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
@@ -119,10 +130,10 @@ exports.config = {
     // - @wdio/sumologic-reporter
     // - @wdio/cli, @wdio/config, @wdio/sync, @wdio/utils
     // Level of logging verbosity: trace | debug | info | warn | error | silent
-    // logLevels: {
-    //     webdriver: 'info',
-    //     '@wdio/applitools-service': 'info'
-    // },
+     /*logLevels: {
+        webdriver: 'error',
+        '@wdio/applitools-service': 'error'
+     },*/
     //
     // If you only want to run your tests until a specific amount of tests have failed use
     // bail (default is 0 - don't bail, run all tests).
@@ -135,7 +146,7 @@ exports.config = {
     baseUrl: '',
     //
     // Default timeout for all waitFor* commands.
-    waitforTimeout: 10000,
+    waitforTimeout: 15000,
     //
     // Default timeout in milliseconds for request
     // if browser driver or grid doesn't send response
@@ -183,9 +194,9 @@ exports.config = {
         profile: [],        // <string[]> (name) specify the profile to use
         strict: false,      // <boolean> fail if there are any undefined or pending steps
         tagExpression:parameters.tags ,  // <string> (expression) only execute the features or scenarios with tags matching the expression
-        timeout: 60000,     // <number> timeout for step definitions
+        timeout: 200000,     // <number> timeout for step definitions
         ignoreUndefinedDefinitions: false, // <boolean> Enable this config to treat undefined definitions as warnings.
-        retry: 1
+        retry: 0
     },
     
     //
@@ -223,7 +234,11 @@ exports.config = {
      * @param {Array.<String>} specs List of spec file paths that are to be run
      */
      beforeSession: function (config, capabilities, specs) {
+        //job id list output file name. this list of job ids can be used to verify the triggered email
+        global.JOB_ID_FILENAME= JOB_ID_FILENAME
         
+        global.fs= fs
+        global.scenarioName=scenarioName
         // Test data variables
         global.GlobalData=GlobalData
 
@@ -247,6 +262,14 @@ exports.config = {
         global.interpretingPage=interpretingPage
         global.Login=Login
         global.homePage=homePage
+        global.claimsPage=claimsPage
+        global.myProfilePage= myProfilePage
+        global.devPage= devPage
+        global.campusDetailsPage=campusDetailsPage
+        global.accountManagementPage=accountManagementPage
+        global.contractManagementPage=contractManagementPage
+        global.contractorEngagementPage= contractorEngagementPage
+
         
      },
     /**
@@ -255,8 +278,15 @@ exports.config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {Array.<String>} specs List of spec file paths that are to be run
      */
-    // before: function (capabilities, specs) {
-    // },
+     before: function (capabilities, specs) {
+        fs.writeFile(JOB_ID_FILENAME, "", (err) => {
+            // throws an error, you could also catch it here
+            if (err) throw err;
+        
+            // success case, the file was saved
+            console.log('Job id list file created');
+        });
+     },
     /**
      * Runs before a WebdriverIO command gets executed.
      * @param {String} commandName hook command name
@@ -272,8 +302,12 @@ exports.config = {
     /**
      * Runs before a Cucumber scenario
      */
-    // beforeScenario: function (uri, feature, scenario, sourceLocation) {
-    // },
+     beforeScenario: function (uri, feature, scenario, sourceLocation) {
+         GlobalData.EDIT_BOOKING_SEARCH_JOB_ID=""
+         GlobalData.ACCEPT_BOOKING_JOB_ID=""
+         GlobalData.CURRENT_JOB_ID=""
+         global.scenarioName=scenario.name
+     },
     /**
      * Runs before a Cucumber step
      */
@@ -286,7 +320,7 @@ exports.config = {
         const path = require('path');
         const moment = require('moment');
 
-        // if test passed, ignore, else take and save screenshot.
+       // if test passed, ignore, else take and save screenshot.
         if (!passed) {
         const timestamp = moment().format('YYYYMMDD-HHmmss.SSS');
         const filepath = path.join('reports/html-reports/screenshots/', timestamp + '.png');
@@ -297,20 +331,15 @@ exports.config = {
     /**
      * Runs after a Cucumber scenario
      */
-    /*afterScenario: function (uri, feature, scenario, result, sourceLocation) {
-        const path = require('path');
-        const moment = require('moment');
-
-        // if test passed, ignore, else take and save screenshot.
-        //if (result.error != undefined) {
-            console.log("KANE")
-           // return;
-       // }
-        const timestamp = moment().format('YYYYMMDD-HHmmss.SSS');
-        const filepath = path.join('reports/html-reports/screenshots/', timestamp + '.png');
-        browser.saveScreenshot(filepath);
-       process.emit('test:screenshot', filepath);
-     }, */
+    afterScenario: function (uri, feature, scenario, result, sourceLocation) {
+       
+      /*  fs.appendFile(JOB_ID_FILENAME, "Job id : "+GlobalData.CURRENT_JOB_ID +" Test : "+scenario.name + "\n", (err) => {
+            // throws an error, you could also catch it here
+            if (err) throw err;
+        
+            // success case, the file was saved
+        }); */
+     }, 
     /**
      * Runs after a Cucumber feature
      */

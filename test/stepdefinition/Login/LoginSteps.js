@@ -1,11 +1,9 @@
-var Login = require( '../../pages/Login/Login')
-const { Given, When, Then, AfterAll } = require('cucumber');
-var action=require('../../utils/actions')
+
 
 
 Given(/^the looped in login page is opened$/,  function(){
    browser.reloadSession()
-   browser.url("https://li-test.languageloop.com.au/LoopedIn_th/Login.aspx")
+   browser.url("https://li-vltst.languageloop.com.au/LoopedIn_th/Login.aspx")
 })
 
 

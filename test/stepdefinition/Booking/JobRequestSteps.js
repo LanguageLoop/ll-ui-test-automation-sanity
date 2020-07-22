@@ -12,36 +12,45 @@ When(/^I enter campus pin "(.*)"$/,function(campuspin){
   action.enterValueAndPressReturn(jobRequestPage.campusPinInput,campuspin)
 })
 
-When(/^I enter schedule "(.*)" and "(.*)"$/,function(dateStr,timeStr){
-  var temp_date= new Date()
-  var temp_time=timeStr
-  switch(dateStr)
-  {
-    case "long notice":
-      temp_date=datetime.getLongNoticeDate().toString()
-      break
-    case "short notice":
-      temp_date=datetime.getShortNoticeDate().toString()
-      temp_time=temp_date.getHours()+":"+temp_date.getMinutes()
-      break
-    case "fortnight after":
-      temp_date=datetime.getFortnightDate().toString()
-      break
-  }
-  action.enterDateAndTime(jobRequestPage.dateInput,jobRequestPage.timeInput,temp_date,temp_time)
+When(/^I enter time "(.*)"$/,function(time){
+  jobRequestPage.timeInput.waitForExist({timeout:5000})
+  jobRequestPage.timeInput.waitForEnabled({timeout:5000})
+  jobRequestPage.timeInput.waitForClickable({timeout:5000})
+  jobRequestPage.timeInput.clearValue()
+  action.enterValue(jobRequestPage.timeInput,time)
+  browser.pause(1000)
+  browser.keys('Tab')
 })
 
-When(/^I enter confirmation date and time$/, function(){
-  var temp_date=datetime.getConfirmationDate().toString()
-  var temp_time="9:30"
-  action.enterDateAndTime(jobRequestPage.confirmationDate,jobRequestPage.confirmationTime,temp_date,temp_time)
+When(/^I enter schedule "(.*)" and "(.*)"$/,function(dateStr,timeStr){
+  var temp_date_time = datetime.getScheduleDateTime(dateStr,timeStr)
+  action.enterDateAndTime(jobRequestPage.dateInput,jobRequestPage.timeInput,temp_date_time[0],temp_date_time[1])
+})
+
+When(/^I enter confirmation date and time "(.*)" and "(.*)"$/, function(notice,timeStr){
+  var temp_date_time=datetime.getConfirmationDateTime(notice,timeStr)
+  action.enterDateAndTime(jobRequestPage.confirmationDate,jobRequestPage.confirmationTime,temp_date_time[0],temp_date_time[1])
 })
 
 When(/^I select assignment type "(.*)"$/, function(assignmenttype){
   action.enterValueAndPressReturn(jobRequestPage.assignmentTypeDropdown,assignmenttype)
 })
 
+When(/^I select duration "(.*)"$/, function(duration){
+  action.selectTextFromDropdown(jobRequestPage.durationDropdown, duration)
+})
+
+When(/^I enter nature of request "(.*)"$/,function(request){
+  action.enterValue(jobRequestPage.natureOfRequestInput,request)
+})
+
+When(/^I select NAATI type "(.*)"$/, function(naati){
+  action.selectTextFromDropdown(jobRequestPage.naatiLevelDropdown,naati)
+})
+
 When(/^I enter "(.*)" email address$/,function(email){
+  jobRequestPage.confirmEmailInput.scrollIntoView()
+  browser.pause(2000)
   action.enterValue(jobRequestPage.confirmEmailInput,email)
 })
 
@@ -104,7 +113,6 @@ When(/^I click add preferred interpreter button$/,function(){
 
 When(/^I select "(.*)" interpreters from the list$/,function(count){
   var check_boxes=jobRequestPage.interpreterSearchResultsCheckBoxes
-  console.log("RAHANE :"+check_boxes.length)
   for(i=0;i<count;i++)
   {
     action.clickElement(check_boxes[i])
@@ -130,8 +138,115 @@ When(/^I click yes to confirm editing job request$/, function(){
   action.clickElement(jobRequestPage.editJobConfirmationYesButton)
 })
 
+When(/^I click back link$/, function(){
+  action.clickElement(jobRequestPage.backLink)
+})
+
+When(/^I enter location "(.*)"$/, function(location){
+  browser.pause(2000)
+  action.enterLocation(jobRequestPage.locationInput,location)
+})
+
+When(/^I enter department "(.*)"$/, function(department){
+  action.enterValue(jobRequestPage.departmentInput,department)
+})
+
+When(/^I enter your reference number "(.*)"$/, function(reference){
+  action.enterValue(jobRequestPage.yourReferenceInput,reference)
+})
+
+When(/^I enter PO number "(.*)"$/, function(ponumber){
+  action.enterValue(jobRequestPage.POInput,ponumber)
+})
+
+When(/^I click nes link$/, function(){
+  action.clickElement(jobRequestPage.nesLink)
+})
+
+When(/^I enter nes first name "(.*)"$/, function(firstname){
+  browser.pause(1000)
+  action.enterValue(jobRequestPage.nesFirstNameInput,firstname)
+})
+
+When(/^I click nes save button$/, function(){
+  action.clickElement(jobRequestPage.nesSaveButton)
+  browser.pause(2000)
+})
+
+When(/^I enter report to location "(.*)"$/, function(location){
+  action.enterValue(jobRequestPage.reportToLocationInput, location)
+})
+
+When(/^I enter report to name "(.*)"$/, function(name){
+  action.enterValue(jobRequestPage.reportToNameInput, name)
+})
+
+When(/^I enter report to phone number "(.*)"$/, function(phonenumber){
+  action.enterValue(jobRequestPage.reportToPhoneNumberInput, phonenumber)
+})
+
+When(/^I click common instruction checkbox$/, function(){
+  action.clickElement(jobRequestPage.commonInstructionCheckBox)
+})
+
+When(/^I add job file$/, function(){
+  action.clickElement(jobRequestPage.addJobFileLink)
+  browser.pause(2000)
+  action.uploadFile(jobRequestPage.addJobFileControl,"./test/data/JobFile.docx")
+  browser.pause(2000)
+  action.clickElement(jobRequestPage.uploadAllFilesButton)
+  browser.pause(2000)
+})
+
+When(/^I select confirmation mode "(.*)"$/, function(confirmationmode){
+  action.selectTextFromDropdown(jobRequestPage.confirmModeDropdown, confirmationmode)
+})
+
+When(/^I enter confirmation phone number "(.*)"$/, function(phonenumber){
+  browser.pause(2000)
+  action.enterValue(jobRequestPage.confirmPhoneNumberInput,phonenumber)
+})
+
+When(/^I click on job details tab "(.*)"$/, function(jobdetail){
+  switch(jobdetail)
+  {
+    case "Onsite":
+      action.clickElement(jobRequestPage.onsiteTab)
+      break
+    case "Prebooked Video":
+      action.clickElement(jobRequestPage.prebookedVideoTab)
+      browser.pause(2000)
+      action.clickElement(jobRequestPage.videoLinkEditorInput)
+      browser.pause(2000)
+      browser.keys("Link to video")
+     // action.enterValue(jobRequestPage.videoLinkEditorInput,"Link to video")
+      break
+    case "Prebooked Telephone":
+      action.clickElement(jobRequestPage.prebookedTelephoneTab)
+      break
+    case "Home Visit":
+      action.clickElement(jobRequestPage.homeVisitTab)
+      break
+  }
+})
+
+When(/^I enter interpreter instructions "(.*)"$/, function(instruction){
+  action.enterValue(jobRequestPage.interpreterInstructionsInput, instruction)
+})
+
 Then(/^the job created success message should appear$/, function(){
   chai.expect(action.elementExists(jobRequestPage.successMessage)).to.be.true
+  jobRequestPage.successMessageText.waitForExist({timeout:3000})
+  browser.waitUntil(
+      () => jobRequestPage.successMessageText.getText().includes("The Job#"), 20000, 'link not visible'
+  );
+  var jobNumber = jobRequestPage.successMessageText.getText().match(/\d+/g).map(Number)
+  GlobalData.CURRENT_JOB_ID=jobNumber
+})
+
+Then(/^I verify the created job id is listed$/, function(){
+  browser.pause(2000)
+  chai.expect(action.elementExists('//a[text()="'+GlobalData.CURRENT_JOB_ID+'"]')).to.be.true
 })
 
 

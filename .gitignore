@@ -4,3 +4,6 @@
 *.jpg
 *.png
 /screenShots
+*.zip
+*.tgz
+*.txt

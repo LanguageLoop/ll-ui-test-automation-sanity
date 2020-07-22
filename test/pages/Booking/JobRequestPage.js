@@ -40,6 +40,14 @@ module.exports={
         return $('//label[text()="Confirmation Email"]/..//input')
     },
 
+    get confirmModeDropdown(){
+        return $('//*[text()="Confirmation Mode"]/..//select')
+    },
+
+    get confirmPhoneNumberInput(){
+        return $('//input[contains(@id,"wttxtConfPhone")]')
+    },
+
     get saveAndProceedToSummaryButton(){
         return $('//input[@value="Save & Proceed to Summary"]')
     },
@@ -129,20 +137,101 @@ module.exports={
         return $('//span[@class="Feedback_Message_Text"]')
     },
 
-    get editJobConfirmationYesButton()
-    {
+    get editJobConfirmationYesButton(){
         return $('//input[@value="Yes" and contains(@name,"dialogModal")]')
     },
 
-    get confirmationDate()
-    {
+    get confirmationDate(){
         return $('//*[contains(@id,"confirmDate")]')
     },
 
-    get confirmationTime()
-    {
-        return $('//input[contains(@id,"ConfirmationTime")]/..')
+    get confirmationTime(){
+        return $('//input[contains(@id,"ConfirmationTime")]')
     },
+
+    get backLink(){
+        return $('//a[text()="Back"]')
+    },
+
+    get locationInput(){
+        return $('//input[contains(@id,"wtInput_wttxtAddress")]')
+    },
+
+    get departmentInput(){
+        return $('//*[text()="Department"]/../..//input[contains(@id,"txtInputStd")]')
+    },
+
+    get yourReferenceInput(){
+        return $('//*[text()="Your Reference"]/../..//input[contains(@id,"txtInputStd")]')
+    },
+
+    get POInput(){
+        return $('//*[text()="PO Number"]/../..//input[contains(@id,"txtInputStd")]')
+    },
+
+    get nesLink(){
+        return $('//a[contains(text(),"Add NES")]')
+    },
+
+    get nesFirstNameInput(){
+        return $('//*[text()="Manage NES"]/../..//input[contains(@id,"FirstName")]')
+    },
+
+    get nesSaveButton(){
+        return $('//*[text()="Manage NES"]/../..//input[contains(@id,"Save")]')
+    },
+
+    get reportToLocationInput(){
+        return $('//*[text()="Location"]/../../..//input')
+    },
+
+    get reportToNameInput(){
+        return $('//input[contains(@id,"wtinFirstName")]')
+    },
+
+    get reportToPhoneNumberInput(){
+        return $('//input[contains(@id,"wtinPhoneNumber")]')
+    },
+
+    get commonInstructionCheckBox(){
+        return $('//*[text()="Common Instructions & Language Notes"]/..//input')
+    },
+
+    get addJobFileLink(){
+        return $('//a[contains(text(),"Add ") and contains(text(),"job") and contains(text(),"file")]')
+    },
+
+    get addJobFileControl(){
+        return $('//*[text()="Upload Job File"]/../..//input[@type="file"]')
+    },
+
+    get uploadAllFilesButton(){
+        return $('//*[text()="Upload Job File"]/../..//input[@value="Upload All File/s"]')
+    },
+
+    get homeVisitTab(){
+        return $('//label[text()="Home Visit"]')
+    },
+
+    get prebookedTelephoneTab(){
+        return $('//label[text()="Pre-booked Telephone"]')
+    },
+
+    get prebookedVideoTab(){
+        return $('//label[text()="Pre-booked Video"]')
+    },
+
+    get onsiteTab(){
+        return $('//label[text()="On Site"]')
+    },
+
+    get interpreterInstructionsInput(){
+        return $('//*[text()="Interpreter Instructions"]/..//textarea')
+    },
+
+    get videoLinkEditorInput(){
+        return $$('//div[@role="presentation"]')[1]
+    }
 
 
 }
