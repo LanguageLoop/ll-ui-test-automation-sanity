@@ -3,6 +3,8 @@ var HtmlReporter= require('@rpii/wdio-html-reporter').HtmlReporter
 //var reportAggregator =require('@rpii/wdio-html-reporter').ReportAggregator
 var htmlFormat = require('wdio-html-format-reporter')
 const GlobalData=require('./test/data/GlobalData')
+GlobalData.BASE_URL="https://li-test.languageloop.com.au/LoopedIn_th/Login.aspx"
+
 const { Given, When, Then, AfterAll } = require('cucumber');
 
 var bulkUploadPage=require('./test/pages/Booking/BulkUploadPage')
@@ -56,7 +58,6 @@ exports.config = {
 ],
     // ...    
   
-    
     runner: 'local',
     //
     // ==================
@@ -107,7 +108,7 @@ exports.config = {
         'goog:chromeOptions': {
             args: ['--start-maximized'] ,
           
-                "binary":"C:/Users/HAR/AppData/Local/Google/Chrome/Application/chrome.exe"
+               // "binary":"C:/Users/HAR/AppData/Local/Google/Chrome/Application/chrome.exe"
                
            }
         // If outputDir is provided WebdriverIO can capture driver session logs
@@ -237,6 +238,9 @@ exports.config = {
      * @param {Array.<String>} specs List of spec file paths that are to be run
      */
      beforeSession: function (config, capabilities, specs) {
+
+        //set up the base url for li-test
+
         //job id list output file name. this list of job ids can be used to verify the triggered email
         global.JOB_ID_FILENAME= JOB_ID_FILENAME
         
