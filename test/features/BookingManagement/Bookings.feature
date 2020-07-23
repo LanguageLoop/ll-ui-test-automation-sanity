@@ -1,4 +1,4 @@
-@Booking
+@CreateBooking
 Feature: Create new booking for Interpreters
 
    Background: Load Loopedin login page
