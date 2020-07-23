@@ -1,5 +1,6 @@
 const parameters =require('./params.js')
 var HtmlReporter= require('@rpii/wdio-html-reporter').HtmlReporter
+var ReportAggregator = require('@rpii/wdio-html-reporter').ReportAggregator
 //var reportAggregator =require('@rpii/wdio-html-reporter').ReportAggregator
 var htmlFormat = require('wdio-html-format-reporter')
 const GlobalData=require('./test/data/GlobalData')
@@ -222,6 +223,17 @@ exports.config = {
      */
      onPrepare: function (config, capabilities) {
        // GlobalData=require('./test/data/GlobalData')
+       let reportAggregator = new ReportAggregator({
+        outputDir: './reports/html-reports/',
+        filename: 'master-report.html',
+        reportTitle: 'Master Report',
+        browserName : 'chrome',
+        // to use the template override option, can point to your own file in the test project:
+        // templateFilename: path.resolve(__dirname, '../template/wdio-html-reporter-alt-template.hbs')
+    });
+    reportAggregator.clean() ;
+
+    global.reportAggregator = reportAggregator;
      },
     /**
      * Gets executed before a worker process is spawned and can be used to initialise specific service
@@ -392,7 +404,9 @@ exports.config = {
      * @param {<Object>} results object containing test results
      */
      onComplete: async function(exitCode, config, capabilities, results) {
-        
+        (async () => {
+            await global.reportAggregator.createReport();
+        })();
      },
     /**
     * Gets executed when a refresh happens.
