@@ -44,7 +44,7 @@ exports.config = {
   ['spec', ['allure', {
     outputDir: 'allure-results',
     disableWebdriverStepsReporting: true,
-    disableWebdriverScreenshotsReporting: true,
+    disableWebdriverScreenshotsReporting: false,
 }],
  [ HtmlReporter,
    {
@@ -59,7 +59,11 @@ exports.config = {
             useOnAfterCommandForScreenshot: false,  
 
     
-  }]
+  }],
+  ['junit', {
+    outputDir: './reports/junit/',
+    packageName: "LanguageLoop" // chrome.41 - administrator
+}]
 ],
     // ...    
   
