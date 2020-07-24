@@ -62,6 +62,9 @@ exports.config = {
   }],
   ['junit', {
     outputDir: './reports/junit/',
+    outputFileFormat: function (options) {
+        return 'testresults.xml';
+    },
     packageName: "LanguageLoop" // chrome.41 - administrator
 }]
 ],
