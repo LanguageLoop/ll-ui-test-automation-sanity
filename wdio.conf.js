@@ -119,7 +119,7 @@ exports.config = {
         //
         browserName: 'chrome',
         'goog:chromeOptions': {
-            args: ['--headless','--disable-gpu'] ,
+            args: ['--window-size=1200,1000'] ,
           
                // "binary":"C:/Users/HAR/AppData/Local/Google/Chrome/Application/chrome.exe"
                
