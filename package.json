@@ -35,6 +35,7 @@
     "wdio-chromedriver-service": "^6.0.3",
     "wdio-html-format-reporter": "^0.4.0",
     "wdio-multiple-cucumber-html-reporter": "^1.1.1",
+    "wdio-phantomjs-service": "^0.2.2",
     "webdriverio": "^6.0.13"
   },
   "dependencies": {
