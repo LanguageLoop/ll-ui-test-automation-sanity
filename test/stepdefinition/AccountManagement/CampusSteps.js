@@ -10,7 +10,8 @@ When(/^I enter campus address "(.*)","(.*)"$/, function(address1,address2){
 })
 
 When(/^I enter campus post name "(.*)","(.*)"$/, function(name1,name2){
-    action.enterLocation(accountManagementPage.campusPostName1Input,name1)
+    action.enterValue(accountManagementPage.campusPostName1Input,name1)
+    browser.pause(1000)
     action.enterValue(accountManagementPage.campusPostName2Input,name2)
 })
 

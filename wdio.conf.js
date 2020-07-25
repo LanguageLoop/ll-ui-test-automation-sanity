@@ -5,6 +5,7 @@ var ReportAggregator = require('@rpii/wdio-html-reporter').ReportAggregator
 var htmlFormat = require('wdio-html-format-reporter')
 const GlobalData=require('./test/data/GlobalData')
 GlobalData.BASE_URL="https://li-test.languageloop.com.au/LoopedIn_th/Login.aspx"
+GlobalData.DEV_URL="https://li-test.languageloop.com.au/DeveloperScreen/Home.aspx"
 
 const { Given, When, Then, AfterAll } = require('cucumber');
 
@@ -103,7 +104,7 @@ exports.config = {
     // and 30 processes will get spawned. The property handles how many capabilities
     // from the same test should run tests.
     //
-    maxInstances: 5,
+    maxInstances: 1,
     //
     // If you have trouble getting all important capabilities together, check out the
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
@@ -118,7 +119,7 @@ exports.config = {
         //
         browserName: 'chrome',
         'goog:chromeOptions': {
-            args: ['--start-maximized'] ,
+            args: ['--window-size=1920,1080'] ,
           
                // "binary":"C:/Users/HAR/AppData/Local/Google/Chrome/Application/chrome.exe"
                

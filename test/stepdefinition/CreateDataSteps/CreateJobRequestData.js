@@ -5,7 +5,7 @@ When(/^I create a new job request with minimal fields "(.*)"$/,  function(notice
 })
 
 When(/^I create a new vic roads job request with minimal fields "(.*)"$/,  function(notice){
-  createJobRequest(notice,"15432","Truck Drive","Kirundi","Non-Accredited","Automation Tester")
+  createJobRequest(notice,"10647","HalfDay","HAZARAGI","Non-Accredited","Automation Tester")
 })
 
 When(/^I create a new vic roads job request for bulk requests "(.*)"$/,  function(notice){

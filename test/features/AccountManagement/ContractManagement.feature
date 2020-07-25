@@ -58,8 +58,8 @@ Feature: Contract Management features
    #And I delete added miniumum naati
 
     Examples: 
-   | username          | password   | contract title                      | language                     | naati level |
-   | LLAdmin@looped.in |  Uranus@6  | Victorian Government - Bill To test | AFRIKAANS - Pre-booked Video | Recognised  |
+   | username          | password   | contract title                 | language          | naati level |
+   | LLAdmin@looped.in |  Uranus@6  | Victorian Government - Bill To | AFRIKAANS - Video | Recognised  |
 
    @AddCommonInstructions 
    Scenario Outline: Add common instructions for contract
@@ -76,8 +76,8 @@ Feature: Contract Management features
    Then I verify common instruction title and description "<title>","<description>"
 
     Examples: 
-   | username          | password   | contract title                      | title              | description         |
-   | LLAdmin@looped.in |  Uranus@6  | Victorian Government - Bill To test | Automation Testing | simple description  |
+   | username          | password   | contract title                 | title              | description         |
+   | LLAdmin@looped.in |  Uranus@6  | Victorian Government - Bill To | Automation Testing | simple description  |
 
    @AddContractRate
    Scenario Outline: Add contract rates
@@ -92,8 +92,8 @@ Feature: Contract Management features
    Then I verify contract rate is added
 
     Examples: 
-   | username          | password   |language                          | contract title                     | rate name       | hour             | contract min period | contract min rate | contract ongoing | contractor min period | contractor min rate | contractor ongoing|
-   | LLAdmin@looped.in |  Uranus@6  | All Languages - Pre-booked Video | Victorian Government - Bill To test| Automation Rate | Business Hour A  |    2                |    200            |  15              |      2                |     250             |     15            |    
+   | username          | password   |language               | contract title                 | rate name       | hour             | contract min period | contract min rate | contract ongoing | contractor min period | contractor min rate | contractor ongoing|
+   | LLAdmin@looped.in |  Uranus@6  | All Languages - Video | Victorian Government - Bill To | Automation Rate | Business Hour A  |    2                |    200            |  15              |      2                |     250             |     15            |    
 
     
    @AddAssignmentType
@@ -112,6 +112,6 @@ Feature: Contract Management features
    And I delete assignment type
 
     Examples: 
-   | username          | password   | contract title                      | assignment label      | description         |
-   | LLAdmin@looped.in |  Uranus@6  | Victorian Government - Bill To test | Automation Assignment | simple description  |
+   | username          | password   | contract title                 | assignment label      | description         |
+   | LLAdmin@looped.in |  Uranus@6  | Victorian Government - Bill To | Automation Assignment | simple description  |
           

@@ -16,14 +16,17 @@ When(/^I click on Cancel button$/, function(){
 })
 
 When(/^I click confirm cancel yes button$/, function(){
+    browser.pause(2000)
     action.clickElement(jobDetailsPage.confirmCancelYesButton)
 })
 
 When(/^I click yes to confirm late rejection$/, function(){
+    browser.pause(2000)
     action.clickElement(jobDetailsPage.lateRejectionConfirmYesButton)
 })
 
 When(/^I click yes to confirm no show$/, function(){
+    browser.pause(2000)
     action.clickElement(jobDetailsPage.interpreterNoShowConfirmYesButton)
 })
 
@@ -38,10 +41,12 @@ When(/^I select "(.*)" on behalf$/, function(onbehalf){
 })
 
 When(/^I submit cancel job confirmation$/, function(){
+    browser.pause(2000)
     action.clickElement(jobDetailsPage.cancelSubmitButton)
 })
 
 When(/^I confirm yes to cancellation fee$/, function(){
+    browser.pause(2000)
     action.clickElement(jobDetailsPage.jobCancellationFeeConfirmYesButton)
 })
 
