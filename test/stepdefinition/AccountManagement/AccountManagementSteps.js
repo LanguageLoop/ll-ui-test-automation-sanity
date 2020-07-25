@@ -11,7 +11,6 @@ When(/^I click the first campus link from search results$/,function(){
 })
 
 When(/^I search for contract title "(.*)"$/, function(contract){
-    console.log("DHAWAN*****************")
     browser.pause(4000)
     action.enterValueAndPressReturn(accountManagementPage.searchContractInput,contract)
     browser.pause(2000)
