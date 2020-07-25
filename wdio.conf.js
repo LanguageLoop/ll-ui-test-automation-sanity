@@ -119,7 +119,7 @@ exports.config = {
         //
         browserName: 'chrome',
         'goog:chromeOptions': {
-            args: ['--headless','--start-maximized'] ,
+            args: ['--start-maximized'] ,
           
                // "binary":"C:/Users/HAR/AppData/Local/Google/Chrome/Application/chrome.exe"
                
