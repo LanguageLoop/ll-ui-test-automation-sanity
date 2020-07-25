@@ -179,11 +179,13 @@ Then(/^I verify contract is created$/, function(){
 })
 
 Then(/^I verify duplicate contract is created "(.*)"$/, function(title){
+    browser.pause(3000)
     var current_contract=GlobalData.CONTRACT_TITLE
     //get the number at the end of the title. this number is added randomly during creation to keep it unique
     var res = current_contract.replace(/\D/g, "");
     //add one to the number. because when you duplicate a contract, the title is appended by number and 1 is added to it.
     var temp_number= (parseInt(res)+1)
+    console.log("Expected :"+ title+(parseInt(res)+1))
     chai.expect(contractManagementPage.contractHeadingText.getText().toString() == title+(parseInt(res)+1)).to.be.true
 })
 
