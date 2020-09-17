@@ -40,7 +40,7 @@ When(/^I search and open contractor "(.*)"$/, function(contractor){
     browser.pause(2000)
     action.enterValueAndPressReturn(contractorEngagementPage.searchContractorInput, contractor)
     browser.pause(2000)
-    $$('//table[contains(@id,"Contractor")]//td')[1].click()
+    $$('//table[contains(@id,"Contractor")]//td')[0].click()
 })
 
 When(/^I click add accreditation link$/, function(){

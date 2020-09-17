@@ -7,7 +7,8 @@
     "test": "./node_modules/.bin/wdio wdio.conf.js",
     "browserstack": "./node_modules/.bin/wdio wdio.browserstack.conf.js",
     "aws-android-chrome": "./node_modules/.bin/wdio wdio.aws.android.browser.conf.js",
-    "vl-test": "./node_modules/.bin/wdio wdio.vltest.conf.js"
+    "vl-test": "./node_modules/.bin/wdio wdio.vltest.conf.js",
+    "uat": "./node_modules/.bin/wdio wdio.uat.conf.js"
   },
   "author": "",
   "license": "ISC",
@@ -26,7 +27,7 @@
     "appium": "^1.17.1",
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
-    "chromedriver": "^83.0.0",
+    "chromedriver": "^85.0.0",
     "cucumber-html-reporter": "^5.2.0",
     "deepmerge": "^4.2.2",
     "lodash": "^4.17.15",

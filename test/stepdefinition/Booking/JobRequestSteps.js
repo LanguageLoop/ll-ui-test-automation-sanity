@@ -213,15 +213,22 @@ When(/^I click on job details tab "(.*)"$/, function(jobdetail){
     case "Onsite":
       action.clickElement(jobRequestPage.onsiteTab)
       break
-    case "Prebooked Video":
+    case "Pre-booked Video":
       action.clickElement(jobRequestPage.prebookedVideoTab)
       browser.pause(2000)
+      try{
+        jobRequestPage.noChangeRequiredButton.waitForExist({timeout:3000})
+        action.clickElement(jobRequestPage.noChangeRequiredButton)
+      }
+      catch(Err)
+      {
+      }
       action.clickElement(jobRequestPage.videoLinkEditorInput)
       browser.pause(2000)
       browser.keys("Link to video")
      // action.enterValue(jobRequestPage.videoLinkEditorInput,"Link to video")
       break
-    case "Prebooked Telephone":
+    case "Pre-Booked Telephone":
       action.clickElement(jobRequestPage.prebookedTelephoneTab)
       break
     case "Home Visit":
@@ -234,9 +241,21 @@ When(/^I enter interpreter instructions "(.*)"$/, function(instruction){
   action.enterValue(jobRequestPage.interpreterInstructionsInput, instruction)
 })
 
+When(/^I click no change required button$/,function()
+{
+  browser.pause(2000)
+  try{
+    jobRequestPage.noChangeRequiredButton.waitForExist({timeout:3000})
+    action.clickElement(jobRequestPage.noChangeRequiredButton)
+  }
+  catch(Err)
+  {
+  }
+})
+
 Then(/^the job created success message should appear$/, function(){
   chai.expect(action.elementExists(jobRequestPage.successMessage)).to.be.true
-  jobRequestPage.successMessageText.waitForExist({timeout:3000})
+  jobRequestPage.successMessageText.waitForExist({timeout:10000})
   browser.waitUntil(
       () => jobRequestPage.successMessageText.getText().includes("The Job#"), 20000, 'link not visible'
   );

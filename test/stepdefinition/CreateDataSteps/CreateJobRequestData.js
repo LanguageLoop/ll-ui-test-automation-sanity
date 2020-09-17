@@ -50,9 +50,9 @@ function createJobRequest(notice, campuspin,assignmenttype,language,naatilevel,r
   browser.pause(2000)
 
   action.clickElement(jobRequestPage.submitButton)
- jobRequestPage.successMessageText.waitForExist({timeout:6000})
+ jobRequestPage.successMessageText.waitForExist({timeout:10000})
 browser.waitUntil(
-      () => jobRequestPage.successMessageText.getText().includes("The Job#"), 5000, 'link not visible'
+      () => jobRequestPage.successMessageText.getText().includes("The Job#"), 10000, 'link not visible'
   );
   var jobNumber = jobRequestPage.successMessageText.getText().match(/\d+/g).map(Number)
   GlobalData.CURRENT_JOB_ID=jobNumber

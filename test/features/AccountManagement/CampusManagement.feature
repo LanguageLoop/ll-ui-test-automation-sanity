@@ -25,6 +25,7 @@ Feature: Campus Management features
    And I search bill to name "<bill to>"
    And I click first bill to from search results
    And I click assign button
+   And I enter videoloop pin "<videoloop pin>"
    And I click save campus button
    And I handle duplicate campus dialog
    Then I verify campus name "<campus name>"
@@ -32,8 +33,8 @@ Feature: Campus Management features
    And I verify manage campus fields are present
    
    Examples:
-   | username           | password    | campus address1         | campus address2          | postname1   | postname2    |  postal address1  | postal address2  | abn         | campus name  | entity type | company name | po number | invoice frequency | trading name    |  bill to                |
-   | LLAdmin@looped.in  | Uranus@6    | St Kilda VIC, Australia |  St Kilda VIC, Australia |  first post | second post  |  St Kilda         |  St Kilda Street | 53819971946 | Melbourne LL | Government  | ll company   | 42345     | Weekly            | ll trading name | department of transport |
+   | username           | password    | campus address1         | campus address2          | postname1   | postname2    |  postal address1  | postal address2  | abn         | campus name  | entity type | company name | po number | invoice frequency | trading name    |  bill to                | videoloop pin |
+   | LLAdmin@looped.in  | Uranus@6    | St Kilda VIC, Australia |  St Kilda VIC, Australia |  first post | second post  |  St Kilda         |  St Kilda Street | 53819971946 | Melbourne LL | Government  | ll company   | 42345     | Weekly            | ll trading name | department of transport | 1234          |
   
   @ViewCampus  @ScheduleRates
   Scenario Outline: View campus schedule rates

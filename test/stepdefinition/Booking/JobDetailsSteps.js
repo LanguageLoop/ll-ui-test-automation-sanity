@@ -46,8 +46,15 @@ When(/^I submit cancel job confirmation$/, function(){
 })
 
 When(/^I confirm yes to cancellation fee$/, function(){
-    browser.pause(2000)
+    browser.pause(5000)
     action.clickElement(jobDetailsPage.jobCancellationFeeConfirmYesButton)
+    try{
+        jobDetailsPage.jobCancellationFeeConfirmYesButton.waitForExist({timeout:3000})
+        action.clickElement(jobDetailsPage.jobCancellationFeeConfirmYesButton)
+      }
+      catch(Err)
+      {
+      }
 })
 
 When(/^I search for contractor "(.*)"$/, function(contractor){

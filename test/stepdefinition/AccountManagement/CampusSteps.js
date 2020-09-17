@@ -71,6 +71,11 @@ When(/^I click first bill to from search results$/,function(){
     browser.pause(2000)
 })
 
+When(/^I enter videoloop pin "(.*)"$/, function(pin)
+{
+    action.enterValue(accountManagementPage.videoLoopPinInput,pin)
+})
+
 When(/^I click assign button$/,function(){
     action.clickElement(accountManagementPage.assignButton)
     browser.pause(2000)

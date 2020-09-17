@@ -214,7 +214,7 @@ module.exports={
     },
 
     get prebookedTelephoneTab(){
-        return $('//label[text()="Pre-booked Telephone"]')
+        return $('//label[text()="Pre-Booked Telephone"]')
     },
 
     get prebookedVideoTab(){
@@ -231,6 +231,10 @@ module.exports={
 
     get videoLinkEditorInput(){
         return $$('//div[@role="presentation"]')[1]
+    },
+
+    get noChangeRequiredButton(){
+        return $('//*[contains(@value,"No change required")]')
     }
 
 
