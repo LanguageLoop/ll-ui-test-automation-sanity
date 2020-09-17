@@ -102,8 +102,8 @@ Feature: Contractor Engagement features
    And I delete work preferences
    
   Examples:
-  | username           |  password |  contractor  | company                        |
-  | LLAdmin@looped.in  | Uranus@6  | Automation   |   BOLTON CLARKE - HEIDELBERG   |
+  | username           |  password |  contractor  | company                     |
+  | LLAdmin@looped.in  | Uranus@6  | Automation   |   BOLTON CLARKE - DH RDNS   |
 
 
     @AddReferees @test1  

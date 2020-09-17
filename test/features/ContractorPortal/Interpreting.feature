@@ -39,22 +39,22 @@ Feature: Interpreter features
   | long notice       |LLAdmin@looped.in |   Uranus@6     | suzanehanna@hotmail.com  | Test1               | Available Jobs      |  13-05-2022 | 1560450 |
   
 
-@AcceptJobs 
-  Scenario Outline: Accept jobs
-   When I login with "<contractor username>" and "<contractor password>"
-   And I select "<dropdownfilter>" from the filter dropdown
-   And I click on first job id from interpreting job list
-   And I click accept job button
-   And I select "Allocated Jobs" from the filter dropdown
-   And I search for selected job request
-   Then I verify the job is listed in search results
-   And I click on first job id from accepted job list
-   And I click return job button
+# @AcceptJobs 
+#   Scenario Outline: Accept jobs
+#    When I login with "<contractor username>" and "<contractor password>"
+#    And I select "<dropdownfilter>" from the filter dropdown
+#    And I click on first job id from interpreting job list
+#    And I click accept job button
+#    And I select "Allocated Jobs" from the filter dropdown
+#    And I search for selected job request
+#    Then I verify the job is listed in search results
+#    And I click on first job id from accepted job list
+#    And I click return job button
    
-   Examples:
-  | contractor username      | contractor password | dropdownfilter      | to date     |
-  | suzanehanna@hotmail.com  | Test1               | Available Jobs      |  13-05-2022 |
-  | suzanehanna@hotmail.com  | Test1               | Rejected Jobs       |  13-05-2022 |
+#    Examples:
+#   | contractor username      | contractor password | dropdownfilter      | to date     |
+#   | suzanehanna@hotmail.com  | Test1               | Available Jobs      |  13-05-2022 |
+#   | suzanehanna@hotmail.com  | Test1               | Rejected Jobs       |  13-05-2022 |
   
  
  @UnavailableJobs 

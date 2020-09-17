@@ -193,7 +193,7 @@ Then(/^I verify vic road travel fee$/, function(){
 })
 
 Then(/^I verify the campus fee$/, function(){
-    chai.expect(claimsPage.campusFeeInput.getAttribute("value").replace(" ","")==GlobalData.CAMPUS_FEE).to.be.true
+    chai.expect(claimsPage.subTotalCampusFeeInput.getAttribute("value").replace(" ","")==GlobalData.CAMPUS_FEE).to.be.true
 })
 
 Then(/^I verify the job status is "(.*)"$/, function(jobstatus){

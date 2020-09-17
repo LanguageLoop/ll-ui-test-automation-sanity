@@ -85,16 +85,16 @@ Feature: Contractor Management features
     | username                | password   |  contractor name  |
     | suzanehanna@hotmail.com | Test1      |  Suzane HANNA     |
 
-@StatutoryDeclaration
-   Scenario Outline: Upload statutory declaration document and verify
-    When I login with "<username>" and "<password>"
-    And I click "<contractor name>" user link
-    And I upload statutory declaration document
-    Then I verify the statutory declaration document is uploaded   
+#@StatutoryDeclaration
+ #  Scenario Outline: Upload statutory declaration document and verify
+  #  When I login with "<username>" and "<password>"
+   # And I click "<contractor name>" user link
+    #And I upload statutory declaration document
+    #Then I verify the statutory declaration document is uploaded   
 
-  Examples:
-    | username                | password   |  contractor name  |
-    | suzanehanna@hotmail.com | Test1      |  Suzane HANNA     |
+  #Examples:
+   # | username                | password   |  contractor name  |
+    #| suzanehanna@hotmail.com | Test1      |  Suzane HANNA     |
 
 @Hepatitis
    Scenario Outline: Upload hepatitis b vaccination document and verify
@@ -118,13 +118,14 @@ Feature: Contractor Management features
     | username                | password   |  contractor name  |
     | suzanehanna@hotmail.com | Test1      |  Suzane HANNA     |
 
-@WorkEligibility
-   Scenario Outline: Upload work eligibility document and verify
-    When I login with "<username>" and "<password>"
-    And I click "<contractor name>" user link
-    And I upload work eligibility document
-    Then I verify the work eligibility document is uploaded   
+  # @WorkEligibility
+  # Scenario Outline: Upload work eligibility document and verify
+   # When I login with "<username>" and "<password>"
+    #And I click "<contractor name>" user link
+    
+    #And I upload work eligibility document
+    #Then I verify the work eligibility document is uploaded   
 
-  Examples:
-    | username                | password   |  contractor name  |
-    | suzanehanna@hotmail.com | Test1      |  Suzane HANNA     |
+  #Examples:
+   # | username                | password   |  contractor name  |
+    #| suzanehanna@hotmail.com | Test1      |  Suzane HANNA     |

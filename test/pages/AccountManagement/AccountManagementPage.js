@@ -22,6 +22,11 @@ module.exports ={
         return $('//*[text()="Campus Address"]/..//input')
     },
 
+    get videoLoopPinInput()
+    {
+        return $('//*[text()="VideoLoop PIN"]/..//input')
+    },
+
     get address2Input(){
         return $('//*[contains(text(),"Address 2 (Building/Floor/Apartment)")]/..//input')
     },

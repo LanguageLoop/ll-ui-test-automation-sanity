@@ -168,25 +168,26 @@ Feature: Claims processing features
    | username           | password    | status      | to date     | job id  | claim status |
    | LLAdmin@looped.in  | Uranus@6    | Signed off  |  13-05-2022 | 1560450 | Signed off   |
 
-   @ProcessClaims @Extend
-  Scenario Outline: Process claims - extension
-   When I login with "<username>" and "<password>"
-   And I click Claims header link  
-   And I close all special search criteria
-   And I select "<status>" job status
-   And I get the campus fee for first job
-   And I get the contractor fee for first job
-   And I click on first job id from claims job list
-   And I switch to the claims window
-   Then I verify the contractor fee
-   And I verify the campus fee
-   And I get job finish time
-   And I get job actual minutes
-   And I enter new job finish time
+  
+  #  @ProcessClaims @Extend
+  # Scenario Outline: Process claims - extension
+  #  When I login with "<username>" and "<password>"
+  #  And I click Claims header link  
+  #  And I close all special search criteria
+  #  And I select "<status>" job status
+  #  And I get the campus fee for first job
+  #  And I get the contractor fee for first job
+  #  And I click on first job id from claims job list
+  #  And I switch to the claims window
+  #  Then I verify the contractor fee
+  #  And I verify the campus fee
+  #  And I get job finish time
+  #  And I get job actual minutes
+  #  And I enter new job finish time
 
-   Examples:
-   | username           | password    | status      | to date     | job id  | claim status |
-   | LLAdmin@looped.in  | Uranus@6    | Completed   |  13-05-2022 | 1560450 | Signed off   |
+  #  Examples:
+  #  | username           | password    | status      | to date     | job id  | claim status |
+  #  | LLAdmin@looped.in  | Uranus@6    | Completed   |  13-05-2022 | 1560450 | Signed off   |
 
  @BulkProcessClaims
   Scenario Outline: Process claims - bulk claims
@@ -242,7 +243,7 @@ Feature: Claims processing features
    And I click on job id from interpreting job search results
    And I switch to the job allocation window
    And I refresh the page
-   And I search for contractor "Belthrand HABIYAKARE"
+   And I search for contractor "Rasoul OMID"
    And I set the contractor job status from "Not eligible" to "Allocated"
    And I navigate to dev page
    And I set the job to "Complete"

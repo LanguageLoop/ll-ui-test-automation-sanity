@@ -96,7 +96,6 @@ module.exports={
         var temp= $$('//*[@class="pac-matched"]')[0] 
         temp.click()
       //  browser.keys("ArrowDown")
-        browser.pause(2000)
        // browser.keys("Enter")
         browser.pause(2000)
     }

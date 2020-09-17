@@ -1,8 +1,12 @@
 const parameters =require('./params.js')
 var HtmlReporter= require('@rpii/wdio-html-reporter').HtmlReporter
+var ReportAggregator = require('@rpii/wdio-html-reporter').ReportAggregator
 //var reportAggregator =require('@rpii/wdio-html-reporter').ReportAggregator
 var htmlFormat = require('wdio-html-format-reporter')
 const GlobalData=require('./test/data/GlobalData')
+GlobalData.BASE_URL="https://li-test.languageloop.com.au/LoopedIn_th/Login.aspx"
+GlobalData.DEV_URL="https://li-test.languageloop.com.au/DeveloperScreen/Home.aspx"
+
 const { Given, When, Then, AfterAll } = require('cucumber');
 
 var bulkUploadPage=require('./test/pages/Booking/BulkUploadPage')
@@ -38,7 +42,11 @@ exports.config = {
     // WebdriverIO allows it to run your tests in arbitrary locations (e.g. locally or
     // on a remote machine).
   reporters: 
-  ['spec',
+  ['spec', ['allure', {
+    outputDir: 'allure-results',
+    disableWebdriverStepsReporting: true,
+    disableWebdriverScreenshotsReporting: false,
+}],
  [ HtmlReporter,
    {
             outputDir: './reports/html-reports/',
@@ -52,11 +60,17 @@ exports.config = {
             useOnAfterCommandForScreenshot: false,  
 
     
-  }]
+  }],
+  ['junit', {
+    outputDir: './reports/junit/',
+    outputFileFormat: function (options) {
+        return 'testresults.xml';
+    },
+    packageName: "LanguageLoop" // chrome.41 - administrator
+}]
 ],
     // ...    
   
-    
     runner: 'local',
     //
     // ==================
@@ -90,7 +104,7 @@ exports.config = {
     // and 30 processes will get spawned. The property handles how many capabilities
     // from the same test should run tests.
     //
-    maxInstances: 5,
+    maxInstances: 1,
     //
     // If you have trouble getting all important capabilities together, check out the
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
@@ -105,7 +119,10 @@ exports.config = {
         //
         browserName: 'chrome',
         'goog:chromeOptions': {
-            args: ['--start-maximized']     
+            args: ['--start-maximized'] ,
+          
+               // "binary":"C:/Users/HAR/AppData/Local/Google/Chrome/Application/chrome.exe"
+               
            }
         // If outputDir is provided WebdriverIO can capture driver session logs
         // it is possible to configure which logTypes to include/exclude.
@@ -119,7 +136,7 @@ exports.config = {
     // Define all options that are relevant for the WebdriverIO instance here
     //
     // Level of logging verbosity: trace | debug | info | warn | error | silent
-    logLevel: 'silent',
+    logLevel: 'error',
     //
     // Set specific log levels per logger
     // loggers:
@@ -214,6 +231,17 @@ exports.config = {
      */
      onPrepare: function (config, capabilities) {
        // GlobalData=require('./test/data/GlobalData')
+       let reportAggregator = new ReportAggregator({
+        outputDir: './reports/html-reports/',
+        filename: 'master-report.html',
+        reportTitle: 'Master Report',
+        browserName : 'chrome',
+        // to use the template override option, can point to your own file in the test project:
+        // templateFilename: path.resolve(__dirname, '../template/wdio-html-reporter-alt-template.hbs')
+    });
+    reportAggregator.clean() ;
+
+    global.reportAggregator = reportAggregator;
      },
     /**
      * Gets executed before a worker process is spawned and can be used to initialise specific service
@@ -234,6 +262,9 @@ exports.config = {
      * @param {Array.<String>} specs List of spec file paths that are to be run
      */
      beforeSession: function (config, capabilities, specs) {
+
+        //set up the base url for li-test
+
         //job id list output file name. this list of job ids can be used to verify the triggered email
         global.JOB_ID_FILENAME= JOB_ID_FILENAME
         
@@ -381,7 +412,9 @@ exports.config = {
      * @param {<Object>} results object containing test results
      */
      onComplete: async function(exitCode, config, capabilities, results) {
-        
+        (async () => {
+            await global.reportAggregator.createReport();
+        })();
      },
     /**
     * Gets executed when a refresh happens.

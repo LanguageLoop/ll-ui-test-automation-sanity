@@ -6,7 +6,9 @@
   "scripts": {
     "test": "./node_modules/.bin/wdio wdio.conf.js",
     "browserstack": "./node_modules/.bin/wdio wdio.browserstack.conf.js",
-    "aws-android-chrome": "./node_modules/.bin/wdio wdio.aws.android.browser.conf.js"
+    "aws-android-chrome": "./node_modules/.bin/wdio wdio.aws.android.browser.conf.js",
+    "vl-test": "./node_modules/.bin/wdio wdio.vltest.conf.js",
+    "uat": "./node_modules/.bin/wdio wdio.uat.conf.js"
   },
   "author": "",
   "license": "ISC",
@@ -19,12 +21,13 @@
     "@wdio/junit-reporter": "^6.0.14",
     "@wdio/local-runner": "^6.0.13",
     "@wdio/mocha-framework": "^6.0.13",
+    "@wdio/selenium-standalone-service": "^6.1.14",
     "@wdio/spec-reporter": "^6.0.12",
     "@wdio/sync": "^6.0.12",
     "appium": "^1.17.1",
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
-    "chromedriver": "^83.0.0",
+    "chromedriver": "^85.0.0",
     "cucumber-html-reporter": "^5.2.0",
     "deepmerge": "^4.2.2",
     "lodash": "^4.17.19",
@@ -34,6 +37,7 @@
     "wdio-chromedriver-service": "^6.0.3",
     "wdio-html-format-reporter": "^0.4.0",
     "wdio-multiple-cucumber-html-reporter": "^1.1.1",
+    "wdio-phantomjs-service": "^0.2.2",
     "webdriverio": "^6.0.13"
   },
   "dependencies": {

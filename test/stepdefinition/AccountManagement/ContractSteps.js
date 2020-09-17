@@ -140,7 +140,7 @@ Then(/^I delete assignment type$/, function(){
 Then(/^I verify contract rate is added$/, function(){
     browser.pause(2000)
   // action.clickElement(contractManagementPage.prebookedVideoContractRates)
-    var elt = $('//*[contains(text(),"Contract Rates Schedules")]/../../..//*[contains(text(),"Pre-booked Video")]/../..//table').$('//a[text()="'+GlobalData.CONTRACT_NAME+'"]')
+    var elt = $('//*[contains(text(),"Contract Rates Schedules")]/../../..//*[contains(text(),"Video")]/../..//table').$('//a[text()="'+GlobalData.CONTRACT_NAME+'"]')
 })
 
 Then(/^I verify the minimum naati is added "(.*)"$/, function(naati){
@@ -162,8 +162,6 @@ Then(/^I delete added miniumum naati$/, function(){
     browser.pause(2000)
    
     var tlength= contractManagementPage.naatiMinimumLevelTables.length
-    console.log("LANG TABLE INDEX : "+contractManagementPage.naatiMinimumLevelTables[tlength-2].$$('//tbody//td')[0].getText())
-    console.log("DHAWAN :: "+tlength +" ::: "+contractManagementPage.naatiMinimumLevelTables[tlength-1].$('//div[contains(@id,"wtcontAction")]').getAttribute("class"))
    // action.clickElement(contractManagementPage.naatiMinimumLevelTables[tlength-1].$('//div[contains(@id,"wtcontAction")]'))
    // contractManagementPage.naatiMinimumLevelTables[tlength-1].$$('//tbody//td')[1].click()
     browser.pause(3000)
@@ -181,11 +179,13 @@ Then(/^I verify contract is created$/, function(){
 })
 
 Then(/^I verify duplicate contract is created "(.*)"$/, function(title){
+    browser.pause(3000)
     var current_contract=GlobalData.CONTRACT_TITLE
     //get the number at the end of the title. this number is added randomly during creation to keep it unique
     var res = current_contract.replace(/\D/g, "");
     //add one to the number. because when you duplicate a contract, the title is appended by number and 1 is added to it.
     var temp_number= (parseInt(res)+1)
+    console.log("Expected :"+ title+(parseInt(res)+1))
     chai.expect(contractManagementPage.contractHeadingText.getText().toString() == title+(parseInt(res)+1)).to.be.true
 })
 

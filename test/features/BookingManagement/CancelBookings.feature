@@ -98,7 +98,7 @@ Feature: Cancel existing booking
    And The job id is added to the file
   
    Examples:
-   |   cancel reason                                 |   on behalf       | job notice length | username         | password | dropdownfilter | campus pin | Requester Name      | language   | assignment type  | date            | time  | duration | email        | job status  | contractor job status | 
+   |   cancel reason                                 |   on behalf       | job notice length | username           | password    | dropdownfilter | campus pin | Requester Name      | language   | assignment type  | date            | time  | duration | email        | job status  | contractor job status | 
    | NES client no-show                              | Automation Tester | two hours after   | LLAdmin@looped.in  | Uranus@6    | Management     |  33124     |  Automation Tester  |  AFRIKAANS | Zero min ongoing | fortnight after | 09:30 | 4 hours  | hh@bb.com.au | Unallocated | Allocated             |
    | NES client no-show                              | Automation Tester | short notice      | LLAdmin@looped.in  | Uranus@6    | Management     |  33124     |  Automation Tester  |  AFRIKAANS | Zero min ongoing | fortnight after | 09:30 | 4 hours  | hh@bb.com.au | Unallocated | Allocated             |
    | Job request error (Date,Time, Duration, etc..)  | Automation Tester | short notice      | LLAdmin@looped.in  | Uranus@6    | Management     |  33124     |  Automation Tester  |  AFRIKAANS | Zero min ongoing | fortnight after | 09:30 | 4 hours  | hh@bb.com.au | Unallocated | Allocated             |

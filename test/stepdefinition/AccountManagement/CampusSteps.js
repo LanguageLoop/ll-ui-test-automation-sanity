@@ -10,7 +10,8 @@ When(/^I enter campus address "(.*)","(.*)"$/, function(address1,address2){
 })
 
 When(/^I enter campus post name "(.*)","(.*)"$/, function(name1,name2){
-    action.enterLocation(accountManagementPage.campusPostName1Input,name1)
+    action.enterValue(accountManagementPage.campusPostName1Input,name1)
+    browser.pause(1000)
     action.enterValue(accountManagementPage.campusPostName2Input,name2)
 })
 
@@ -68,6 +69,11 @@ When(/^I click first bill to from search results$/,function(){
     browser.pause(2000)
     action.clickElement(accountManagementPage.firstBillToTitle)
     browser.pause(2000)
+})
+
+When(/^I enter videoloop pin "(.*)"$/, function(pin)
+{
+    action.enterValue(accountManagementPage.videoLoopPinInput,pin)
 })
 
 When(/^I click assign button$/,function(){
