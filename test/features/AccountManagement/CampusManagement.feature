@@ -112,7 +112,7 @@ Feature: Campus Management features
    | username          | password   | campus id | dimension type   | dimension value |
    | LLAdmin@looped.in |  Uranus@6  | 33124     |  Client Type     |  Commercial     |
 
-  @ViewCampus  @AddNote
+  @ViewCampus  @AddNote1
   Scenario Outline: View campus add notes
    When I login with "<username>" and "<password>"
    And I click account management link 
