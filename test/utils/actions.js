@@ -69,7 +69,9 @@ module.exports={
     {
         
         var abs_path=path.resolve(filepath)
-        elt.addValue(abs_path)
+        //for uploding file in docker
+        const remoteFilePath = browser.uploadFile(abs_path);
+        elt.addValue(remoteFilePath)
        // elt.click()
     },
 
