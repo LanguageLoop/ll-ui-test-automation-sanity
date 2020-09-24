@@ -183,7 +183,12 @@ exports.config = {
     dockerLogs: './logs',
     dockerOptions: {
         image: 'selenium/standalone-chrome',
-        healthCheck: 'http://localhost:4444',
+        healthCheck: {
+            url: 'http://localhost:4444',
+            maxRetries: 3,
+            inspectInterval: 2000,
+            startDelay: 5000
+        },
         options: {
             p: ['4444:4444'],
             e: ['SCREEN_WIDTH: 1920', 'SCREEN_HEIGHT: 1080'],

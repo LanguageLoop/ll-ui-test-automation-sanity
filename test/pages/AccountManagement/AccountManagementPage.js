@@ -127,7 +127,7 @@ module.exports ={
     },
 
     get firstContract(){
-        return $('//table[contains(@id,"ContractTable")]//td')
+        return $('//table[contains(@id,"ContractTable")]//td//a')
     },
 
     get addContractLink(){

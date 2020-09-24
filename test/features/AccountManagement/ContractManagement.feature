@@ -42,7 +42,7 @@ Feature: Contract Management features
    | username          | password   | contract title      | contract number | payment terms     | commencement date | completion date |
    | LLAdmin@looped.in |  Uranus@6  | Automation Contract |  234234R        |  Automation terms |  today            |  20-12-2033     |
 
-   @AddMinimumNAATILevel
+   @AddMinimumNAATILevel @tt
    Scenario Outline: Add minium naati level for contract
    When I login with "<username>" and "<password>"
    And I click account management link 
