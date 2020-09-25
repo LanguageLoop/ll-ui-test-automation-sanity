@@ -118,7 +118,7 @@ Feature: Edit existing booking
 
    Examples:
    | job notice length | username           | password    | dropdownfilter | campus pin | Requester Name      | language    | assignment type      | date            | time  | duration   | email        | job status  | contractor job status | NAATI          | gender preference | job detail           | new time  |  instruction  |  report location | report name     | address                 | confirmation phone number |
-   | short notice      | LLAdmin@looped.in  | Uranus@6    | Management     |  33124     |  Auto Tester        |  AFRIKAANS  | Zero min ongoing     | fortnight after | 09:30 | 8 hours    | hh@bb.com.au | Unallocated | Allocated             | Non-Accredited |  Female           | Pre-booked Video     | 11:30     |  have fun     |  New Zealand     | Interpreter A   | St Kilda VIC, Australia |  0399999997               |
+   | short notice      | LLAdmin@looped.in  | Uranus@6    | Management     |  33124     |  Auto Tester        |  AFRIKAANS  | Zero min ongoing     | fortnight after | 09:30 | 8 hours    | hh@bb.com.au | Unallocated | Allocated             | Non-Accredited |  Female           | Home Visit           | 11:30     |  have fun     |  New Zealand     | Interpreter A   | St Kilda VIC, Australia |  0399999997               |
    | long notice       | LLAdmin@looped.in  | Uranus@6    | Management     |  33124     |  Auto Tester        |  AFRIKAANS  | Zero min ongoing     | fortnight after | 09:30 | 8 hours    | hh@bb.com.au | Unallocated | Allocated             | Non-Accredited |  Female           | Pre-Booked Telephone | 11:30     |  have fun     |  New Zealand     | Interpreter A   | St Kilda VIC, Australia |  0399999997               |
 
 
