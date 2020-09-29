@@ -210,7 +210,7 @@ module.exports={
     },
 
     get homeVisitTab(){
-        return $('//label[text()="Home Visit"]')
+        return $('//*[text()="Home Visit"]')
     },
 
     get prebookedTelephoneTab(){
