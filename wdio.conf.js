@@ -191,7 +191,7 @@ exports.config = {
         },
         options: {
             p: ['4444:4444'],
-            e: ['SCREEN_WIDTH: 1920', 'SCREEN_HEIGHT: 1080'],
+            e: ['SCREEN_WIDTH: 2400', 'SCREEN_HEIGHT: 1200'],
             shmSize: '2g'
         }
     },
