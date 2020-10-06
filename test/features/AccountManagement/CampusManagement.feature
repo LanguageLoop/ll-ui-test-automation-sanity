@@ -154,8 +154,8 @@ Feature: Campus Management features
    And I delete added override naati
 
    Examples: 
-   | username          | password   | campus id        | language          | naati level |
-   | LLAdmin@looped.in |  Uranus@6  | Melbourne LL     | AFRIKAANS - Video | Recognised  |
+   | username          | password   | campus id  | language                       | naati level |
+   | LLAdmin@looped.in |  Uranus@6  | 32548      | AFRIKAANS - Video Conferencing | Recognised  |
 
   @ViewCampus  @CancellationFee
   Scenario Outline: View campus add cancellation fee.
@@ -175,8 +175,8 @@ Feature: Campus Management features
    And I delete the added cancellation fee
 
    Examples: 
-   | username          | password   | campus id        | fee name    | hours before  | duration | client fee | unable to service fee | failed to attend fee |
-   | LLAdmin@looped.in |  Uranus@6  | Melbourne LL     | Testing fee |  96           |  1       |   5        |        10             |     15               | 
+   | username          | password   | campus id   | fee name    | hours before  | duration | client fee | unable to service fee | failed to attend fee |
+   | LLAdmin@looped.in |  Uranus@6  | 32548       | Testing fee |  96           |  1       |   5        |        10             |     15               | 
 
   @ViewCampus  @NES
   Scenario Outline: Add NES
@@ -191,8 +191,8 @@ Feature: Campus Management features
    And I delete the added nes
 
    Examples: 
-   | username          | password   | campus id        | language          |
-   | LLAdmin@looped.in |  Uranus@6  | Melbourne LL     | GERMAN - Video    |
+   | username          | password   | campus id | language                      |
+   | LLAdmin@looped.in |  Uranus@6  | 32548     | GERMAN - Video Conferencing   |
 
   @ViewCampus  @CommonInstruction
   Scenario Outline: View campus check common instructions section.
@@ -208,8 +208,8 @@ Feature: Campus Management features
    And I delete added common instruction
 
    Examples: 
-   | username          | password   | campus id        | title               | description      |
-   | LLAdmin@looped.in |  Uranus@6  | Melbourne LL     | Automation Testing  | Test Instruction |
+   | username          | password   | campus id  | title               | description      |
+   | LLAdmin@looped.in |  Uranus@6  |  32548     | Automation Testing  | Test Instruction |
 
    @ViewCampus  @CustomizedField
   Scenario Outline: View campus check travel rates section.

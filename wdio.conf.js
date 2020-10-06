@@ -122,7 +122,8 @@ exports.config = {
         //
         browserName: 'chrome',
         'goog:chromeOptions': {
-            args: ['--start-maximized'] ,
+            args:['window-size=2880,1800'], 
+            //['--start-maximized'] ,
           
                // "binary":"C:/Users/HAR/AppData/Local/Google/Chrome/Application/chrome.exe"
                
