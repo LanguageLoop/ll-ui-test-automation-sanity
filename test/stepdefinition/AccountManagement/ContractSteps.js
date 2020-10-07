@@ -140,7 +140,7 @@ Then(/^I delete assignment type$/, function(){
 Then(/^I verify contract rate is added$/, function(){
     browser.pause(2000)
   // action.clickElement(contractManagementPage.prebookedVideoContractRates)
-    var elt = $('//*[contains(text(),"Contract Rates Schedules")]/../../..//*[contains(text(),"Video")]/../..//table').$('//a[text()="'+GlobalData.CONTRACT_NAME+'"]')
+    var elt = $('//*[contains(text(),"Contract Rates Schedules")]/../../..//*[contains(text(),"Video")]/../../..//table').$('//a[text()="'+GlobalData.CONTRACT_NAME+'"]')
 })
 
 Then(/^I verify the minimum naati is added "(.*)"$/, function(naati){
