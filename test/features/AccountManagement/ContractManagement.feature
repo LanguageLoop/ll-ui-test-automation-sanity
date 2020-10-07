@@ -92,8 +92,8 @@ Feature: Contract Management features
    Then I verify contract rate is added
 
     Examples: 
-   | username          | password   |language               | contract title                 | rate name       | hour             | contract min period | contract min rate | contract ongoing | contractor min period | contractor min rate | contractor ongoing|
-   | LLAdmin@looped.in |  Uranus@6  | All Languages - Video | Victorian Government - Bill To | Automation Rate | Business Hour A  |    2                |    200            |  15              |      2                |     250             |     15            |    
+   | username          | password   |language               | contract title      | rate name       | hour             | contract min period | contract min rate | contract ongoing | contractor min period | contractor min rate | contractor ongoing|
+   | LLAdmin@looped.in |  Uranus@6  | All Languages - Video | Automation Contract | Automation Rate | Business Hour A  |    2                |    200            |  15              |      2                |     250             |     15            |    
 
     
    @AddAssignmentType
