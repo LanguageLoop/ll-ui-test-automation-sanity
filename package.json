@@ -27,7 +27,7 @@
     "appium": "^1.17.1",
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
-    "chromedriver": "^85.0.4",
+    "chromedriver": "^85.0.0",
     "cucumber-html-reporter": "^5.2.0",
     "deepmerge": "^4.2.2",
     "lodash": "^4.17.19",
