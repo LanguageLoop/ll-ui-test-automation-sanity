@@ -106,8 +106,8 @@ Feature: Contractor Engagement features
   | LLAdmin@looped.in  | Uranus@6  | Automation   |   BOLTON CLARKE - DH RDNS   |
 
 
-    @AddReferees @test1  
-  Scenario Outline: Add work preference 
+    @AddReferees @test12  
+  Scenario Outline: Add  referee 
    When I login with "<username>" and "<password>"
    And I click contractor engagement link
    And I search and open contractor "<contractor>"

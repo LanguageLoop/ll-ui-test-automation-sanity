@@ -165,12 +165,14 @@ Then(/^I verify referee "(.*)","(.*)"$/, function(agency, name){
 })
 
 Then(/^I delete referees$/,function(){
-    var ct= $$('//*[@class="Reference Card"]').length
+    var ct= $$('//*[@class="Reference Card"]/..').length
     for(var i=0;i<ct;i++)
     {
         $$('//*[@class="Reference Card"]')[i].$('label').click()
         browser.pause(2000)
         $$('//*[@class="Reference Card"]')[i].$('//a[text()="Remove"]').click()
+        browser.pause(2000)
+
 
     }
 })
