@@ -230,6 +230,14 @@ When(/^I click on job details tab "(.*)"$/, function(jobdetail){
       break
     case "Pre-Booked Telephone":
       action.clickElement(jobRequestPage.prebookedTelephoneTab)
+      browser.pause(2000)
+      try{
+        jobRequestPage.noChangeRequiredButton.waitForExist({timeout:3000})
+        action.clickElement(jobRequestPage.noChangeRequiredButton)
+      }
+      catch(Err)
+      {
+      }
       break
     case "Home Visit":
       action.clickElement(jobRequestPage.homeVisitTab)

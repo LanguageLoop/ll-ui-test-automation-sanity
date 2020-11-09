@@ -84,7 +84,7 @@ Feature: Edit existing booking
 
  
  
-@EditAllocatedJobRequest @TriggerEmailFields @Video
+@EditAllocatedJobRequest @TriggerEmailFields @Video1
   Scenario Outline: Edit a allocated job request fields that trigger email to interpreter
    When I login with "<username>" and "<password>"
    And I create a new job request with minimal fields "<job notice length>"
