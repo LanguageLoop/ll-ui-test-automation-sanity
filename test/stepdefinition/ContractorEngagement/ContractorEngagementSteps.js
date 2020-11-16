@@ -47,8 +47,8 @@ When(/^I enter contractor details "(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*
 
 When(/^I search and open contractor "(.*)"$/, function(contractor){
     browser.pause(2000)
-    action.enterValueAndPressReturn(contractorEngagementPage.searchContractorInput, contractor)
-    browser.pause(2000)
+    action.enterValue(contractorEngagementPage.searchContractorInput, contractor)
+    browser.pause(3000)
     $('//table[contains(@id,"Contractor")]//td//a').click()
 })
 

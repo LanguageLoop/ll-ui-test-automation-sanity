@@ -226,7 +226,7 @@ module.exports={
     },
 
     get interpreterInstructionsInput(){
-        return $('//*[text()="Interpreter Instructions"]/..//textarea')
+        return $('//*[text()="Instructions for Interpreter"]/..//textarea')
     },
 
     get videoLinkEditorInput(){
