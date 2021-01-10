@@ -62,7 +62,7 @@ module.exports={
 
     elementExists(elt)
     {
-       return elt.waitForDisplayed({timeout:5000})
+       return elt.waitForDisplayed({timeout:10000})
     },
 
     uploadFile(elt,filepath)

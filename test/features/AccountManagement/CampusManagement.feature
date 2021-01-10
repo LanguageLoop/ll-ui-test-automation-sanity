@@ -34,7 +34,7 @@ Feature: Campus Management features
    
    Examples:
    | username           | password    | campus address1                             | campus address2                              | postname1   | postname2    |  postal address1  | postal address2  | abn         | campus name  | entity type | company name | po number | invoice frequency | trading name    |  bill to                | videoloop pin |
-   | LLAdmin@looped.in  | Uranus@6    | 1 St Kilda Rd, St Kilda VIC 3182|  1 St Kilda Rd, St Kilda VIC 3182, Australia |  first post | second post  |  St Kilda         |  St Kilda Street | 53819971946 | Melbourne LL | Government  | ll company   | 42345     | Weekly            | ll trading name | department of transport | 1234          |
+   | LLAdmin@looped.in  | Uranus@6    | 1 St Kilda Rd, St Kilda VIC 3182            |  1 St Kilda Rd, St Kilda VIC 3182, Australia |  first post | second post  |  St Kilda         |  St Kilda Street | 53819971946 | Melbourne LL | Government  | ll company   | 42345     | Weekly            | ll trading name | department of transport | 1234          |
   
   @ViewCampus  @ScheduleRates
   Scenario Outline: View campus schedule rates
@@ -46,8 +46,8 @@ Feature: Campus Management features
    And I verify the prebooked ti contract section is present
 
    Examples:
-   | username          | password   | campus id |
-   | LLAdmin@looped.in |  Uranus@6  | 33124     |
+   | username          | password   | campus id        |
+   | LLAdmin@looped.in |  Uranus@6  |  33124           |
 
   @ViewCampus  @BillToContracts
   Scenario Outline: View campus bill to contracts
@@ -77,8 +77,8 @@ Feature: Campus Management features
    And I delete all preferences
 
    Examples:
-   | username          | password   | campus id |
-   | LLAdmin@looped.in |  Uranus@6  | 33124     |
+   | username          | password   | campus id      |
+   | LLAdmin@looped.in |  Uranus@6  | 33124          |
 
   @ViewCampus  @AddVaccination
   Scenario Outline: View campus vaccinations
@@ -144,7 +144,8 @@ Feature: Campus Management features
   Scenario Outline: Add naati override for campus.
    When I login with "<username>" and "<password>"
    And I click account management link 
-   And I search for campus "<campus id>"
+   And I create a new campus
+   And I search for created campus 
    And I click the first campus link from search results
    And I click add naati override button
    And I select service language "<language>"
@@ -154,8 +155,8 @@ Feature: Campus Management features
    And I delete added override naati
 
    Examples: 
-   | username          | password   | campus id  | language                       | naati level |
-   | LLAdmin@looped.in |  Uranus@6  | 32548      | AFRIKAANS - Video Conferencing | Recognised  |
+   | username          | password   | campus id         | language                       | naati level |
+   | LLAdmin@looped.in |  Uranus@6  | Melbourne LL      | GERMAN - Video Conferencing    | Recognised  |
 
   @ViewCampus  @CancellationFee
   Scenario Outline: View campus add cancellation fee.
@@ -175,8 +176,8 @@ Feature: Campus Management features
    And I delete the added cancellation fee
 
    Examples: 
-   | username          | password   | campus id   | fee name    | hours before  | duration | client fee | unable to service fee | failed to attend fee |
-   | LLAdmin@looped.in |  Uranus@6  | 32548       | Testing fee |  96           |  1       |   5        |        10             |     15               | 
+   | username          | password   | campus id          | fee name    | hours before  | duration | client fee | unable to service fee | failed to attend fee |
+   | LLAdmin@looped.in |  Uranus@6  | Melbourne LL       | Testing fee |  96           |  1       |   5        |        10             |     15               | 
 
   @ViewCampus  @NES
   Scenario Outline: Add NES
@@ -191,8 +192,8 @@ Feature: Campus Management features
    And I delete the added nes
 
    Examples: 
-   | username          | password   | campus id | language                      |
-   | LLAdmin@looped.in |  Uranus@6  | 32548     | GERMAN - Video Conferencing   |
+   | username          | password   | campus id        | language                      |
+   | LLAdmin@looped.in |  Uranus@6  | Melbourne LL     | GERMAN - Video Conferencing   |
 
   @ViewCampus  @CommonInstruction
   Scenario Outline: View campus check common instructions section.

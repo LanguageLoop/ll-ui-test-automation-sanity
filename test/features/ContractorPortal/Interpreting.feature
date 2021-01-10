@@ -8,6 +8,7 @@ Feature: Interpreter features
  @SearchForJobs 
   Scenario Outline: Search for jobs as an interpreter in various  job stages
    When I login with "<username>" and "<password>"
+   And I handle the message for interpreters dialog
    And I select "<dropdownfilter>" from the filter dropdown
    And I search for job request "<job id>"
    And I enter to date "<to date>"
@@ -24,9 +25,10 @@ Feature: Interpreter features
    | suzanehanna@hotmail.com  | Test1    | Cancelled           |  13-05-2022 | 1537266 |
    | suzanehanna@hotmail.com  | Test1    | Failed to Complete  |  13-05-2022 | 1537266 |
 
- @RejectJobs 
+ @RejectJobs1 
   Scenario Outline: Reject jobs
    When I login with "<contractor username>" and "<contractor password>"
+   And I handle the message for interpreters dialog
    And I select "<dropdownfilter>" from the filter dropdown
    And I click on first job id from interpreting job list
    And I click reject job button
@@ -60,6 +62,7 @@ Feature: Interpreter features
  @UnavailableJobs 
   Scenario Outline: Unavailable for job
    When I login with "<contractor username>" and "<contractor password>"
+   And I handle the message for interpreters dialog
    And I select "<dropdownfilter>" from the filter dropdown
    And I click on first job id from interpreting job list
    And I click unavailable job button

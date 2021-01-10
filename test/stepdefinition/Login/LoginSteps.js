@@ -21,5 +21,6 @@ Given(/^the looped in login page is opened$/,  function(){
     }
     action.enterValue(Login.usernameInput,username)
     action.enterValue(Login.passwordInput,password)
-    action.clickElement(Login.loginButton)     
+    action.clickElement(Login.loginButton) 
+    
 })

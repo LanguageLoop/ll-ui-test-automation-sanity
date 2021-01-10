@@ -21,5 +21,8 @@ module.exports = {
 
     get contractorEngagementLink(){
         return $('//a[text()="Contractor Engagement"]')
-    }
-}
+    },
+
+    get contractorMessageOKButton(){
+        return $('//*[contains(text(),"Message for Interpreters")]/../..//input[@type="submit"]/..')
+    }}

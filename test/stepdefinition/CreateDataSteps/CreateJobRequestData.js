@@ -23,8 +23,10 @@ function createJobRequest(notice, campuspin,assignmenttype,language,naatilevel,r
   action.clickElement(interpretingPage.newJobRequestButton)
   action.enterValueAndPressReturn(jobRequestPage.campusPinInput,campuspin)
   action.enterValueAndPressReturn(jobRequestPage.requesterNameDropdown,requester)
+  browser.pause(2000)
   action.clickElement(jobRequestPage.nextButton)
 
+  browser.pause(2000)
   action.enterValueAndPressReturn(jobRequestPage.languageDropdown,language)
 
   action.enterValueAndPressReturn(jobRequestPage.assignmentTypeDropdown,assignmenttype)

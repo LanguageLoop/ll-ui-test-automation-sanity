@@ -1,4 +1,16 @@
 
+When(/^I handle the message for interpreters dialog$/, function(){
+  try{
+    interpretingPage.messageForInterpreterOKButton.waitForExist({timeout:10000})
+
+    action.clickElement(interpretingPage.messageForInterpreterOKButton)
+
+
+  }
+  catch(Err)
+  {
+  }
+})
 
 When(/^I select "(.*)" from the filter dropdown$/,   function(listitem){
   browser.pause(2000)

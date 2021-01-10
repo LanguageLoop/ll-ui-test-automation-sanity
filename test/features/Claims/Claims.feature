@@ -27,7 +27,7 @@ Feature: Claims processing features
   Scenario Outline: Process claims - process contractor, campus
    When I login with "<username>" and "<password>"
    And I click Claims header link  
-   And I close all special search criteria
+  # And I close all special search criteria
    And I select "<status>" job status
    And I get the campus fee for first job
    And I get the contractor fee for first job
@@ -51,7 +51,7 @@ Feature: Claims processing features
   Scenario Outline: Process claims - process campus and contractor
    When I login with "<username>" and "<password>"
    And I click Claims header link  
-   And I close all special search criteria
+   #And I close all special search criteria
    And I select "<status>" job status
    And I get the campus fee for first job
    And I get the contractor fee for first job
@@ -74,7 +74,7 @@ Feature: Claims processing features
   Scenario Outline: Process claims -  process campus only
    When I login with "<username>" and "<password>"
    And I click Claims header link  
-   And I close all special search criteria
+  # And I close all special search criteria
    And I select "<status>" job status
    And I get the campus fee for first job
    And I get the contractor fee for first job
@@ -97,7 +97,7 @@ Feature: Claims processing features
   Scenario Outline: Process claims - campus only
    When I login with "<username>" and "<password>"
    And I click Claims header link  
-   And I close all special search criteria
+   #And I close all special search criteria
    And I select "<status>" job status
    And I get the campus fee for first job
    And I get the contractor fee for first job
@@ -122,7 +122,7 @@ Feature: Claims processing features
   Scenario Outline: Process claims - contractor only
    When I login with "<username>" and "<password>"
    And I click Claims header link  
-   And I close all special search criteria
+  # And I close all special search criteria
    And I select "<status>" job status
    And I get the campus fee for first job
    And I get the contractor fee for first job
@@ -147,7 +147,7 @@ Feature: Claims processing features
   Scenario Outline: Process claims - reprocess campus and contractor
    When I login with "<username>" and "<password>"
    And I click Claims header link  
-   And I close all special search criteria
+  # And I close all special search criteria
    And I select "<status>" job status
    And I get the campus fee for first job
    And I get the contractor fee for first job

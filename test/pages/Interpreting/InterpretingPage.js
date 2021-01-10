@@ -85,6 +85,11 @@ module.exports={
     get returnJobButton()
     {
         return $('//*[text()="Return this job"]')
+    },
+
+    get messageForInterpreterOKButton()
+    {
+        return $('//*[contains(text(),"Message for Interpreters")]/../..//input[@type="submit"]')
     }
 
 }
