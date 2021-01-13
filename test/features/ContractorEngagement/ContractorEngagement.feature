@@ -80,8 +80,11 @@ Feature: Contractor Engagement features
   Scenario Outline: Create Contractor.
    When I login with "<username>" and "<password>"
    And I click contractor engagement link
-   And I click add contractor button
-   And I enter contractor details "<salutation>","<gender>","<name>","<pin>","<mobile>","<dob>","<email>","<address>"
+   #And I click add contractor button
+   #And I enter contractor details "<salutation>","<gender>","<name>","<pin>","<mobile>","<dob>","<email>","<address>"
+   #And I click contractor engagement link
+   And I search and open contractor "<name>"
+   #And I search and open created contractor
    And I click add availability link
    And I enter availability details "<type>","<words>"
    Then I verify availability details "<type>"

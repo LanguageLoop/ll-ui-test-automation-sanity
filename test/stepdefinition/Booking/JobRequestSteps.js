@@ -33,6 +33,7 @@ When(/^I enter confirmation date and time "(.*)" and "(.*)"$/, function(notice,t
 })
 
 When(/^I select assignment type "(.*)"$/, function(assignmenttype){
+  browser.pause(2000)
   action.enterValueAndPressReturn(jobRequestPage.assignmentTypeDropdown,assignmenttype)
 })
 
@@ -182,6 +183,7 @@ When(/^I enter report to name "(.*)"$/, function(name){
 })
 
 When(/^I enter report to phone number "(.*)"$/, function(phonenumber){
+  browser.pause(2000)
   action.enterValue(jobRequestPage.reportToPhoneNumberInput, phonenumber)
 })
 

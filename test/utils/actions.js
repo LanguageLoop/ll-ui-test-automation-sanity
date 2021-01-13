@@ -8,6 +8,7 @@ module.exports={
         elt.waitForEnabled()
         elt.waitForClickable()
         elt.click()
+        browser.pause(1000)
         this.clearValue(elt)
         browser.pause(1000)
         elt.setValue(value)
@@ -62,7 +63,7 @@ module.exports={
 
     elementExists(elt)
     {
-       return elt.waitForDisplayed({timeout:10000})
+       return elt.waitForDisplayed({timeout:25000})
     },
 
     uploadFile(elt,filepath)

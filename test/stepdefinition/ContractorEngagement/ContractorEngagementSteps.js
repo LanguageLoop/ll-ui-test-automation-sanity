@@ -1,3 +1,4 @@
+const GlobalData = require("../../data/GlobalData")
 
 When(/^I click add contractor button$/, function(){
     browser.pause(2000)
@@ -48,6 +49,13 @@ When(/^I enter contractor details "(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*
 When(/^I search and open contractor "(.*)"$/, function(contractor){
     browser.pause(2000)
     action.enterValue(contractorEngagementPage.searchContractorInput, contractor)
+    browser.pause(3000)
+    $('//table[contains(@id,"Contractor")]//td//a').click()
+})
+
+When(/^I search and open created contractor$/, function(){
+    browser.pause(2000)
+    action.enterValue(contractorEngagementPage.searchContractorInput, GlobalData.NEW_CONTRACTOR_NAME)
     browser.pause(3000)
     $('//table[contains(@id,"Contractor")]//td//a').click()
 })

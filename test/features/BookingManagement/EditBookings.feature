@@ -5,7 +5,7 @@ Feature: Edit existing booking
    Given the looped in login page is opened
    
 
- @EditUnallocatedJobRequest @TriggerEmailFields1
+ @EditUnallocatedJobRequest @TriggerEmailFields1 @a2
   Scenario Outline: Edit a job request details fields that trigger emails 
    When I login with "<username>" and "<password>"
    And I create a new job request with minimal fields "<job notice length>"
@@ -52,7 +52,7 @@ Feature: Edit existing booking
   | Allocated            | long notice       | LLAdmin@looped.in  | Uranus@6    | Management     |  33124     |  Automation Tester  |  AUSLAN     | Zero min ongoing | fortnight after | 09:30 | 4 hours  | hh@bb.com.au        | Unallocated | Female            | consulting | 23r223423        | 45667     |  firstname     |  New Zealand    | LL Reporter | 0399999999          |  Phone            | 0399999999                |
 
 
-  @EditAllocatedJobRequest  @NoTriggerEmailFields
+  @EditAllocatedJobRequest  @NoTriggerEmailFields @a1
   Scenario Outline: Edit a allocated job request details that do not trigger emails
    When I login with "<username>" and "<password>"
    And I create a new job request with minimal fields "<job notice length>"
@@ -65,7 +65,6 @@ Feature: Edit existing booking
    And I refresh the page
    And I set the contractor job status from "<original job status>" to "<contractor job status>"
    And I click on Edit button
-   And I select language "<language>"
    And I select assignment type "<assignment type>"
    And I enter "<email>" email address
    And I enter confirmation phone number "<confirmation phone number>"
