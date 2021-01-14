@@ -5,6 +5,7 @@ When(/^I select "(.*)" from the requester name dropdown$/,   function(listitem){
 })
 
 When(/^I select language "(.*)"$/,   function(listitem){
+  browser.pause(2000)
   action.enterValueAndPressReturn(jobRequestPage.languageDropdown,listitem)
 })
 

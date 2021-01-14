@@ -52,6 +52,7 @@ When(/^I switch to the job allocation window$/, function(){
 
 
 When(/^I click on bulk upload button$/, function(){
+  browser.pause(2000)
   action.clickElement(interpretingPage.bulkUploadButton)
   browser.pause(2000)
 })
