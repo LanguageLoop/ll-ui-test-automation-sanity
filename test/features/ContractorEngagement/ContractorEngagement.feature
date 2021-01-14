@@ -52,7 +52,10 @@ Feature: Contractor Engagement features
   Scenario Outline: Add contractor work eligibility 
    When I login with "<username>" and "<password>"
    And I click contractor engagement link
-   And I search and open contractor "<contractor>"
+   And I click add contractor button
+   And I enter contractor details "<salutation>","<gender>","<name>","<pin>","<mobile>","<dob>","<email>","<address>"
+   And I click contractor engagement link
+   And I search and open created contractor
    And I click add work eligibility link
    And I enter work eligibility details "<id>","<number>","<years>"
    Then I verify work eligibility
@@ -65,15 +68,18 @@ Feature: Contractor Engagement features
   Scenario Outline: Add contractor clearance 
    When I login with "<username>" and "<password>"
    And I click contractor engagement link
-   And I search and open contractor "<contractor>"
+   And I click add contractor button
+   And I enter contractor details "<salutation>","<gender>","<name>","<pin>","<mobile>","<dob>","<email>","<address>"
+   And I click contractor engagement link
+   And I search and open created contractor
    And I click add clearance link
    And I enter clearance details "<clearance>"
    Then I verify clearance "<clearance>"
    Then I delete clearances
    
   Examples:
-  | username           |  password |  contractor  | clearance       |
-  | LLAdmin@looped.in  | Uranus@6  | Automation   |  Police Check   |
+  | username           |  password |  contractor  | clearance       | salutation | gender    | name        |  pin  | mobile      |  dob         |  email    | address                  |
+  | LLAdmin@looped.in  | Uranus@6  | Automation   |  Police Check   |  Mr        |  female   | Automation  | 1232  | 0400000000  | 12-12-1982   | all       | St Kilda VIC, Australia  |
 
 
   @AddAvailability 
