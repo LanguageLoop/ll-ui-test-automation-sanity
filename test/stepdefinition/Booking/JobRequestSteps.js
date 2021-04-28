@@ -13,6 +13,10 @@ When(/^I enter campus pin "(.*)"$/,function(campuspin){
   action.enterValueAndPressReturn(jobRequestPage.campusPinInput,campuspin)
 })
 
+When(/^I select campus pin "(.*)"$/,function(campuspin){
+  action.enterValueAndPressReturn(jobRequestPage.campusPINComboBox,campuspin)
+})
+
 When(/^I enter time "(.*)"$/,function(time){
   jobRequestPage.timeInput.waitForExist({timeout:5000})
   jobRequestPage.timeInput.waitForEnabled({timeout:5000})
@@ -64,6 +68,11 @@ When(/^I click submit button$/,function(){
   browser.pause(2000)
   action.clickElement(jobRequestPage.submitButton)
 })
+When(/^I click submit and summary button$/,function(){
+  browser.pause(2000)
+  action.clickElement(jobRequestPage.submitAndSummaryButton)
+})
+
 When(/^I click next button$/,function(){
   action.clickElement(jobRequestPage.nextButton)
 })
@@ -141,6 +150,7 @@ When(/^I click yes to confirm editing job request$/, function(){
 })
 
 When(/^I click back link$/, function(){
+  browser.pause(2000)
   action.clickElement(jobRequestPage.backLink)
 })
 

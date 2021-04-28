@@ -16,7 +16,17 @@ module.exports ={
     {
         return $('//a[contains(text(),"Create Campus")]')
     },
+    
+    get metroRadioButton()
+    {
+        return $('//*[text()="Metro"]/../..//input')
+    },
 
+    get regionalRadioButton()
+    {
+        return $('//*[text()="Metro"]/../..//input')
+    },
+    
     get campusAddressInput()
     {
         return $('//*[text()="Address Search"]/..//input')
@@ -32,7 +42,7 @@ module.exports ={
     },
 
     get postalAddress2Input(){
-        return $('//*[contains(text(),"Address 2 (Building/Floor/Apartment)")]/../..//input')
+        return $('//*[contains(text(),"Postal Address 2 (Building/Floor/Apartment)")]/../..//input')
     },
 
     get postalAddressInput(){

@@ -10,7 +10,6 @@ Feature: Contract Management features
    And I click account management link 
    And I click add contract link
    And I enter contract title "<contract title>"
-   And I enter contract payment terms "<payment terms>"
    And I enter contract number "<contract number>"
    And I enter contract commencement date "<commencement date>"
    And I enter contract completion date "<completion date>"
@@ -28,7 +27,6 @@ Feature: Contract Management features
    And I click account management link 
    And I click add contract link
    And I enter contract title "<contract title>"
-   And I enter contract payment terms "<payment terms>"
    And I enter contract number "<contract number>"
    And I enter contract commencement date "<commencement date>"
    And I enter contract completion date "<completion date>"

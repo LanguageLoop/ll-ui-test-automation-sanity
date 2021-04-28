@@ -37,7 +37,7 @@ Feature: Edit existing booking
    And I enter confirmation phone number "<confirmation phone number>"
    And I enter "<confirmation email>" email address
    And I click save and proceed to summary button
-   And I handle duplicate job warning window
+  # And I handle duplicate job warning window
    And I click yes to confirm editing job request
    And I search for created job request
    And I click on job id from interpreting job search results
@@ -48,8 +48,8 @@ Feature: Edit existing booking
   
   Examples:
   |contractor job status | job notice length | username           | password    | dropdownfilter | campus pin | Requester Name      | language    | assignment type  | date            | time  | duration | confirmation email  | job status  | gender preference | department | reference number | PO Number | nes first name | report location | report name | report phone number | confirmation mode | confirmation phone number |
-  | Allocated            | short notice      | LLAdmin@looped.in  | Uranus@6    | Management     |  33124     |  Automation Tester  |  AUSLAN     | Zero min ongoing | fortnight after | 09:30 | 4 hours  | hh@bb.com.au        | Unallocated | Female            | consulting | 2314234          | 1234      |  firstname     |  New Zealand    | LL Reporter | 0399999999          |  Phone            | 0399999997                |
-  | Allocated            | long notice       | LLAdmin@looped.in  | Uranus@6    | Management     |  33124     |  Automation Tester  |  AUSLAN     | Zero min ongoing | fortnight after | 09:30 | 4 hours  | hh@bb.com.au        | Unallocated | Female            | consulting | 23r223423        | 45667     |  firstname     |  New Zealand    | LL Reporter | 0399999999          |  Phone            | 0399999999                |
+  | Allocated            | short notice      | LLAdmin@looped.in  | Uranus@6    | Management     |  33124     |  Automation Tester  |  ARABIC     | Zero min ongoing | fortnight after | 09:30 | 4 hours  | hh@bb.com.au        | Unallocated | Female            | consulting | 2314234          | 1234      |  firstname     |  New Zealand    | LL Reporter | 0399999999          |  Phone            | 0399999997                |
+  | Allocated            | long notice       | LLAdmin@looped.in  | Uranus@6    | Management     |  33124     |  Automation Tester  |  ARABIC     | Zero min ongoing | fortnight after | 09:30 | 4 hours  | hh@bb.com.au        | Unallocated | Male              | consulting | 23r223423        | 45667     |  firstname     |  New Zealand    | LL Reporter | 0399999999          |  Phone            | 0399999999                |
 
 
   @EditAllocatedJobRequest  @NoTriggerEmailFields @a1
@@ -116,8 +116,8 @@ Feature: Edit existing booking
    And The job id is added to the file
 
    Examples:
-   | job notice length | username           | password    | dropdownfilter | campus pin | Requester Name      | language    | assignment type      | date            | time  | duration   | email        | job status  | contractor job status | NAATI          | gender preference | job detail           | new time  |  instruction  |  report location | report name     | address                 | confirmation phone number |
-   | short notice      | LLAdmin@looped.in  | Uranus@6    | Management     |  33124     |  Auto Tester        |  AFRIKAANS  | Zero min ongoing     | fortnight after | 09:30 | 8 hours    | hh@bb.com.au | Unallocated | Allocated             | Non-Accredited |  Female           | Home Visit           | 11:30     |  have fun     |  New Zealand     | Interpreter A   | St Kilda VIC, Australia |  0399999997               |
-   | long notice       | LLAdmin@looped.in  | Uranus@6    | Management     |  33124     |  Auto Tester        |  AFRIKAANS  | Zero min ongoing     | fortnight after | 09:30 | 8 hours    | hh@bb.com.au | Unallocated | Allocated             | Non-Accredited |  Female           | Pre-Booked Telephone | 11:30     |  have fun     |  New Zealand     | Interpreter A   | St Kilda VIC, Australia |  0399999997               |
+   | job notice length | username           | password    | dropdownfilter | campus pin | Requester Name      | language    | assignment type      | date            | time  | duration   | email        | job status  | contractor job status | NAATI          | gender preference | job detail           | new time  |  instruction  |  report location | report name     | address                                | confirmation phone number |
+   | short notice      | LLAdmin@looped.in  | Uranus@6    | Management     |  33124     |  Auto Tester        |  AFRIKAANS  | Zero min ongoing     | fortnight after | 09:30 | 8 hours    | hh@bb.com.au | Unallocated | Allocated             | Non-Accredited |  Female           | Home Visit           | 11:30     |  have fun     |  New Zealand     | Interpreter A   | 1 St Kilda Rd, St Kilda VIC, Australia |  0399999997               |
+  # | long notice       | LLAdmin@looped.in  | Uranus@6    | Management     |  33124     |  Auto Tester        |  AFRIKAANS  | Zero min ongoing     | fortnight after | 09:30 | 8 hours    | hh@bb.com.au | Unallocated | Allocated             | Non-Accredited |  Male             | Pre-Booked Telephone | 11:30     |  have fun     |  New Zealand     | Interpreter A   | 1 St Kilda Rd, St Kilda VIC, Australia |  0399999997               |
 
 

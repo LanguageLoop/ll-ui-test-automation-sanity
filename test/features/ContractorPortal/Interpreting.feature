@@ -71,3 +71,15 @@ Feature: Interpreter features
   | job notice length |admin username    | admin password | contractor username      | contractor password | dropdownfilter      | to date     | job id  |
   | long notice       |LLAdmin@looped.in |   Uranus@6     | suzanehanna@hotmail.com  | Test1               | Available Jobs      |  13-05-2022 | 1560450 |
   
+
+  @Loop 
+  Scenario Outline: Unavailable for job
+   When I login with "<contractor username>" and "<contractor password>"
+   And I handle the message for interpreters dialog
+   And I select "<dropdownfilter>" from the filter dropdown
+   And I keep refreshing
+   
+   Examples:
+  | job notice length |admin username    | admin password | contractor username      | contractor password | dropdownfilter      | to date     | job id  |
+  | long notice       |LLAdmin@looped.in |   Uranus@6     | selvam.anime@gmail.com   | Test2               | Available Jobs      |  13-05-2022 | 1560450 |
+  

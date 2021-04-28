@@ -180,7 +180,7 @@ exports.config = {
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    services: ['docker'],
+    services: ['chromedriver'],
     dockerLogs: './logs',
     dockerOptions: {
         image: 'selenium/standalone-chrome',
@@ -206,7 +206,7 @@ exports.config = {
     framework: 'cucumber',
     //
     // The number of times to retry the entire specfile when it fails as a whole
-    specFileRetries: 1,
+    specFileRetries: 0,
     //
     // Whether or not retried specfiles should be retried immediately or deferred to the end of the queue
     // specFileRetriesDeferred: false,

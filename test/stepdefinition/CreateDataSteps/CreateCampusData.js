@@ -24,7 +24,9 @@ When(/^I create a new campus$/,{timeout:3600000}, function(){
         browser.pause(2000)
         action.clickElement(accountManagementPage.createCampusLink)
         browser.pause(2000)
-    
+        
+        action.clickElement(accountManagementPage.metroRadioButton)
+
     
         $('//span[@class="fa fa-fw fa-pencil-square-o"]').click()
         browser.pause(2000)
@@ -42,7 +44,7 @@ When(/^I create a new campus$/,{timeout:3600000}, function(){
     
         action.enterValue(accountManagementPage.campusNameInput,campusname)
     
-        action.selectTextFromDropdown(accountManagementPage.entityTypeDropdown,entitytype)
+       // action.selectTextFromDropdown(accountManagementPage.entityTypeDropdown,entitytype)
     
     
         action.selectTextFromDropdown(accountManagementPage.overrideInvoiceFrequencyDropdown,frequency)

@@ -8,6 +8,7 @@ When(/^I click on Duplicate button$/, function(){
 When(/^I click on Edit button$/, function(){
     browser.pause(2000)
     action.clickElement(jobDetailsPage.editButton)
+    browser.pause(5000)
 })
 
 When(/^I click on Cancel button$/, function(){

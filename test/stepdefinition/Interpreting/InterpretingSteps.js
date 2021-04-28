@@ -110,6 +110,14 @@ When(/^I click "(.*)" user link$/, function(user){
   action.clickElement($('//*[text()="'+user+'"]'))
 })
 
+When(/^I keep refreshing$/, function(){
+  for(var i=0;i<600;i++)
+  {
+    browser.pause(2000)
+    browser.refresh()
+  }
+})
+
 
 Then(/^I verify the job table is displayed$/, function(){
   chai.expect(action.elementExists(interpretingPage.jobTable)).to.be.true

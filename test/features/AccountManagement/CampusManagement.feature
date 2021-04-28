@@ -10,16 +10,16 @@ Feature: Campus Management features
    When I login with "<username>" and "<password>"
    And I click account management link  
    And I click add campus link
+   And I select campus type "<campus type>"
    And I enter campus address "<campus address1>","<campus address2>"
    And I enter postal address "<postal address1>","<postal address2>"
    And I enter campus post name "<postname1>","<postname2>"
    And I enter new campus name "<campus name>"
    And I enter campus abn "<abn>" and check
-   And I select campus entity type "<entity type>"
    And I select override invoice frequency "<invoice frequency>"
    And I click charge gst checkbox
-   And I enter campus company name "<company name>"
-   And I enter campus trading name "<trading name>"
+   And I enter campus company name "<entity name>"
+   And I enter campus trading name "<business name>"
    And I enter campus PO number "<po number>"
    And I click default bill to link
    And I search bill to name "<bill to>"
@@ -33,8 +33,8 @@ Feature: Campus Management features
    And I verify manage campus fields are present
    
    Examples:
-   | username           | password    | campus address1                             | campus address2                              | postname1   | postname2    |  postal address1  | postal address2  | abn         | campus name  | entity type | company name | po number | invoice frequency | trading name    |  bill to                | videoloop pin |
-   | LLAdmin@looped.in  | Uranus@6    | 1 St Kilda Rd, St Kilda VIC 3182            |  1 St Kilda Rd, St Kilda VIC 3182, Australia |  first post | second post  |  St Kilda         |  St Kilda Street | 53819971946 | Melbourne LL | Government  | ll company   | 42345     | Weekly            | ll trading name | department of transport | 1234          |
+   | username           | password    | campus type  | campus address1                             | campus address2                              | postname1   | postname2    |  postal address1                   | postal address2  | abn         | campus name  | entity type | entity name  | po number | invoice frequency | business name   |  bill to                | videoloop pin |
+   | LLAdmin@looped.in  | Uranus@6    | Metro        |  1 St Kilda Rd, St Kilda VIC 3182           |  1 St Kilda Rd, St Kilda VIC 3182, Australia |  first post | second post  |  1 St Kilda Rd, St Kilda VIC 3182  |  St Kilda Street | 53819971946 | Melbourne LL | Government  | ll company   | 42345     | Weekly            | ll trading name | department of transport | 1234          |
   
   @ViewCampus  @ScheduleRates
   Scenario Outline: View campus schedule rates
@@ -158,26 +158,26 @@ Feature: Campus Management features
    | username          | password   | campus id         | language                       | naati level |
    | LLAdmin@looped.in |  Uranus@6  | Melbourne LL      | GERMAN - Video Conferencing    | Recognised  |
 
-  @ViewCampus  @CancellationFee
-  Scenario Outline: View campus add cancellation fee.
-   When I login with "<username>" and "<password>"
-   And I click account management link 
-   And I search for campus "<campus id>"
-   And I click the first campus link from search results
-   And I click add cancellation fee button
-   And I enter cancellation fee name "<fee name>"
-   And I enter cancellation hours before "<hours before>"
-   And I enter cancellation duration "<duration>"
-   And I enter client fee "<client fee>"
-   And I enter unable to service fee "<unable to service fee>"
-   And I enter failed to attend fee "<failed to attend fee>"
-   And I click save cancellation fee button
-   Then I verify cancellation fee is added "<fee name>","<hours before>","<duration>","<client fee>","<unable to service fee>","<failed to attend fee>"
-   And I delete the added cancellation fee
+  # @ViewCampus  @CancellationFee
+  # Scenario Outline: View campus add cancellation fee.
+  #  When I login with "<username>" and "<password>"
+  #  And I click account management link 
+  #  And I search for campus "<campus id>"
+  #  And I click the first campus link from search results
+  #  And I click add cancellation fee button
+  #  And I enter cancellation fee name "<fee name>"
+  #  And I enter cancellation hours before "<hours before>"
+  #  And I enter cancellation duration "<duration>"
+  #  And I enter client fee "<client fee>"
+  #  And I enter unable to service fee "<unable to service fee>"
+  #  And I enter failed to attend fee "<failed to attend fee>"
+  #  And I click save cancellation fee button
+  #  Then I verify cancellation fee is added "<fee name>","<hours before>","<duration>","<client fee>","<unable to service fee>","<failed to attend fee>"
+  #  And I delete the added cancellation fee
 
-   Examples: 
-   | username          | password   | campus id          | fee name    | hours before  | duration | client fee | unable to service fee | failed to attend fee |
-   | LLAdmin@looped.in |  Uranus@6  | Melbourne LL       | Testing fee |  96           |  1       |   5        |        10             |     15               | 
+  #  Examples: 
+  #  | username          | password   | campus id          | fee name    | hours before  | duration | client fee | unable to service fee | failed to attend fee |
+  #  | LLAdmin@looped.in |  Uranus@6  | Melbourne LL       | Testing fee |  96           |  1       |   5        |        10             |     15               | 
 
   @ViewCampus  @NES
   Scenario Outline: Add NES
