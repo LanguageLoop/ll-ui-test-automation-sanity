@@ -1,5 +1,6 @@
 
 When(/^I handle the message for interpreters dialog$/, function(){
+  browser.pause(3000)
   try{
     interpretingPage.messageForInterpreterOKButton.waitForExist({timeout:10000})
 

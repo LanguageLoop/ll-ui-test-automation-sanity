@@ -1,8 +1,10 @@
 @Interpreting
 Feature: Interpreter features
 
-   Background: Load the Loopedin login page
+  Background: open loopedin login page
+
    Given the looped in login page is opened
+  
    
 
  @SearchForJobs 
@@ -27,6 +29,10 @@ Feature: Interpreter features
 
  @RejectJobs1 
   Scenario Outline: Reject jobs
+  When I login with "<admin username>" and "<admin password>"
+  And I create a job request with preffered interpreter "<contractor username>"
+  And I click logout button
+#login as interpreter
    When I login with "<contractor username>" and "<contractor password>"
    And I handle the message for interpreters dialog
    And I select "<dropdownfilter>" from the filter dropdown
@@ -37,30 +43,37 @@ Feature: Interpreter features
    Then I verify the job is listed in search results
    
    Examples:
-  | job notice length |admin username    | admin password | contractor username      | contractor password | dropdownfilter      | to date     | job id  |
-  | long notice       |LLAdmin@looped.in |   Uranus@6     | suzanehanna@hotmail.com  | Test1               | Available Jobs      |  13-05-2022 | 1560450 |
+  | job notice length |admin username    | admin password | contractor username      | contractor password | dropdownfilter      | to date     | job id  | campus pin  |  Requester Name      |
+  | long notice       |LLAdmin@looped.in |   Uranus@6     | jabmon1@hotmail.com      | Test1               | Available Jobs      |  13-05-2022 | 1560450 | 33124       |  Automation Tester   |
   
 
-# @AcceptJobs 
-#   Scenario Outline: Accept jobs
-#    When I login with "<contractor username>" and "<contractor password>"
-#    And I select "<dropdownfilter>" from the filter dropdown
-#    And I click on first job id from interpreting job list
-#    And I click accept job button
-#    And I select "Allocated Jobs" from the filter dropdown
-#    And I search for selected job request
-#    Then I verify the job is listed in search results
-#    And I click on first job id from accepted job list
-#    And I click return job button
+ @AcceptJobs 
+   Scenario Outline: Accept jobs
+    When I login with "<admin username>" and "<admin password>"
+    And I create a job request with preffered interpreter "<contractor username>"
+    And I click logout button
+    #login as interpreter
+    When I login with "<contractor username>" and "<contractor password>"
+    And I select "<dropdownfilter>" from the filter dropdown
+    And I click on first job id from interpreting job list
+    And I click accept job button
+    And I select "Allocated Jobs" from the filter dropdown
+    And I search for selected job request
+    Then I verify the job is listed in search results
+    And I click on first job id from accepted job list
+    And I click return job button
    
-#    Examples:
-#   | contractor username      | contractor password | dropdownfilter      | to date     |
-#   | suzanehanna@hotmail.com  | Test1               | Available Jobs      |  13-05-2022 |
-#   | suzanehanna@hotmail.com  | Test1               | Rejected Jobs       |  13-05-2022 |
+    Examples:
+   | contractor username  | contractor password | dropdownfilter      | to date     | admin username    | admin password |
+   | jabmon1@hotmail.com  | Test1               | Available Jobs      |  13-05-2022 | LLAdmin@looped.in | Uranus@6        |
   
  
  @UnavailableJobs 
   Scenario Outline: Unavailable for job
+   When I login with "<admin username>" and "<admin password>"
+   And I create a job request with preffered interpreter "<contractor username>"
+   And I click logout button
+    #login as interpreter
    When I login with "<contractor username>" and "<contractor password>"
    And I handle the message for interpreters dialog
    And I select "<dropdownfilter>" from the filter dropdown
@@ -69,17 +82,6 @@ Feature: Interpreter features
    
    Examples:
   | job notice length |admin username    | admin password | contractor username      | contractor password | dropdownfilter      | to date     | job id  |
-  | long notice       |LLAdmin@looped.in |   Uranus@6     | suzanehanna@hotmail.com  | Test1               | Available Jobs      |  13-05-2022 | 1560450 |
+  | long notice       |LLAdmin@looped.in |   Uranus@6     | jabmon1@hotmail.com      | Test1               | Available Jobs      |  13-05-2022 | 1560450 |
   
 
-  @Loop 
-  Scenario Outline: Unavailable for job
-   When I login with "<contractor username>" and "<contractor password>"
-   And I handle the message for interpreters dialog
-   And I select "<dropdownfilter>" from the filter dropdown
-   And I keep refreshing
-   
-   Examples:
-  | job notice length |admin username    | admin password | contractor username      | contractor password | dropdownfilter      | to date     | job id  |
-  | long notice       |LLAdmin@looped.in |   Uranus@6     | selvam.anime@gmail.com   | Test2               | Available Jobs      |  13-05-2022 | 1560450 |
-  

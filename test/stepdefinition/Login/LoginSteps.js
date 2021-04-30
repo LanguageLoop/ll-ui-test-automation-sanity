@@ -24,3 +24,4 @@ Given(/^the looped in login page is opened$/,  function(){
     action.clickElement(Login.loginButton) 
     
 })
+

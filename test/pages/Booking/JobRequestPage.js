@@ -142,7 +142,7 @@ module.exports={
     },
 
     get searchForInterpreterInput(){
-        return $('//input[contains(@placeholder,"Search by Interpreter ID")]')
+        return $('//input[contains(@placeholder,"Search by Interpreter")]')
     },
 
     get addInterpretersButton(){

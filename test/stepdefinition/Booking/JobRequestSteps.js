@@ -117,6 +117,11 @@ When(/^I click preferred interpreter must checkbox$/,function(){
   action.clickElement(jobRequestPage.preferredInterpreterMustCheckBox)
 })
 
+When(/^I search for interpreter "(.*)"$/,function(interpreter){
+  action.enterValue(jobRequestPage.searchForInterpreterInput,interpreter)
+  browser.pause(5000)
+})
+
 When(/^I click add preferred interpreter button$/,function(){
   action.clickElement(jobRequestPage.addInterpreterLink)
   browser.pause(5000)

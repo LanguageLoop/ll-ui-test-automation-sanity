@@ -9,13 +9,13 @@ Feature: Claims processing features
   Scenario Outline: Search for jobs as an interpreter in various  job stages
    When I login with "<username>" and "<password>"
    And I click Claims header link  
-   And I enter interview date before
+   And I enter interview date before "<before date>"
    And I select "<status>" job status
    Then I verify the job table is displayed
 
    
    Examples:
-   | username           | password    | status                 | to date     | job id  |
+   | username           | password    | status                 | before date | job id  |
    | LLAdmin@looped.in  | Uranus@6    | Completed              |  13-05-2022 | 1560450 |
    | LLAdmin@looped.in  | Uranus@6    | Signed off             |  13-05-2022 | 1560450 |
    | LLAdmin@looped.in  | Uranus@6    | All                    |  13-05-2022 | 1544161 |
@@ -23,11 +23,11 @@ Feature: Claims processing features
    | LLAdmin@looped.in  | Uranus@6    | Cancelled & Processed  |  13-05-2022 | 1537266 |
    | LLAdmin@looped.in  | Uranus@6    | Cancelled & Signed off |  13-05-2022 | 1537266 |
 
-  @ProcessClaims @ProcessCampus @ProcessContractor
+  @ProcessClaims @ProcessCampus @ProcessContractor @v1
   Scenario Outline: Process claims - process contractor, campus
    When I login with "<username>" and "<password>"
    And I click Claims header link  
-  # And I close all special search criteria
+   And I close all special search criteria
    And I select "<status>" job status
    And I get the campus fee for first job
    And I get the contractor fee for first job
@@ -51,7 +51,7 @@ Feature: Claims processing features
   Scenario Outline: Process claims - process campus and contractor
    When I login with "<username>" and "<password>"
    And I click Claims header link  
-   #And I close all special search criteria
+   And I close all special search criteria
    And I select "<status>" job status
    And I get the campus fee for first job
    And I get the contractor fee for first job
@@ -74,7 +74,7 @@ Feature: Claims processing features
   Scenario Outline: Process claims -  process campus only
    When I login with "<username>" and "<password>"
    And I click Claims header link  
-  # And I close all special search criteria
+   And I close all special search criteria
    And I select "<status>" job status
    And I get the campus fee for first job
    And I get the contractor fee for first job
@@ -97,7 +97,7 @@ Feature: Claims processing features
   Scenario Outline: Process claims - campus only
    When I login with "<username>" and "<password>"
    And I click Claims header link  
-   #And I close all special search criteria
+  And I close all special search criteria
    And I select "<status>" job status
    And I get the campus fee for first job
    And I get the contractor fee for first job
@@ -122,7 +122,7 @@ Feature: Claims processing features
   Scenario Outline: Process claims - contractor only
    When I login with "<username>" and "<password>"
    And I click Claims header link  
-  # And I close all special search criteria
+   And I close all special search criteria
    And I select "<status>" job status
    And I get the campus fee for first job
    And I get the contractor fee for first job
@@ -147,7 +147,7 @@ Feature: Claims processing features
   Scenario Outline: Process claims - reprocess campus and contractor
    When I login with "<username>" and "<password>"
    And I click Claims header link  
-  # And I close all special search criteria
+   And I close all special search criteria
    And I select "<status>" job status
    And I get the campus fee for first job
    And I get the contractor fee for first job

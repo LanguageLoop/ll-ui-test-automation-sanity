@@ -1,11 +1,12 @@
+const { before } = require("lodash")
 
 When(/^I enter interview date after "(.*)"$/, function(interviewdate){
     action.enterValue(claimsPage.interviewDateAfter, interviewdate)
 })
 
-When(/^I enter interview date before$/, function(){
-    var temp_date_time=datetime.getScheduleDateTime("long notice","9:30")
-    action.enterValue(claimsPage.interviewDateBefore, temp_date_time[0])
+When(/^I enter interview date before "(.*)"$/, function(beforedate){
+   // var temp_date_time=datetime.getScheduleDateTime("long notice","9:30")
+    action.enterValue(claimsPage.interviewDateBefore, beforedate)
 })
 
 When(/^I close all special search criteria$/, function(){
@@ -76,30 +77,42 @@ When(/^I enter new job finish time$/, function(){
 })
 
 When(/^I click process campus button$/, function(){
+    browser.refresh()
+    browser.pause(2000)
     action.clickElement(claimsPage.processCampusButton)
     browser.pause(2000)
 })
 
 When(/^I click reprocess campus button$/, function(){
+    browser.refresh()
+    browser.pause(2000)
     action.clickElement(claimsPage.reprocessCampusButton)
     browser.pause(2000)
 })
 
 When(/^I click process contractor button$/, function(){
+    browser.refresh()
+    browser.pause(2000)
     action.clickElement(claimsPage.processContractorButton)
     browser.pause(2000)
 })
 
 When(/^I click reprocess contractor button$/, function(){
+    browser.refresh()
+    browser.pause(2000)
     action.clickElement(claimsPage.reprocessContractorButton)
     browser.pause(2000)
 })
 
 When(/^I click process campus and contractor button$/, function(){
+    browser.refresh()
+    browser.pause(2000)
     action.clickElement(claimsPage.processCampusAndContractorButton)
 })
 
 When(/^I click reprocess campus and contractor button$/, function(){
+    browser.refresh()
+    browser.pause(2000)
     action.clickElement(claimsPage.reprocessCampusAndContractorButton)
 })
 
