@@ -8,6 +8,7 @@ Feature: Contractor Management features
  @ResetPassword 
   Scenario Outline: Reset password for contractor.
    When I login with "<username>" and "<password>"
+   And I handle contractor message
    And I click "<contractor name>" user link
    And I click reset password button
    Then I verify the reset password email confirmation message
@@ -19,6 +20,7 @@ Feature: Contractor Management features
    @EditProfile
    Scenario Outline: Edit the profile details
     When I login with "<username>" and "<password>"
+    And I handle contractor message
     And I click "<contractor name>" user link
     And I click edit profile details link
     And I enter preferred name "<preferred name>"
@@ -37,6 +39,7 @@ Feature: Contractor Management features
    @EmergencyContact
    Scenario Outline: Edit emergency contact details
     When I login with "<username>" and "<password>"
+    And I handle contractor message
     And I click "<contractor name>" user link
     And I click on emergency contact link
     And I click on manage emergency contact link
@@ -60,6 +63,7 @@ Feature: Contractor Management features
  @AddLeave @DeleteLeave
    Scenario Outline: Add and delete leave
     When I login with "<username>" and "<password>"
+    And I handle contractor message
     And I click "<contractor name>" user link
     And I click add leave link
     And I enter leave start date "<start date>"
@@ -71,11 +75,12 @@ Feature: Contractor Management features
     
   Examples:
    | username                 | password | dropdownfilter      |  contractor name  | start date   |  end date   |
-   | suzanehanna@hotmail.com  | Test1    | Available Jobs      |  Suzane HANNA     |  10/10/2020  |  18/10/2020 |
+   | suzanehanna@hotmail.com  | Test1    | Available Jobs      |  Suzane HANNA     |  10/10/2021  |  18/10/2021 |
 
 @ExpiredLanguageToggle
    Scenario Outline: Toggle between expired and current naati languages
     When I login with "<username>" and "<password>"
+    And I handle contractor message
     And I click "<contractor name>" user link
     Then I verify naati table is present
     And I click expired language toggle
@@ -99,6 +104,7 @@ Feature: Contractor Management features
 @Hepatitis
    Scenario Outline: Upload hepatitis b vaccination document and verify
     When I login with "<username>" and "<password>"
+    And I handle contractor message
     And I click "<contractor name>" user link
     And I upload hepatitis document
     Then I verify the hepatitis document is uploaded   
@@ -110,6 +116,7 @@ Feature: Contractor Management features
 @WorkWithChildren
    Scenario Outline: Upload working with children document and verify
     When I login with "<username>" and "<password>"
+    And I handle contractor message
     And I click "<contractor name>" user link
     And I upload working with children document
     Then I verify the working with children document is uploaded   

@@ -67,12 +67,12 @@ module.exports = {
 
     get jobCancelledWithoutFeeMessage()
     {
-        return $('//td[text()="Cancelled - without fee"]')
+        return $('//td//div[text()="Cancelled - without fee"]')
     },
 
     get jobCancelledWithFeeMessage()
     {
-        return $('//td[text()="Cancelled with fee"]')
+        return $('//td//div[text()="Cancelled with fee"]')
     },
 
     get jobCancellationFeeConfirmYesButton()

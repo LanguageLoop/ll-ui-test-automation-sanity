@@ -24,6 +24,10 @@ module.exports={
                 temp_date=temp_date.getDate()+"-"+(temp_date.getMonth()+1)+"-"+temp_date.getFullYear()
                 temp_time=this.getTwoHoursTime().toString()
                 break
+            case "random future date":
+                temp_date=this.getRandomFutureDate().toString()
+                temp_time="09:30"
+                break
         }
         schedule.push(temp_date)
         schedule.push(temp_time)
@@ -52,6 +56,12 @@ module.exports={
                 temp_date=temp_date.getDate()+"-"+(temp_date.getMonth()+1)+"-"+temp_date.getFullYear()
                 temp_time=this.getTwoHoursConfirmationTime().toString()
                 break
+             case "random future date":
+                temp_date=this.getLongNoticeConfirmationDate().toString()
+                temp_time="09:30"
+                break
+             
+
         }
         schedule.push(temp_date)
         schedule.push(temp_time)
@@ -88,6 +98,16 @@ module.exports={
         temp_date.setHours(temp_date.getHours() + 21)
         temp_time=temp_date.getHours()+":"+temp_date.getMinutes()
         return temp_time
+    },
+
+    getRandomFutureDate()
+    {
+        randomnumber = (Math.floor(Math.random() * 100000) + 1)
+        console.log("RANDOM NUMBER :::: "+randomnumber)
+        temp_date=new Date()
+        temp_date.setHours(temp_date.getHours() + randomnumber)
+        temp_date=temp_date.getDate()+"-"+(temp_date.getMonth()+1)+"-"+temp_date.getFullYear()
+        return temp_date
     },
 
     getLongNoticeDate()

@@ -1,3 +1,4 @@
+const GlobalData = require("../../data/GlobalData")
 
 When(/^I click add contractor button$/, function(){
     browser.pause(2000)
@@ -26,7 +27,16 @@ When(/^I enter contractor details "(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*
     action.enterValue(contractorEngagementPage.mobileInput,mob)
     action.enterValueAndPressReturn(contractorEngagementPage.dateOfBirthDropdown,dob)
     action.enterValue(contractorEngagementPage.emailInput,email+"@aa.com.au")
+
+    $('//span[@class="fa fa-fw fa-pencil-square-o"]').click()
+    browser.pause(2000)
     action.enterLocation(contractorEngagementPage.addressInput,address)
+    browser.pause(2000)
+    browser.keys("Enter")
+    browser.pause(2000)
+    $$('//span[@class="fa fa-fw fa-pencil-square-o"]')[1].click()
+    browser.pause(2000)
+    action.enterLocation(contractorEngagementPage.postalAddressInput,address)
     browser.pause(2000)
     browser.keys("Enter")
     action.clickElement(contractorEngagementPage.emailPreferenceCheckbox)
@@ -38,9 +48,16 @@ When(/^I enter contractor details "(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*
 
 When(/^I search and open contractor "(.*)"$/, function(contractor){
     browser.pause(2000)
-    action.enterValueAndPressReturn(contractorEngagementPage.searchContractorInput, contractor)
+    action.enterValue(contractorEngagementPage.searchContractorInput, contractor)
+    browser.pause(3000)
+    $('//table[contains(@id,"Contractor")]//td//a').click()
+})
+
+When(/^I search and open created contractor$/, function(){
     browser.pause(2000)
-    $$('//table[contains(@id,"Contractor")]//td')[0].click()
+    action.enterValue(contractorEngagementPage.searchContractorInput, GlobalData.NEW_CONTRACTOR_NAME)
+    browser.pause(3000)
+    $('//table[contains(@id,"Contractor")]//td//a').click()
 })
 
 When(/^I click add accreditation link$/, function(){
@@ -156,12 +173,14 @@ Then(/^I verify referee "(.*)","(.*)"$/, function(agency, name){
 })
 
 Then(/^I delete referees$/,function(){
-    var ct= $$('//*[@class="Reference Card"]').length
+    var ct= $$('//*[@class="Reference Card"]/..').length
     for(var i=0;i<ct;i++)
     {
         $$('//*[@class="Reference Card"]')[i].$('label').click()
         browser.pause(2000)
         $$('//*[@class="Reference Card"]')[i].$('//a[text()="Remove"]').click()
+        browser.pause(2000)
+
 
     }
 })

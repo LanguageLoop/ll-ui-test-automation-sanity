@@ -10,7 +10,6 @@ Feature: Contract Management features
    And I click account management link 
    And I click add contract link
    And I enter contract title "<contract title>"
-   And I enter contract payment terms "<payment terms>"
    And I enter contract number "<contract number>"
    And I enter contract commencement date "<commencement date>"
    And I enter contract completion date "<completion date>"
@@ -28,7 +27,6 @@ Feature: Contract Management features
    And I click account management link 
    And I click add contract link
    And I enter contract title "<contract title>"
-   And I enter contract payment terms "<payment terms>"
    And I enter contract number "<contract number>"
    And I enter contract commencement date "<commencement date>"
    And I enter contract completion date "<completion date>"
@@ -42,7 +40,7 @@ Feature: Contract Management features
    | username          | password   | contract title      | contract number | payment terms     | commencement date | completion date |
    | LLAdmin@looped.in |  Uranus@6  | Automation Contract |  234234R        |  Automation terms |  today            |  20-12-2033     |
 
-   @AddMinimumNAATILevel
+   @AddMinimumNAATILevel @tt
    Scenario Outline: Add minium naati level for contract
    When I login with "<username>" and "<password>"
    And I click account management link 
@@ -92,8 +90,8 @@ Feature: Contract Management features
    Then I verify contract rate is added
 
     Examples: 
-   | username          | password   |language               | contract title                 | rate name       | hour             | contract min period | contract min rate | contract ongoing | contractor min period | contractor min rate | contractor ongoing|
-   | LLAdmin@looped.in |  Uranus@6  | All Languages - Video | Victorian Government - Bill To | Automation Rate | Business Hour A  |    2                |    200            |  15              |      2                |     250             |     15            |    
+   | username          | password   |language               | contract title      | rate name       | hour             | contract min period | contract min rate | contract ongoing | contractor min period | contractor min rate | contractor ongoing|
+   | LLAdmin@looped.in |  Uranus@6  | All Languages - Video | Automation Contract | Automation Rate | Business Hour A  |    2                |    200            |  15              |      2                |     250             |     15            |    
 
     
    @AddAssignmentType

@@ -13,7 +13,7 @@ module.exports={
     },
 
     get assignmentTypeDropdown(){
-        return $('//label[text()="Assigment Type"]/../div/div')
+        return $('//label[text()="Assigment Type"]/../div')
     },
 
     get dateInput(){
@@ -37,7 +37,17 @@ module.exports={
     },
 
     get confirmEmailInput(){
-        return $('//label[text()="Confirmation Email"]/..//input')
+       if ( $('//label[text()="Confirmation Email"]/..//input').isExisting())
+      {
+            // cso page
+         return $('//label[text()="Confirmation Email"]/..//input')
+      }
+         else
+         {
+            return $('//label[text()="Confirmation Email"]/../..//input')
+         }
+        
+        
     },
 
     get confirmModeDropdown(){
@@ -56,12 +66,26 @@ module.exports={
         return $('//a[text()="Submit"]')
     },
 
+    get submitAndSummaryButton(){
+        return $('//input[@value="Submit & Summary"]')
+    },
+
     get continueButton(){
         return $('//*[text()="Duplication Job Request"]/../..//input[@value="Continue"]')
     },
 
     get nextButton(){
+
+        if($('//input[@value="Next"]').isExisting())
+        {
+            //CSO
         return $('//input[@value="Next"]')
+        }
+        else
+        {
+            //CBO
+        return $('//span[text()="Next"]/..')
+        }
     },
 
     get successMessage() { 
@@ -118,7 +142,7 @@ module.exports={
     },
 
     get searchForInterpreterInput(){
-        return $('//input[contains(@placeholder,"Search by Interpreter ID")]')
+        return $('//input[contains(@placeholder,"Search by Interpreter")]')
     },
 
     get addInterpretersButton(){
@@ -210,7 +234,7 @@ module.exports={
     },
 
     get homeVisitTab(){
-        return $('//label[text()="Home Visit"]')
+        return $('//*[text()="Home Visit"]')
     },
 
     get prebookedTelephoneTab(){
@@ -226,7 +250,7 @@ module.exports={
     },
 
     get interpreterInstructionsInput(){
-        return $('//*[text()="Interpreter Instructions"]/..//textarea')
+        return $('//*[text()="Instructions for Interpreter"]/..//textarea')
     },
 
     get videoLinkEditorInput(){
@@ -235,6 +259,10 @@ module.exports={
 
     get noChangeRequiredButton(){
         return $('//*[contains(@value,"No change required")]')
+    },
+
+    get campusPINComboBox(){
+        return $('//*[contains(text(),"Campus PIN")]/..//select')
     }
 
 

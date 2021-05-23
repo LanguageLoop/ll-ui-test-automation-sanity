@@ -5,11 +5,16 @@ When(/^I select "(.*)" from the requester name dropdown$/,   function(listitem){
 })
 
 When(/^I select language "(.*)"$/,   function(listitem){
+  browser.pause(2000)
   action.enterValueAndPressReturn(jobRequestPage.languageDropdown,listitem)
 })
 
 When(/^I enter campus pin "(.*)"$/,function(campuspin){
   action.enterValueAndPressReturn(jobRequestPage.campusPinInput,campuspin)
+})
+
+When(/^I select campus pin "(.*)"$/,function(campuspin){
+  action.enterValueAndPressReturn(jobRequestPage.campusPINComboBox,campuspin)
 })
 
 When(/^I enter time "(.*)"$/,function(time){
@@ -33,6 +38,7 @@ When(/^I enter confirmation date and time "(.*)" and "(.*)"$/, function(notice,t
 })
 
 When(/^I select assignment type "(.*)"$/, function(assignmenttype){
+  browser.pause(2000)
   action.enterValueAndPressReturn(jobRequestPage.assignmentTypeDropdown,assignmenttype)
 })
 
@@ -62,6 +68,11 @@ When(/^I click submit button$/,function(){
   browser.pause(2000)
   action.clickElement(jobRequestPage.submitButton)
 })
+When(/^I click submit and summary button$/,function(){
+  browser.pause(2000)
+  action.clickElement(jobRequestPage.submitAndSummaryButton)
+})
+
 When(/^I click next button$/,function(){
   action.clickElement(jobRequestPage.nextButton)
 })
@@ -106,6 +117,11 @@ When(/^I click preferred interpreter must checkbox$/,function(){
   action.clickElement(jobRequestPage.preferredInterpreterMustCheckBox)
 })
 
+When(/^I search for interpreter "(.*)"$/,function(interpreter){
+  action.enterValue(jobRequestPage.searchForInterpreterInput,interpreter)
+  browser.pause(5000)
+})
+
 When(/^I click add preferred interpreter button$/,function(){
   action.clickElement(jobRequestPage.addInterpreterLink)
   browser.pause(5000)
@@ -139,6 +155,7 @@ When(/^I click yes to confirm editing job request$/, function(){
 })
 
 When(/^I click back link$/, function(){
+  browser.pause(2000)
   action.clickElement(jobRequestPage.backLink)
 })
 
@@ -182,6 +199,7 @@ When(/^I enter report to name "(.*)"$/, function(name){
 })
 
 When(/^I enter report to phone number "(.*)"$/, function(phonenumber){
+  browser.pause(2000)
   action.enterValue(jobRequestPage.reportToPhoneNumberInput, phonenumber)
 })
 
@@ -230,6 +248,14 @@ When(/^I click on job details tab "(.*)"$/, function(jobdetail){
       break
     case "Pre-Booked Telephone":
       action.clickElement(jobRequestPage.prebookedTelephoneTab)
+      browser.pause(2000)
+      try{
+        jobRequestPage.noChangeRequiredButton.waitForExist({timeout:3000})
+        action.clickElement(jobRequestPage.noChangeRequiredButton)
+      }
+      catch(Err)
+      {
+      }
       break
     case "Home Visit":
       action.clickElement(jobRequestPage.homeVisitTab)
@@ -254,11 +280,12 @@ When(/^I click no change required button$/,function()
 })
 
 Then(/^the job created success message should appear$/, function(){
-  chai.expect(action.elementExists(jobRequestPage.successMessage)).to.be.true
   jobRequestPage.successMessageText.waitForExist({timeout:10000})
+  chai.expect(action.elementExists(jobRequestPage.successMessage)).to.be.true
   browser.waitUntil(
       () => jobRequestPage.successMessageText.getText().includes("The Job#"), 20000, 'link not visible'
   );
+  
   var jobNumber = jobRequestPage.successMessageText.getText().match(/\d+/g).map(Number)
   GlobalData.CURRENT_JOB_ID=jobNumber
 })

@@ -122,7 +122,8 @@ exports.config = {
         //
         browserName: 'chrome',
         'goog:chromeOptions': {
-            args: ['--start-maximized'] ,
+            args:['window-size=2880,1800'], 
+            //['--start-maximized'] ,
           
                // "binary":"C:/Users/HAR/AppData/Local/Google/Chrome/Application/chrome.exe"
                
@@ -183,10 +184,15 @@ exports.config = {
     dockerLogs: './logs',
     dockerOptions: {
         image: 'selenium/standalone-chrome',
-        healthCheck: 'http://localhost:4444',
+        healthCheck: {
+            url: 'http://localhost:4444',
+            maxRetries: 3,
+            inspectInterval: 2000,
+            startDelay: 5000
+        },
         options: {
             p: ['4444:4444'],
-            e: ['SCREEN_WIDTH: 1920', 'SCREEN_HEIGHT: 1080'],
+            e: ['SCREEN_WIDTH: 2400', 'SCREEN_HEIGHT: 1800'],
             shmSize: '2g'
         }
     },
@@ -200,7 +206,7 @@ exports.config = {
     framework: 'cucumber',
     //
     // The number of times to retry the entire specfile when it fails as a whole
-    // specFileRetries: 1,
+    specFileRetries: 1,
     //
     // Whether or not retried specfiles should be retried immediately or deferred to the end of the queue
     // specFileRetriesDeferred: false,
@@ -224,9 +230,9 @@ exports.config = {
         profile: [],        // <string[]> (name) specify the profile to use
         strict: false,      // <boolean> fail if there are any undefined or pending steps
         tagExpression:parameters.tags ,  // <string> (expression) only execute the features or scenarios with tags matching the expression
-        timeout: 200000,     // <number> timeout for step definitions
+        timeout: 2000000,     // <number> timeout for step definitions
         ignoreUndefinedDefinitions: false, // <boolean> Enable this config to treat undefined definitions as warnings.
-        retry: 0
+        retry: 1
     },
     
     //

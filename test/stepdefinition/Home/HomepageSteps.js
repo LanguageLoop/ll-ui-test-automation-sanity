@@ -22,3 +22,21 @@ When(/^I click contractor engagement link$/, function(){
    action.clickElement(homePage.contractorEngagementLink)
    browser.pause(2000)
 })
+
+When(/^I handle contractor message$/, function(){
+   browser.pause(3000)
+   try{
+      homePage.contractorMessageOKButton.waitForExist({timeout:10000})
+      browser.keys("Tab")
+      browser.pause(2000)
+      browser.keys("Tab")
+      browser.pause(2000)
+      browser.keys("Tab")
+      browser.pause(2000)
+      browser.keys(" ")
+      //action.clickElement(jobRequestPage.contractorMessageOKButton)
+    }
+    catch(Err)
+    {
+    }
+})

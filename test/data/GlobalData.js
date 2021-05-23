@@ -15,5 +15,6 @@ module.exports={
     RSC_FEE:"",
     CONTRACT_RATE_NAME:"",
     ASSIGNMENT_LABEL:"",
-    NEW_CONTRACTOR_NAME:""
+    NEW_CONTRACTOR_NAME:"",
+    CAMPUS_NAME:""
 }

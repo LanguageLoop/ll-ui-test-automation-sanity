@@ -75,7 +75,11 @@ module.exports = {
     },
 
     get addressInput(){
-        return $('//*[text()="My Details"]/../..//*[text()="Street Address"]/..//input[contains(@name,"txtAddress")]')
+        return $('//*[text()="My Details"]/../..//*[text()="Address Search"]/..//input[contains(@name,"txtAddress")]')
+    },
+
+    get postalAddressInput(){
+        return $$('//*[text()="My Details"]/../..//*[text()="Address Search"]/..//input[contains(@name,"txtAddress")]')[1]
     },
 
     get workContractFileControl(){

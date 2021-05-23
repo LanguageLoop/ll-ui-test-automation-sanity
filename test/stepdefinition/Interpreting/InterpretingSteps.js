@@ -1,4 +1,17 @@
 
+When(/^I handle the message for interpreters dialog$/, function(){
+  browser.pause(3000)
+  try{
+    interpretingPage.messageForInterpreterOKButton.waitForExist({timeout:10000})
+
+    action.clickElement(interpretingPage.messageForInterpreterOKButton)
+
+
+  }
+  catch(Err)
+  {
+  }
+})
 
 When(/^I select "(.*)" from the filter dropdown$/,   function(listitem){
   browser.pause(2000)
@@ -40,6 +53,7 @@ When(/^I switch to the job allocation window$/, function(){
 
 
 When(/^I click on bulk upload button$/, function(){
+  browser.pause(2000)
   action.clickElement(interpretingPage.bulkUploadButton)
   browser.pause(2000)
 })
@@ -95,6 +109,14 @@ When(/^I click return job button$/, function(){
 
 When(/^I click "(.*)" user link$/, function(user){
   action.clickElement($('//*[text()="'+user+'"]'))
+})
+
+When(/^I keep refreshing$/, function(){
+  for(var i=0;i<600;i++)
+  {
+    browser.pause(2000)
+    browser.refresh()
+  }
 })
 
 

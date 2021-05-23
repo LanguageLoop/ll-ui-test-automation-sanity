@@ -8,6 +8,7 @@ module.exports={
         elt.waitForEnabled()
         elt.waitForClickable()
         elt.click()
+        browser.pause(1000)
         this.clearValue(elt)
         browser.pause(1000)
         elt.setValue(value)
@@ -62,14 +63,16 @@ module.exports={
 
     elementExists(elt)
     {
-       return elt.waitForDisplayed({timeout:5000})
+       return elt.waitForDisplayed({timeout:25000})
     },
 
     uploadFile(elt,filepath)
     {
         
         var abs_path=path.resolve(filepath)
-        elt.addValue(abs_path)
+        //for uploding file in docker
+        const remoteFilePath = browser.uploadFile(abs_path);
+        elt.addValue(remoteFilePath)
        // elt.click()
     },
 

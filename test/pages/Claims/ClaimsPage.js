@@ -33,6 +33,10 @@ module.exports ={
         return $$('//label[text()="Subtotal"]/..//input')[0]
     },
 
+    get jobCampusFeeInput(){
+        return $$('//label[text()="Job Fee"]/..//input')[0]
+    },
+
     get contractorFeeInput(){
         return $('//label[text()="Contractor Payment"]/..//input')
     },

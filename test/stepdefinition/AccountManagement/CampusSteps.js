@@ -2,9 +2,28 @@
 When(/^I click add campus link$/, function(){
     browser.pause(2000)
     action.clickElement(accountManagementPage.createCampusLink)
+    browser.pause(2000)
+
 })
 
+When(/^I select campus type "(.*)"$/, function(campustype)
+{
+    switch(campustype)
+    {
+        case "Metro":
+            action.clickElement(accountManagementPage.metroRadioButton)
+            break
+        case "Regional":
+            action.clickElement(accountManagementPage.regionalRadioButton)
+            break
+        default:
+            break
+    }
+
+})
 When(/^I enter campus address "(.*)","(.*)"$/, function(address1,address2){
+    $('//span[@class="fa fa-fw fa-pencil-square-o"]').click()
+    browser.pause(2000)
     action.enterLocation(accountManagementPage.campusAddressInput,address1)
     action.enterValue(accountManagementPage.address2Input,address2)
 })
@@ -16,6 +35,8 @@ When(/^I enter campus post name "(.*)","(.*)"$/, function(name1,name2){
 })
 
 When(/^I enter postal address "(.*)","(.*)"$/, function(address1,address2){
+    $$('//span[@class="fa fa-fw fa-pencil-square-o"]')[1].click()
+    browser.pause(2000)
     action.enterLocation(accountManagementPage.postalAddressInput,address1)
     action.enterValue(accountManagementPage.postalAddress2Input,address2)
 })
@@ -447,22 +468,19 @@ Then(/^I verify campus name "(.*)"$/,function(campusname){
 })
 
 Then(/^I verify manage campus fields are present$/,function(){
-    chai.expect(action.elementExists(accountManagementPage.campusAddressInput)).to.be.true
+    //chai.expect(action.elementExists(accountManagementPage.campusAddressInput)).to.be.true
     chai.expect(action.elementExists(accountManagementPage.address2Input)).to.be.true
 
-    chai.expect(action.elementExists(accountManagementPage.postalAddressInput)).to.be.true
+   // chai.expect(action.elementExists(accountManagementPage.postalAddressInput)).to.be.true
     chai.expect(action.elementExists(accountManagementPage.postalAddress2Input)).to.be.true
     chai.expect(action.elementExists(accountManagementPage.campusNameInput)).to.be.true
     chai.expect(action.elementExists(accountManagementPage.campusABNInput)).to.be.true
     chai.expect(action.elementExists(accountManagementPage.companyNameInput)).to.be.true
     chai.expect(action.elementExists(accountManagementPage.PONumberInput)).to.be.true
     chai.expect(action.elementExists(accountManagementPage.campusStatusDropdown)).to.be.true
-    chai.expect(action.elementExists(accountManagementPage.entityTypeDropdown)).to.be.true
-    chai.expect(action.elementExists(accountManagementPage.overrideInvoiceFrequencyDropdown)).to.be.true
     chai.expect(action.elementExists(accountManagementPage.businessTypesDropdown)).to.be.true
     chai.expect(action.elementExists(accountManagementPage.tradingNameInput)).to.be.true
     chai.expect(action.elementExists(accountManagementPage.chargeGSTCheckbox)).to.be.true
-    chai.expect(action.elementExists(accountManagementPage.regionalCampusCheckbox)).to.be.true
 
 })
 

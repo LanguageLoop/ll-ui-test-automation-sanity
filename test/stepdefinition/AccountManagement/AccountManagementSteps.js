@@ -1,6 +1,13 @@
+const GlobalData = require("../../data/GlobalData")
 
 When(/^I search for campus "(.*)"$/, function(campus){
     action.enterValueAndPressReturn(accountManagementPage.searchCampusInput,campus)
+    browser.pause(2000)
+})
+
+When(/^I search for created campus$/, function(){
+    console.log("SEARCH CAMPUS :  :: : : : : : : : : : : : :"+GlobalData.CAMPUS_NAME)
+    action.enterValueAndPressReturn(accountManagementPage.searchCampusInput,GlobalData.CAMPUS_NAME)
     browser.pause(2000)
 })
 

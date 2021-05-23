@@ -52,28 +52,35 @@ Feature: Contractor Engagement features
   Scenario Outline: Add contractor work eligibility 
    When I login with "<username>" and "<password>"
    And I click contractor engagement link
-   And I search and open contractor "<contractor>"
+   And I click add contractor button
+   And I enter contractor details "<salutation>","<gender>","<name>","<pin>","<mobile>","<dob>","<email>","<address>"
+   And I click contractor engagement link
+   And I search and open created contractor
    And I click add work eligibility link
    And I enter work eligibility details "<id>","<number>","<years>"
    Then I verify work eligibility
    
   Examples:
-  | username           |  password |  contractor  | id                   |  number     |  years  |
-  | LLAdmin@looped.in  | Uranus@6  | Automation   |  Permanent Residence |  ABCVED34   |   5     |
+  | username           |  password |  contractor  | clearance       | salutation | gender    | name        |  pin  | mobile      |  dob         |  email    | address                  | id                  |
+  | LLAdmin@looped.in  | Uranus@6  | Automation   |  Police Check   |  Mr        |  female   | Automation  | 1232  | 0400000000  | 12-12-1982   | all       | St Kilda VIC, Australia  | Permanent Residence |
+
 
    @AddClearance  
   Scenario Outline: Add contractor clearance 
    When I login with "<username>" and "<password>"
    And I click contractor engagement link
-   And I search and open contractor "<contractor>"
+   And I click add contractor button
+   And I enter contractor details "<salutation>","<gender>","<name>","<pin>","<mobile>","<dob>","<email>","<address>"
+   And I click contractor engagement link
+   And I search and open created contractor
    And I click add clearance link
    And I enter clearance details "<clearance>"
    Then I verify clearance "<clearance>"
    Then I delete clearances
    
   Examples:
-  | username           |  password |  contractor  | clearance       |
-  | LLAdmin@looped.in  | Uranus@6  | Automation   |  Police Check   |
+  | username           |  password |  contractor  | clearance       | salutation | gender    | name        |  pin  | mobile      |  dob         |  email    | address                  |
+  | LLAdmin@looped.in  | Uranus@6  | Automation   |  Police Check   |  Mr        |  female   | Automation  | 1232  | 0400000000  | 12-12-1982   | all       | St Kilda VIC, Australia  |
 
 
   @AddAvailability 
@@ -82,6 +89,8 @@ Feature: Contractor Engagement features
    And I click contractor engagement link
    And I click add contractor button
    And I enter contractor details "<salutation>","<gender>","<name>","<pin>","<mobile>","<dob>","<email>","<address>"
+   And I click contractor engagement link
+   And I search and open created contractor
    And I click add availability link
    And I enter availability details "<type>","<words>"
    Then I verify availability details "<type>"
@@ -106,8 +115,8 @@ Feature: Contractor Engagement features
   | LLAdmin@looped.in  | Uranus@6  | Automation   |   BOLTON CLARKE - DH RDNS   |
 
 
-    @AddReferees @test1  
-  Scenario Outline: Add work preference 
+    @AddReferees @test12  
+  Scenario Outline: Add  referee 
    When I login with "<username>" and "<password>"
    And I click contractor engagement link
    And I search and open contractor "<contractor>"

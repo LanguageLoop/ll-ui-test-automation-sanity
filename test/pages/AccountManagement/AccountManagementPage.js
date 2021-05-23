@@ -16,10 +16,20 @@ module.exports ={
     {
         return $('//a[contains(text(),"Create Campus")]')
     },
+    
+    get metroRadioButton()
+    {
+        return $('//*[text()="Metro"]/../..//input')
+    },
 
+    get regionalRadioButton()
+    {
+        return $('//*[text()="Metro"]/../..//input')
+    },
+    
     get campusAddressInput()
     {
-        return $('//*[text()="Campus Address"]/..//input')
+        return $('//*[text()="Address Search"]/..//input')
     },
 
     get videoLoopPinInput()
@@ -28,15 +38,15 @@ module.exports ={
     },
 
     get address2Input(){
-        return $('//*[contains(text(),"Address 2 (Building/Floor/Apartment)")]/..//input')
+        return $('//*[contains(text(),"Address 2 (Building/Floor/Apartment)")]/../..//input')
     },
 
     get postalAddress2Input(){
-        return $('//*[contains(text(),"Postal Address 2 (Building/Floor/Apartment)")]/..//input')
+        return $('//*[contains(text(),"Postal Address 2 (Building/Floor/Apartment)")]/../..//input')
     },
 
     get postalAddressInput(){
-        return $('//*[text()="Postal Address"]/..//input')
+        return $$('//*[text()="Address Search"]/..//input')[1]
     },
 
     get campusNameInput(){
@@ -127,7 +137,7 @@ module.exports ={
     },
 
     get firstContract(){
-        return $('//table[contains(@id,"ContractTable")]//td')
+        return $('//table[contains(@id,"ContractTable")]//td//a')
     },
 
     get addContractLink(){
