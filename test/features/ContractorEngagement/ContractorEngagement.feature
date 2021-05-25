@@ -61,8 +61,8 @@ Feature: Contractor Engagement features
    Then I verify work eligibility
    
   Examples:
-  | username           |  password |  contractor  | clearance       | salutation | gender    | name        |  pin  | mobile      |  dob         |  email    | address                  | id                  |
-  | LLAdmin@looped.in  | Uranus@6  | Automation   |  Police Check   |  Mr        |  female   | Automation  | 1232  | 0400000000  | 12-12-1982   | all       | St Kilda VIC, Australia  | Permanent Residence |
+  | username           |  password |  contractor  | clearance       | salutation | gender    | name        |  pin  | mobile      |  dob         |  email    | address                  | id                  | number | years |
+  | LLAdmin@looped.in  | Uranus@6  | Automation   |  Police Check   |  Mr        |  female   | Automation  | 1232  | 0400000000  | 12-12-1982   | all       | St Kilda VIC, Australia  | Permanent Residence | 123456 |    4  |
 
 
    @AddClearance  
