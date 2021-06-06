@@ -99,9 +99,27 @@ When(/^I click process contractor button$/, function(){
 
 When(/^I click reprocess contractor button$/, function(){
     browser.refresh()
+    if(claimsPage.reprocessContractorButton.isDisplayed()){
+
     browser.pause(2000)
     action.clickElement(claimsPage.reprocessContractorButton)
     browser.pause(2000)
+    }
+    else if(claimsPage.processCampusButton.isDisplayed()){
+    browser.pause(2000)
+    action.clickElement(claimsPage.processCampusButton)
+    browser.pause(2000)
+    action.clickElement(claimsPage.reprocessContractorButton)
+    browser.pause(2000)
+    }
+    else{
+    browser.pause(2000)
+    action.clickElement(claimsPage.processContractorButton)
+    browser.pause(2000)
+    action.clickElement(claimsPage.reprocessContractorButton)
+    browser.pause(2000)
+    }
+    
 })
 
 When(/^I click process campus and contractor button$/, function(){
