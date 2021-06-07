@@ -19,7 +19,12 @@ When(/^I click on Cancel button$/, function(){
 
 When(/^I click confirm cancel yes button$/, function(){
     browser.pause(2000)
+    try{
+    jobDetailsPage.confirmCancelYesButton.waitForExist({timeout:3000})
     action.clickElement(jobDetailsPage.confirmCancelYesButton)
+    }
+    catch(Err){
+    }
 })
 
 When(/^I click yes to confirm late rejection$/, function(){
