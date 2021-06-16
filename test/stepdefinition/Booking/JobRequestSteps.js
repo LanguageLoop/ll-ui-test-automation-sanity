@@ -65,8 +65,14 @@ When(/^I click save and proceed to summary button$/,function(){
 })
 
 When(/^I click submit button$/,function(){
-  browser.pause(2000)
+  try{
+  //browser.pause(2000)
+  jobRequestPage.submitButton.waitForExist({timeout:3000})
   action.clickElement(jobRequestPage.submitButton)
+  }
+  catch(Err){
+
+  }
 })
 When(/^I click submit and summary button$/,function(){
   browser.pause(2000)
@@ -160,8 +166,12 @@ When(/^I click back link$/, function(){
 })
 
 When(/^I enter location "(.*)"$/, function(location){
-  browser.pause(2000)
+  //browser.pause(2000)
+  try{
+  jobRequestPage.locationInput.waitForExist({timeout:3000})
   action.enterLocation(jobRequestPage.locationInput,location)
+  }
+  catch(Err){}
 })
 
 When(/^I enter department "(.*)"$/, function(department){
