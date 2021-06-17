@@ -290,7 +290,7 @@ When(/^I click no change required button$/,function()
 })
 
 Then(/^the job created success message should appear$/, function(){
-  try{
+  
   jobRequestPage.successMessageText.waitForExist({timeout:12000})
   chai.expect(action.elementExists(jobRequestPage.successMessage)).to.be.true
   browser.waitUntil(
@@ -299,8 +299,8 @@ Then(/^the job created success message should appear$/, function(){
   
   var jobNumber = jobRequestPage.successMessageText.getText().match(/\d+/g).map(Number)
   GlobalData.CURRENT_JOB_ID=jobNumber
-  }
-  catch(Err){}
+  
+  
 })
 
 Then(/^I verify the created job id is listed$/, function(){
