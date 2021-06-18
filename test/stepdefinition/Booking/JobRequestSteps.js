@@ -65,14 +65,23 @@ When(/^I click save and proceed to summary button$/,function(){
 })
 
 When(/^I click submit button$/,function(){
-  try{
+  
   //browser.pause(2000)
-  jobRequestPage.submitButton.waitForExist({timeout:3000})
-  action.clickElement(jobRequestPage.submitButton)
+  console.time('t1')
+  if(jobRequestPage.submitButton.isDisplayed())
+  {
+    action.clickElement(jobRequestPage.submitButton)
   }
-  catch(Err){
+  else{
+  jobRequestPage.submitButton.waitForExist({timeout:5000})
+  action.clickElement(jobRequestPage.submitButton)
 
   }
+  
+  console.timeEnd('t1')
+  console.timeLog('t1');
+  
+  
 })
 When(/^I click submit and summary button$/,function(){
   browser.pause(2000)
@@ -290,7 +299,7 @@ When(/^I click no change required button$/,function()
 })
 
 Then(/^the job created success message should appear$/, function(){
-  
+  console.time('t2')
   jobRequestPage.successMessageText.waitForExist({timeout:12000})
   chai.expect(action.elementExists(jobRequestPage.successMessage)).to.be.true
   browser.waitUntil(
@@ -299,7 +308,9 @@ Then(/^the job created success message should appear$/, function(){
   
   var jobNumber = jobRequestPage.successMessageText.getText().match(/\d+/g).map(Number)
   GlobalData.CURRENT_JOB_ID=jobNumber
-  
+  console.timeEnd('t2')
+  console.timeLog('t2')
+
   
 })
 
