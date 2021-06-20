@@ -68,12 +68,13 @@ When(/^I click submit button$/,function(){
   
   //browser.pause(2000)
   console.time('t1')
-  if(jobRequestPage.submitButton.isDisplayed())
+  if(jobRequestPage.submitButton.isClickable())
   {
     action.clickElement(jobRequestPage.submitButton)
   }
   else{
-  jobRequestPage.submitButton.waitForExist({timeout:5000})
+  //jobRequestPage.submitButton.waitForExist({timeout:5000})
+  browser.pause(3000)
   action.clickElement(jobRequestPage.submitButton)
 
   }
