@@ -65,15 +65,17 @@ When(/^I click save and proceed to summary button$/,function(){
 })
 
 When(/^I click submit button$/,function(){
+  browser.pause(2000)
   
-  //browser.pause(2000)
   console.time('t1')
   if(jobRequestPage.submitButton.isClickable())
   {
+    jobRequestPage.submitButton.moveTo()
     action.clickElement(jobRequestPage.submitButton)
   }
   else{
   jobRequestPage.submitButton.waitForClickable({timeout:5000})
+  jobRequestPage.submitButton.moveTo()
   action.clickElement(jobRequestPage.submitButton)
 
   }

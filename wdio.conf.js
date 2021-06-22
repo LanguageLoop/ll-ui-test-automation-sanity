@@ -122,8 +122,9 @@ exports.config = {
         //
         browserName: 'chrome',
         'goog:chromeOptions': {
-            args:['window-size=2880,1800'], 
-            //['--start-maximized'] ,
+            //args:['window-size=2880,1800'], 
+            //args:['window-size=1280,720'], 
+            args: ['--start-maximized'] ,
           
                // "binary":"C:/Users/HAR/AppData/Local/Google/Chrome/Application/chrome.exe"
                
@@ -181,6 +182,7 @@ exports.config = {
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
     services: ['docker'],
+    //services: ['chromedriver'],
     dockerLogs: './logs',
     dockerOptions: {
         image: 'selenium/standalone-chrome',
