@@ -78,9 +78,18 @@ When(/^I enter new job finish time$/, function(){
 
 When(/^I click process campus button$/, function(){
     browser.refresh()
+    if(claimsPage.processCampusButton.isDisplayed()){
     browser.pause(2000)
     action.clickElement(claimsPage.processCampusButton)
     browser.pause(2000)
+    }
+     else {
+    browser.pause(2000)
+    action.clickElement(claimsPage.reprocessCampusButton)
+    browser.pause(2000)
+    action.clickElement(claimsPage.processCampusButton)
+    browser.pause(2000)
+    }
 })
 
 When(/^I click reprocess campus button$/, function(){
