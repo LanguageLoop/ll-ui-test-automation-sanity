@@ -158,13 +158,15 @@ When(/^I click add interpreters button$/,function(){
 
 When(/^I handle duplicate job warning window$/,function(){
   
-  try{
-    jobRequestPage.continueButton.waitForExist({timeout:3000})
+  if(jobRequestPage.continueButton.isClickable()){
+    jobRequestPage.continueButton.waitForExist({timeout:5000})
     action.clickElement(jobRequestPage.continueButton)
   }
-  catch(Err)
-  {
+  else {
+    browser.pause(3000)
+    action.clickElement(jobRequestPage.continueButton)
   }
+ 
 })
 
 When(/^I click yes to confirm editing job request$/, function(){
